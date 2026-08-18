@@ -64,29 +64,48 @@
             text-shadow: none;
         }
 
-        /* ===== PANIER EN BAS À DROITE ===== */
-        .cart-btn {
+        /* ===== BOUTONS FLOTTANTS EN BAS À DROITE ===== */
+        .floating-buttons {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background: #E8112D;
-            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .cart-btn, .whatsapp-btn {
             border: none;
             border-radius: 50%;
             width: 56px;
             height: 56px;
             font-size: 1.6rem;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(232, 17, 45, 0.4);
-            transition: transform 0.3s, background 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        .cart-btn {
+            background: #E8112D;
         }
         .cart-btn:hover {
             transform: scale(1.1);
             background: #c00e24;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background: #1da851;
         }
 
         nav {
@@ -245,7 +264,7 @@
             margin-bottom: 0.4rem;
             background: #f0e6d0;
             display: block;
-            cursor: pointer; /* indique que l'image est cliquable */
+            cursor: pointer;
             transition: opacity 0.2s;
         }
         .card img:hover {
@@ -411,7 +430,7 @@
             transform: scale(1.15);
         }
 
-        /* ===== LIGHTBOX / VISIONNEUSE ===== */
+        /* ===== LIGHTBOX ===== */
         .lightbox {
             display: none;
             position: fixed;
@@ -496,12 +515,15 @@
                 gap: 0.8rem;
                 font-size: 0.9rem;
             }
-            .cart-btn {
+            .cart-btn, .whatsapp-btn {
                 width: 48px;
                 height: 48px;
                 font-size: 1.3rem;
+            }
+            .floating-buttons {
                 bottom: 12px;
                 right: 12px;
+                gap: 8px;
             }
             .contact-details {
                 gap: 0.5rem;
@@ -536,16 +558,23 @@
 </head>
 <body>
 
-    <!-- ===== LIGHTBOX (visionneuse) ===== -->
+    <!-- ===== LIGHTBOX ===== -->
     <div class="lightbox" id="lightbox">
         <button class="close-lightbox" id="closeLightbox">&times;</button>
         <img id="lightboxImg" src="" alt="Agrandissement" />
     </div>
 
-    <!-- ===== PANIER EN BAS À DROITE ===== -->
-    <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
-        <i class="fas fa-shopping-cart"></i>
-    </button>
+    <!-- ===== BOUTONS FLOTTANTS (panier + WhatsApp) ===== -->
+    <div class="floating-buttons">
+        <!-- Panier -->
+        <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/22966561780" target="_blank" class="whatsapp-btn" title="Nous contacter sur WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <div class="container">
 
@@ -630,15 +659,14 @@
                 if (!imgSrc) return;
                 lightboxImg.src = imgSrc;
                 lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden'; // empêche le scroll
+                document.body.style.overflow = 'hidden';
             }
 
             function closeLightboxFn() {
                 lightbox.classList.remove('active');
-                document.body.style.overflow = ''; // restaure le scroll
+                document.body.style.overflow = '';
             }
 
-            // Cliquer sur l'overlay ferme aussi
             lightbox.addEventListener('click', function(e) {
                 if (e.target === lightbox) {
                     closeLightboxFn();
@@ -647,7 +675,6 @@
 
             closeLightbox.addEventListener('click', closeLightboxFn);
 
-            // Touche Echap pour fermer
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                     closeLightboxFn();
@@ -678,14 +705,10 @@
                 img.alt = gout.nom;
                 img.loading = 'lazy';
 
-                // Au clic sur l'image, on ouvre la lightbox
                 img.addEventListener('click', function(e) {
-                    e.stopPropagation(); // éviter de déclencher le clic sur la carte
+                    e.stopPropagation();
                     if (this.src && !this.classList.contains('error')) {
                         openLightbox(this.src);
-                    } else {
-                        // Si l'image est en erreur, on peut afficher un message ou rien
-                        // On pourrait ouvrir avec un placeholder, mais on ignore.
                     }
                 });
 
@@ -701,7 +724,6 @@
                 fallback.className = 'emoji-fallback';
                 fallback.textContent = gout.emoji;
                 fallback.style.display = 'none';
-                // Le fallback n'est pas cliquable pour la lightbox (pas d'image)
                 card.appendChild(fallback);
 
                 var h3 = document.createElement('h3');
@@ -769,9 +791,6 @@
             cartes.forEach(function(card) {
                 card.addEventListener('click', function(e) {
                     if (e.target.closest('.btn-commander')) return;
-                    // On peut garder l'effet de scale même si on clique sur l'image,
-                    // mais l'image a déjà son propre événement.
-                    // On évite de faire scale sur l'image car elle a déjà son clic.
                     if (e.target.tagName !== 'IMG') {
                         this.style.transition = 'transform 0.1s ease';
                         this.style.transform = 'scale(0.95)';
