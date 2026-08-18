@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop C'Bon – Popcorn béninois</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --benin-yellow: #FCD116;
+            --benin-red: #E8112D;
+            --benin-green: #00853E;
+            --dark: #2D1B0E;
+            --cream: #FFF8F0;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 24px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(252, 209, 22, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(232, 17, 45, 0.06) 0%, transparent 35%),
+                repeating-linear-gradient(45deg,
+                    rgba(0, 133, 62, 0.04) 0px,
+                    rgba(0, 133, 62, 0.04) 2px,
+                    transparent 2px,
+                    transparent 8px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0 1.5rem;
+            border-bottom: 3px dashed var(--benin-yellow);
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: var(--benin-red);
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 var(--benin-yellow);
+        }
+
+        .logo span {
+            background: var(--benin-green);
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            text-shadow: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--benin-red);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--benin-red);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-text {
+            flex: 1 1 300px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--benin-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--benin-green);
+            background: var(--benin-yellow);
+            padding: 0 0.4rem;
+            border-radius: 16px 4px 16px 4px;
+            display: inline-block;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin: 1.2rem 0;
+            color: #3d2b1a;
+        }
+
+        .hero-text .slogan {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: var(--benin-yellow);
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 40px;
+            color: var(--dark);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: var(--benin-red);
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0 #a00d1f;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(232, 17, 45, 0.35);
+        }
+
+        .hero-image {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image .popcorn-illustration {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1 / 1;
+            background: radial-gradient(circle at 30% 30%, var(--benin-yellow), #e6b800);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 8rem;
+            box-shadow: var(--shadow), 0 0 0 12px rgba(252, 209, 22, 0.3);
+            animation: float 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-image .popcorn-illustration::after {
+            content: '🍿';
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ===== PRODUITS ===== */
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            text-align: center;
+            margin: 3rem 0 1rem;
+            color: var(--benin-green);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--benin-yellow);
+            margin: 0.5rem auto 0;
+            border-radius: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 1px solid rgba(252, 209, 22, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card .emoji-big {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: var(--benin-red);
+            margin-bottom: 0.3rem;
+        }
+
+        .product-card .badge {
+            position: absolute;
+            top: 12px;
+            right: -28px;
+            background: var(--benin-yellow);
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.2rem 2.2rem;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+        }
+
+        /* ===== À PROPOS ===== */
+        .about {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin: 2rem 0 3rem;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--benin-green);
+        }
+
+        .about h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--benin-red);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .about .quote {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--benin-green);
+            background: var(--cream);
+            padding: 1rem 2rem;
+            border-radius: 60px 8px 60px 8px;
+            display: inline-block;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--benin-yellow);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--benin-red);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 2.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .contact .contact-details a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--dark);
+            background: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: background 0.3s, transform 0.2s, color 0.3s;
+            font-weight: 600;
+        }
+
+        .contact .contact-details a:hover {
+            background: var(--benin-green);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .contact .contact-details a i {
+            font-size: 1.4rem;
+            width: 1.6rem;
+            text-align: center;
+        }
+
+        .contact .contact-details a:hover i {
+            color: white;
+        }
+
+        .contact .address {
+            font-size: 1.1rem;
+            background: white;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .contact .address strong {
+            color: var(--benin-red);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: #5a4a3a;
+            border-top: 2px solid var(--benin-yellow);
+            padding-top: 2rem;
+            font-weight: 500;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .socials {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        footer .socials a {
+            color: var(--dark);
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.2s;
+            display: inline-flex;
+        }
+
+        footer .socials a:hover {
+            color: var(--benin-red);
+            transform: scale(1.15);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 2.6rem;
+            }
+            .hero-image .popcorn-illustration {
+                max-width: 260px;
+                font-size: 5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .about, .contact {
+                padding: 1.8rem;
+            }
+            .contact .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+            }
+            .contact .contact-details a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">
+                🍿 Pop C'Bon
+                <span>Bénin</span>
+            </div>
+            <nav>
+                <a href="#produits">Nos goûts</a>
+                <a href="#a-propos">À propos</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-text">
+                <div class="slogan">🌍 100% béninois</div>
+                <h1>
+                    <span class="highlight">4 goûts</span> pour <br />croquer le Bénin !
+                </h1>
+                <p>
+                    Sucré, salé, lacté et chocolaté – nos popcorns aux arômes et couleurs 
+                    authentiques vous transportent au cœur des saveurs du Bénin.
+                </p>
+                <a href="#produits" class="btn">Découvrir les saveurs</a>
+            </div>
+            <div class="hero-image">
+                <div class="popcorn-illustration"></div>
+            </div>
+        </section>
+
+        <!-- ===== PRODUITS (GOÛTS - SANS PRIX) ===== -->
+        <h2 class="section-title" id="produits">🍿 Nos 4 goûts</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="badge">⭐ Douceur</span>
+                <span class="emoji-big">🍬</span>
+                <h3>Sucré</h3>
+                <p>Caramel doré, vanille et une touche de cannelle.</p>
+            </div>
+            <div class="product-card">
+                <span class="emoji-big">🧂</span>
+                <h3>Salé</h3>
+                <p>Fleur de sel de la lagune et épices douces.</p>
+            </div>
+            <div class="product-card">
+                <span class="emoji-big">🧈</span>
+                <h3>Lacté</h3>
+                <p>Beurre de karité et lait concentré, onctuosité garantie.</p>
+            </div>
+            <div class="product-card">
+                <span class="emoji-big">🍫</span>
+                <h3>Chocolaté</h3>
+                <p>Cacao béninois, éclats de noix et une pointe de piment.</p>
+            </div>
+        </div>
+
+        <!-- ===== À PROPOS ===== -->
+        <section class="about" id="a-propos">
+            <h2>🇧🇯 L'histoire de Pop C'Bon</h2>
+            <p>
+                <strong>Pop C'Bon</strong> est née d'une passion : faire revivre le popcorn traditionnel 
+                béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits 
+                producteurs locaux, et chaque saveur – sucrée, salée, lactée ou chocolatée – est 
+                élaborée avec des ingrédients naturels du terroir.
+            </p>
+            <p>
+                Nous croyons en une alimentation <strong>saine, savoureuse et solidaire</strong>. 
+                C'est pourquoi nous reversons 5% de nos bénéfices à des associations éducatives 
+                dans les zones rurales du Bénin.
+            </p>
+            <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section class="contact" id="contact">
+            <h2>📬 Contactez-nous</h2>
+            <div class="contact-details">
+                <a href="tel:0165694388" title="Appeler le 01 65 69 43 88">
+                    <i class="fas fa-phone"></i> 01 65 69 43 88
+                </a>
+                <a href="tel:0166561780" title="Appeler le 01 66 56 17 80">
+                    <i class="fas fa-phone"></i> 01 66 56 17 80
+                </a>
+                <a href="https://wa.me/22966561780" target="_blank" title="Nous écrire sur WhatsApp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:olachalla@gmail.com" title="Nous envoyer un e-mail">
+                    <i class="fas fa-envelope"></i> olachalla@gmail.com
+                </a>
+                <a href="https://www.tiktok.com/@cbonpop21" target="_blank" title="Suivez-nous sur TikTok">
+                    <i class="fab fa-tiktok"></i> @cbonpop21
+                </a>
+            </div>
+            <div class="address">
+                <strong>📍 Adresse :</strong> Menontin, Cotonou, Bénin
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div>© 2026 Pop C'Bon – Tous droits réservés</div>
+            <div class="socials">
+                <a href="https://www.tiktok.com/@cbonpop21" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="mailto:olachalla@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:0165694388" aria-label="Téléphone">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== JS ===== -->
+    <script>
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transition = 'transform 0.1s ease';
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                const name = this.querySelector('h3')?.textContent || 'produit';
+                alert(`Vous avez choisi le goût ${name} ! 🍿`);
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('🍿 Pop C\'Bon – Le popcorn du Bénin !');
+    </script>
+</body>
+</html>
