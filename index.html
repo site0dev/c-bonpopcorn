@@ -25,7 +25,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+            padding: 1.5rem 1rem 3rem;
         }
 
         header {
@@ -33,7 +33,7 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0 1.2rem;
+            padding: 0.5rem 0 1rem;
             border-bottom: 3px dashed #FCD116;
             margin-bottom: 1.5rem;
             position: relative;
@@ -42,9 +42,9 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             font-family: 'Fredoka One', cursive;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #E8112D;
             text-shadow: 2px 2px 0 #FCD116;
             cursor: pointer;
@@ -56,8 +56,8 @@
         .logo span {
             background: #00853E;
             color: white;
-            font-size: 1.2rem;
-            padding: 0.2rem 1rem;
+            font-size: 1rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 40px;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
@@ -74,9 +74,9 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.8rem;
+            width: 56px;
+            height: 56px;
+            font-size: 1.6rem;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(232, 17, 45, 0.4);
             transition: transform 0.3s, background 0.3s;
@@ -91,7 +91,7 @@
 
         nav {
             display: flex;
-            gap: 1.8rem;
+            gap: 1.5rem;
             font-weight: 600;
         }
         nav a {
@@ -115,48 +115,48 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 2rem;
-            padding: 1.5rem 0;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
         }
         .hero-text {
-            flex: 1 1 300px;
+            flex: 1 1 280px;
         }
         .hero-text h1 {
             font-family: 'Fredoka One', cursive;
-            font-size: 3.5rem;
+            font-size: 3rem;
             line-height: 1.1;
             color: #E8112D;
         }
         .hero-text h1 .highlight {
             color: #00853E;
             background: #FCD116;
-            padding: 0 0.4rem;
-            border-radius: 16px 4px 16px 4px;
+            padding: 0 0.3rem;
+            border-radius: 12px 4px 12px 4px;
             display: inline-block;
         }
         .hero-text p {
-            font-size: 1.25rem;
-            margin: 1.2rem 0;
+            font-size: 1.1rem;
+            margin: 1rem 0;
         }
         .slogan {
             font-weight: 700;
             background: #FCD116;
             display: inline-block;
-            padding: 0.4rem 1.8rem;
+            padding: 0.3rem 1.5rem;
             border-radius: 40px;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem; /* pour espacer du titre */
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
         }
         .btn {
             display: inline-block;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             background: #E8112D;
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.8rem;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: 0.3s;
             box-shadow: 0 6px 0 #a00d1f;
@@ -168,66 +168,61 @@
             box-shadow: 0 10px 20px rgba(232, 17, 45, 0.35);
         }
         .hero-image {
-            flex: 1 1 300px;
+            flex: 1 1 280px;
             display: flex;
             justify-content: center;
         }
         .popcorn-illustration {
             width: 100%;
-            max-width: 380px;
+            max-width: 320px;
             aspect-ratio: 1 / 1;
             background: radial-gradient(circle at 30% 30%, #FCD116, #e6b800);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 8rem;
+            font-size: 6rem;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             animation: float 4s ease-in-out infinite;
         }
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-16px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
 
         .section-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             text-align: center;
             color: #00853E;
-            margin: 2rem 0 0.8rem;
+            margin: 1.5rem 0 0.5rem;
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 5px;
+            width: 60px;
+            height: 4px;
             background: #FCD116;
-            margin: 0.5rem auto 0;
+            margin: 0.4rem auto 0;
             border-radius: 10px;
         }
 
-        /* ===== GRILLE 2x2 ===== */
+        /* ===== GRILLE 2x2 TOUJOURS ===== */
         .grid-2x2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin: 1.5rem 0 2rem;
-        }
-        @media (max-width: 600px) {
-            .grid-2x2 {
-                grid-template-columns: 1fr;
-            }
+            gap: 0.8rem;
+            margin: 1rem 0 2rem;
         }
 
-        /* ===== CARTES AVEC IMAGES EN RECTANGLE PLEIN CADRE ===== */
+        /* ===== CARTES ===== */
         .card {
             background: white;
-            border-radius: 20px;
-            padding: 1.2rem 0.8rem;
+            border-radius: 16px;
+            padding: 0.8rem 0.5rem 1rem;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s;
             border: 1px solid rgba(252, 209, 22, 0.3);
             position: relative;
@@ -240,23 +235,22 @@
             transform: scale(1.02);
         }
 
-        /* L'image prend tout le rectangle, sans bord arrondi */
         .card img {
             width: 100%;
-            aspect-ratio: 1 / 1; /* carré, mais on peut aussi laisser faire object-fit: cover */
+            aspect-ratio: 1 / 1;
             object-fit: cover;
-            border-radius: 0; /* plus de cercle */
-            border: 3px solid #FCD116;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            border: 2px solid #FCD116;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            margin-bottom: 0.4rem;
             background: #f0e6d0;
             display: block;
         }
 
         .card .emoji-fallback {
-            font-size: 3.5rem;
+            font-size: 3rem;
             display: none;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
         .card img.error + .emoji-fallback,
         .card img:not([src]) + .emoji-fallback {
@@ -264,37 +258,38 @@
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #E8112D;
             margin-top: 0;
+            font-weight: 700;
         }
 
         .badge {
             position: absolute;
-            top: 10px;
-            right: -28px;
+            top: 8px;
+            right: -24px;
             background: #FCD116;
             color: #2D1B0E;
             font-weight: 700;
-            font-size: 0.7rem;
-            padding: 0.2rem 2.2rem;
+            font-size: 0.6rem;
+            padding: 0.15rem 2rem;
             transform: rotate(45deg);
             text-transform: uppercase;
         }
 
         .btn-commander {
             display: inline-block;
-            margin-top: 0.6rem;
+            margin-top: 0.4rem;
             background: #00853E;
             color: white;
-            padding: 0.4rem 1.5rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 60px;
             font-weight: 700;
             text-decoration: none;
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         .btn-commander:hover {
             background: #006b32;
@@ -303,68 +298,68 @@
 
         .about {
             background: white;
-            border-radius: 20px;
-            padding: 1.5rem 1.8rem;
-            margin: 1.5rem 0 2rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border-left: 6px solid #00853E;
         }
         .about h2 {
             font-family: 'Fredoka One', cursive;
             color: #E8112D;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
         }
         .about p {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
         }
         .quote {
             font-style: italic;
             font-weight: 600;
             color: #00853E;
             background: #FFF8F0;
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px 8px 40px 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px 8px 30px 8px;
             display: inline-block;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .contact {
             background: #FCD116;
-            border-radius: 20px;
-            padding: 1.5rem 1.8rem;
-            margin-top: 1.5rem;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1rem;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         .contact h2 {
             font-family: 'Fredoka One', cursive;
             color: #E8112D;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
         }
         .contact-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-            font-size: 1rem;
+            gap: 0.7rem;
+            margin: 0.8rem 0;
+            font-size: 0.9rem;
         }
         .contact-details a {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
             text-decoration: none;
             color: #2D1B0E;
             background: white;
-            padding: 0.4rem 1rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 60px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
             transition: 0.3s;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         .contact-details a:hover {
             background: #00853E;
@@ -372,38 +367,38 @@
             transform: scale(1.05);
         }
         .contact-details a i {
-            font-size: 1.2rem;
-            width: 1.4rem;
+            font-size: 1rem;
+            width: 1.2rem;
             text-align: center;
         }
         .address {
-            font-size: 1rem;
+            font-size: 0.9rem;
             background: white;
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 60px;
             display: inline-block;
-            margin-top: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 0.3rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         footer {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             text-align: center;
             border-top: 2px solid #FCD116;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         .socials {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
         }
         .socials a {
             color: #2D1B0E;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             transition: 0.3s;
         }
         .socials a:hover {
@@ -411,63 +406,77 @@
             transform: scale(1.15);
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            nav {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero-text h1 {
-                font-size: 2.6rem;
-            }
-            .popcorn-illustration {
-                max-width: 260px;
-                font-size: 5rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .contact-details {
-                flex-direction: column;
-                align-items: center;
-            }
-            footer {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            .cart-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.8rem;
-            }
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-            .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 1rem;
-            }
-            .contact-details a {
-                width: 100%;
-                justify-content: center;
+        /* ===== RESPONSIVE : on garde 2 colonnes partout ===== */
+        @media (max-width: 500px) {
+            .grid-2x2 {
+                gap: 0.6rem;
             }
             .card {
-                padding: 1rem 0.5rem;
+                padding: 0.5rem 0.3rem 0.7rem;
             }
             .card img {
-                aspect-ratio: 1 / 1;
-                max-height: none;
+                border-radius: 6px;
+                border-width: 2px;
+            }
+            .card h3 {
+                font-size: 1rem;
+            }
+            .btn-commander {
+                font-size: 0.75rem;
+                padding: 0.2rem 1rem;
+            }
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .about h2, .contact h2 {
+                font-size: 1.5rem;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .logo span {
+                font-size: 0.8rem;
+                padding: 0.15rem 0.6rem;
+            }
+            nav {
+                gap: 0.8rem;
+                font-size: 0.9rem;
+            }
+            .cart-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 12px;
+                right: 12px;
+            }
+            .contact-details {
+                gap: 0.5rem;
+            }
+            .contact-details a {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .grid-2x2 {
+                gap: 0.4rem;
+            }
+            .card img {
+                border-width: 1px;
+            }
+            .card h3 {
+                font-size: 0.9rem;
+            }
+            .btn-commander {
+                font-size: 0.7rem;
+                padding: 0.15rem 0.8rem;
             }
         }
     </style>
@@ -494,7 +503,6 @@
 
             <section class="hero">
                 <div class="hero-text">
-                    <!-- Slogan "100% Bénin" placé au-dessus du titre -->
                     <div class="slogan">🌍 100% Bénin</div>
                     <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
                     <p>Sucré, salé, lacté et caramel – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
@@ -554,7 +562,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ===== DONNÉES : 4 goûts (Caramel remplace Chocolaté) =====
+            // ===== DONNÉES =====
             var gouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur' },
                 { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '' },
