@@ -28,7 +28,6 @@
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* ===== HEADER ===== */
         header {
             display: flex;
             flex-wrap: wrap;
@@ -51,11 +50,7 @@
             cursor: pointer;
             transition: transform 0.3s;
         }
-
-        .logo:hover {
-            transform: scale(1.02);
-        }
-
+        .logo:hover { transform: scale(1.02); }
         .logo span {
             background: #00853E;
             color: white;
@@ -67,7 +62,6 @@
             text-shadow: none;
         }
 
-        /* ===== PANIER FIXE ===== */
         .cart-btn {
             position: fixed;
             top: 20px;
@@ -87,12 +81,10 @@
             align-items: center;
             gap: 0.6rem;
         }
-
         .cart-btn:hover {
             transform: scale(1.08);
             background: #c00e24;
         }
-
         .cart-btn .badge-cart {
             background: #FCD116;
             color: #2D1B0E;
@@ -103,34 +95,22 @@
             text-align: center;
         }
 
-        /* ===== NAV ===== */
         nav {
             display: flex;
             gap: 1.8rem;
             font-weight: 600;
         }
-
         nav a {
             text-decoration: none;
             color: #2D1B0E;
             transition: color 0.3s;
             cursor: pointer;
         }
+        nav a:hover { color: #E8112D; }
 
-        nav a:hover {
-            color: #E8112D;
-        }
+        .page { display: block; }
+        .page.hidden { display: none; }
 
-        /* ===== PAGES ===== */
-        .page {
-            display: block;
-        }
-
-        .page.hidden {
-            display: none;
-        }
-
-        /* ===== HERO ===== */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -139,18 +119,13 @@
             padding: 2rem 0;
             margin-bottom: 3rem;
         }
-
-        .hero-text {
-            flex: 1 1 300px;
-        }
-
+        .hero-text { flex: 1 1 300px; }
         .hero-text h1 {
             font-family: 'Fredoka One', cursive;
             font-size: 3.5rem;
             line-height: 1.1;
             color: #E8112D;
         }
-
         .hero-text h1 .highlight {
             color: #00853E;
             background: #FCD116;
@@ -158,12 +133,7 @@
             border-radius: 16px 4px 16px 4px;
             display: inline-block;
         }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            margin: 1.2rem 0;
-        }
-
+        .hero-text p { font-size: 1.25rem; margin: 1.2rem 0; }
         .slogan {
             font-weight: 700;
             background: #FCD116;
@@ -171,82 +141,6 @@
             padding: 0.4rem 1.8rem;
             border-radius: 40px;
         }
-
         .btn {
             display: inline-block;
-            margin-top: 1.2rem;
-            background: #E8112D;
-            color: white;
-            padding: 0.9rem 2.5rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 6px 0 #a00d1f;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(232, 17, 45, 0.35);
-        }
-
-        .hero-image {
-            flex: 1 1 300px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .popcorn-illustration {
-            width: 100%;
-            max-width: 380px;
-            aspect-ratio: 1 / 1;
-            background: radial-gradient(circle at 30% 30%, #FCD116, #e6b800);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 8rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-16px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* ===== SECTION TITRE ===== */
-        .section-title {
-            font-family: 'Fredoka One', cursive;
-            font-size: 2.8rem;
-            text-align: center;
-            color: #00853E;
-            margin: 3rem 0 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 5px;
-            background: #FCD116;
-            margin: 0.5rem auto 0;
-            border-radius: 10px;
-        }
-
-        /* ===== GRILLE 2x2 ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0 3rem;
-        }
-
-        /* ===== CARTES ===== */
-        .card {
-            background: white;
-            border-radius: 24px;
+            margin-top
