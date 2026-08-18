@@ -184,15 +184,9 @@
             animation: float 4s ease-in-out infinite;
         }
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-16px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+            100% { transform: translateY(0px); }
         }
 
         .section-title {
@@ -212,6 +206,7 @@
             border-radius: 10px;
         }
 
+        /* ===== GRILLE 2x2 ===== */
         .grid-2x2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -224,6 +219,7 @@
             }
         }
 
+        /* ===== CARTES AVEC IMAGES EN RECTANGLE PLEIN CADRE ===== */
         .card {
             background: white;
             border-radius: 20px;
@@ -242,17 +238,19 @@
             transform: scale(1.02);
         }
 
+        /* L'image prend tout le rectangle, sans bord arrondi */
         .card img {
             width: 100%;
-            max-width: 140px;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1; /* carré, mais on peut aussi laisser faire object-fit: cover */
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 0; /* plus de cercle */
             border: 3px solid #FCD116;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             margin-bottom: 0.5rem;
             background: #f0e6d0;
+            display: block;
         }
+
         .card .emoji-fallback {
             font-size: 3.5rem;
             display: none;
@@ -466,7 +464,8 @@
                 padding: 1rem 0.5rem;
             }
             .card img {
-                max-width: 120px;
+                aspect-ratio: 1 / 1;
+                max-height: none;
             }
         }
     </style>
@@ -493,7 +492,7 @@
 
             <section class="hero">
                 <div class="hero-text">
-                    <div class="slogan">🌍 Bénin</div> <!-- ajusté ici -->
+                    <div class="slogan">🌍 Bénin</div>
                     <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
                     <p>Sucré, salé, lacté et caramel – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
                     <button class="btn" id="btnCommanderAccueil">Commandez maintenant</button>
@@ -552,12 +551,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ===== DONNÉES : remplacement de Chocolaté par Caramel =====
+            // ===== DONNÉES : 4 goûts (Caramel remplace Chocolaté) =====
             var gouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur' },
                 { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '' },
                 { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '' },
-                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '' }  // modifié
+                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '' }
             ];
 
             function genererCarte(gout, avecBouton) {
