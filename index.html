@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop C'Bon – Popcorn béninois</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFF8F0;
+            color: #2D1B0E;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0 1.5rem;
+            border-bottom: 3px dashed #FCD116;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: #E8112D;
+            text-shadow: 2px 2px 0 #FCD116;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        .logo span {
+            background: #00853E;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            text-shadow: none;
+        }
+
+        /* ===== PANIER (sans texte) ===== */
+        .cart-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #E8112D;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(232, 17, 45, 0.4);
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-btn:hover {
+            transform: scale(1.1);
+            background: #c00e24;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+            font-weight: 600;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2D1B0E;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #E8112D;
+        }
+
+        .page {
+            display: block;
+        }
+        .page.hidden {
+            display: none;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        .hero-text {
+            flex: 1 1 300px;
+        }
+        .hero-text h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: #E8112D;
+        }
+        .hero-text h1 .highlight {
+            color: #00853E;
+            background: #FCD116;
+            padding: 0 0.4rem;
+            border-radius: 16px 4px 16px 4px;
+            display: inline-block;
+        }
+        .hero-text p {
+            font-size: 1.25rem;
+            margin: 1.2rem 0;
+        }
+        .slogan {
+            font-weight: 700;
+            background: #FCD116;
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 40px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: #E8112D;
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 6px 0 #a00d1f;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(232, 17, 45, 0.35);
+        }
+        .hero-image {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+        }
+        .popcorn-illustration {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1 / 1;
+            background: radial-gradient(circle at 30% 30%, #FCD116, #e6b800);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 8rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-16px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #00853E;
+            margin: 3rem 0 1rem;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: #FCD116;
+            margin: 0.5rem auto 0;
+            border-radius: 10px;
+        }
+
+        /* ===== GRILLE 2x2 ===== */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+        @media (max-width: 600px) {
+            .grid-2x2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== CARTES ===== */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+            border: 1px solid rgba(252, 209, 22, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 180px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #FCD116;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.8rem;
+            background: #f0e6d0;
+        }
+        .card .emoji-fallback {
+            font-size: 4rem;
+            display: none;
+            margin-bottom: 0.4rem;
+        }
+        .card img.error + .emoji-fallback,
+        .card img:not([src]) + .emoji-fallback {
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #E8112D;
+            margin-top: 0.2rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: -28px;
+            background: #FCD116;
+            color: #2D1B0E;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.2rem 2.2rem;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+        }
+
+        .btn-commander {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #00853E;
+            color: white;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-commander:hover {
+            background: #006b32;
+            transform: scale(1.05);
+        }
+
+        .about {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin: 2rem 0 3rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-left: 8px solid #00853E;
+        }
+        .about h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #E8112D;
+            font-size: 2.2rem;
+        }
+        .quote {
+            font-style: italic;
+            font-weight: 600;
+            color: #00853E;
+            background: #FFF8F0;
+            padding: 1rem 2rem;
+            border-radius: 60px 8px 60px 8px;
+            display: inline-block;
+        }
+
+        .contact {
+            background: #FCD116;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        .contact h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #E8112D;
+            font-size: 2.2rem;
+        }
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+        }
+        .contact-details a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: #2D1B0E;
+            background: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .contact-details a:hover {
+            background: #00853E;
+            color: white;
+            transform: scale(1.05);
+        }
+        .contact-details a i {
+            font-size: 1.4rem;
+            width: 1.6rem;
+            text-align: center;
+        }
+        .address {
+            font-size: 1.1rem;
+            background: white;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 2px solid #FCD116;
+            padding-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .socials {
+            display: flex;
+            gap: 1.2rem;
+        }
+        .socials a {
+            color: #2D1B0E;
+            font-size: 1.8rem;
+            transition: 0.3s;
+        }
+        .socials a:hover {
+            color: #E8112D;
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 2.6rem;
+            }
+            .popcorn-illustration {
+                max-width: 260px;
+                font-size: 5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .cart-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+            }
+            .contact-details a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PANIER FIXE (icône uniquement) ===== -->
+    <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
+        <i class="fas fa-shopping-cart"></i>
+    </button>
+
+    <div class="container">
+
+        <!-- ===== PAGE ACCUEIL ===== -->
+        <div class="page" id="pageAccueil">
+            <header>
+                <div class="logo" id="logoAccueil">🍿 Pop C'Bon <span>Bénin</span></div>
+                <nav>
+                    <a href="#produits">Nos goûts</a>
+                    <a href="#a-propos">À propos</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </header>
+
+            <section class="hero">
+                <div class="hero-text">
+                    <div class="slogan">🌍 100% béninois</div>
+                    <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
+                    <p>Sucré, salé, lacté et chocolaté – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
+                    <button class="btn" id="btnCommanderAccueil">Commandez maintenant</button>
+                </div>
+                <div class="hero-image">
+                    <div class="popcorn-illustration">🍿</div>
+                </div>
+            </section>
+
+            <h2 class="section-title" id="produits">🍿 Nos 4 goûts</h2>
+            <div class="grid-2x2" id="accueilGouts"></div>
+
+            <section class="about" id="a-propos">
+                <h2>🇧🇯 L'histoire de Pop C'Bon</h2>
+                <p><strong>Pop C'Bon</strong> est née d'une passion : faire revivre le popcorn traditionnel béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits producteurs locaux, et chaque saveur est élaborée avec des ingrédients naturels du terroir.</p>
+                <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
+            </section>
+
+            <section class="contact" id="contact">
+                <h2>📬 Contactez-nous</h2>
+                <div class="contact-details">
+                    <a href="tel:0165694388"><i class="fas fa-phone"></i> 01 65 69 43 88</a>
+                    <a href="tel:0166561780"><i class="fas fa-phone"></i> 01 66 56 17 80</a>
+                    <a href="https://wa.me/22966561780" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i> olachalla@gmail.com</a>
+                    <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i> @cbonpop21</a>
+                </div>
+                <div class="address"><strong>📍 Adresse :</strong> Menontin, Cotonou, Bénin</div>
+            </section>
+
+            <footer>
+                <div>© 2026 Pop C'Bon – Tous droits réservés</div>
+                <div class="socials">
+                    <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:0165694388"><i class="fas fa-phone"></i></a>
+                </div>
+            </footer>
+        </div>
+
+        <!-- ===== PAGE BOUTIQUE (COMMANDER) ===== -->
+        <div class="page hidden" id="pageBoutique">
+            <header>
+                <div class="logo" id="logoBoutique">🍿 Pop C'Bon <span>Bénin</span></div>
+                <nav>
+                    <a id="btnRetourAccueil">← Retour à l'accueil</a>
+                </nav>
+            </header>
+
+            <h2 class="section-title">🛒 Commander vos popcorns</h2>
+            <div class="grid-2x2" id="boutiqueGouts"></div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ===== DONNÉES =====
+            var gouts = [
+                { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur' },
+                { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '' },
+                { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '' },
+                { nom: 'Chocolaté', image: 'chocolat', emoji: '🍫', badge: '' }
+            ];
+
+            // ===== GÉNÉRATEUR DE CARTE =====
+            function genererCarte(gout, avecBouton) {
+                var card = document.createElement('div');
+                card.className = 'card';
+
+                if (gout.badge) {
+                    var badge = document.createElement('span');
+                    badge.className = 'badge';
+                    badge.textContent = gout.badge;
+                    card.appendChild(badge);
+                }
+
+                var img = document.createElement('img');
+                img.src = gout.image + '.jpg';
+                img.alt = gout.nom;
+                img.loading = 'lazy';
+
+                img.addEventListener('error', function() {
+                    this.classList.add('error');
+                    this.style.display = 'none';
+                    var fallback = this.parentElement.querySelector('.emoji-fallback');
+                    if (fallback) fallback.style.display = 'block';
+                });
+                card.appendChild(img);
+
+                var fallback = document.createElement('span');
+                fallback.className = 'emoji-fallback';
+                fallback.textContent = gout.emoji;
+                fallback.style.display = 'none';
+                card.appendChild(fallback);
+
+                var h3 = document.createElement('h3');
+                h3.textContent = gout.nom;
+                card.appendChild(h3);
+
+                if (avecBouton) {
+                    var a = document.createElement('a');
+                    a.className = 'btn-commander';
+                    a.href = 'https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20' +
+                        encodeURIComponent(gout.nom) + '%20' + gout.emoji;
+                    a.target = '_blank';
+                    a.innerHTML = '<i class="fab fa-whatsapp"></i> Commander';
+                    card.appendChild(a);
+                }
+
+                return card;
+            }
+
+            // ===== REMPLIR LES GRILLES =====
+            var accueilGrid = document.getElementById('accueilGouts');
+            var boutiqueGrid = document.getElementById('boutiqueGouts');
+
+            if (accueilGrid && boutiqueGrid) {
+                gouts.forEach(function(g) {
+                    accueilGrid.appendChild(genererCarte(g, false));
+                    boutiqueGrid.appendChild(genererCarte(g, true));
+                });
+            }
+
+            // ===== NAVIGATION =====
+            var pageAccueil = document.getElementById('pageAccueil');
+            var pageBoutique = document.getElementById('pageBoutique');
+            var cartBtn = document.getElementById('cartBtn');
+            var btnCommanderAccueil = document.getElementById('btnCommanderAccueil');
+            var btnRetourAccueil = document.getElementById('btnRetourAccueil');
+            var logoAccueil = document.getElementById('logoAccueil');
+            var logoBoutique = document.getElementById('logoBoutique');
+
+            function showPage(page) {
+                if (page === 'accueil') {
+                    pageAccueil.classList.remove('hidden');
+                    pageBoutique.classList.add('hidden');
+                } else {
+                    pageAccueil.classList.add('hidden');
+                    pageBoutique.classList.remove('hidden');
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            if (cartBtn) cartBtn.addEventListener('click', function() { showPage('boutique'); });
+            if (btnCommanderAccueil) btnCommanderAccueil.addEventListener('click', function() { showPage('boutique'); });
+            if (btnRetourAccueil) btnRetourAccueil.addEventListener('click', function() { showPage('accueil'); });
+            if (logoAccueil) logoAccueil.addEventListener('click', function() { showPage('accueil'); });
+            if (logoBoutique) logoBoutique.addEventListener('click', function() { showPage('accueil'); });
+
+            // ===== LIENS ANCRES (accueil) =====
+            var ancres = document.querySelectorAll('#pageAccueil nav a[href^="#"]');
+            ancres.forEach(function(ancre) {
+                ancre.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // ===== EFFET CARTES =====
+            var cartes = document.querySelectorAll('.card');
+            cartes.forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.btn-commander')) return;
+                    this.style.transition = 'transform 0.1s ease';
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        card.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
