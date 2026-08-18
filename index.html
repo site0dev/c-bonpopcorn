@@ -28,6 +28,7 @@
             padding: 2rem 1.5rem 4rem;
         }
 
+        /* ===== HEADER ===== */
         header {
             display: flex;
             flex-wrap: wrap;
@@ -36,6 +37,7 @@
             padding: 0.5rem 0 1.5rem;
             border-bottom: 3px dashed #FCD116;
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .logo {
@@ -46,6 +48,12 @@
             font-size: 2.2rem;
             color: #E8112D;
             text-shadow: 2px 2px 0 #FCD116;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
         }
 
         .logo span {
@@ -59,6 +67,43 @@
             text-shadow: none;
         }
 
+        /* ===== PANIER (fixe en haut à droite) ===== */
+        .cart-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #E8112D;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(232, 17, 45, 0.4);
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.08);
+            background: #c00e24;
+        }
+
+        .cart-btn .badge-cart {
+            background: #FCD116;
+            color: #2D1B0E;
+            border-radius: 50%;
+            padding: 0 0.6rem;
+            font-size: 0.9rem;
+            min-width: 1.6rem;
+            text-align: center;
+        }
+
+        /* ===== NAV ===== */
         nav {
             display: flex;
             gap: 1.8rem;
@@ -69,12 +114,23 @@
             text-decoration: none;
             color: #2D1B0E;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         nav a:hover {
             color: #E8112D;
         }
 
+        /* ===== PAGES (accueil / boutique) ===== */
+        .page {
+            display: block;
+        }
+
+        .page.hidden {
+            display: none;
+        }
+
+        /* ===== HERO ===== */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -128,6 +184,8 @@
             text-decoration: none;
             transition: 0.3s;
             box-shadow: 0 6px 0 #a00d1f;
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
@@ -161,6 +219,7 @@
             100% { transform: translateY(0px); }
         }
 
+        /* ===== SECTION TITRE ===== */
         .section-title {
             font-family: 'Fredoka One', cursive;
             font-size: 2.8rem;
@@ -179,6 +238,7 @@
             border-radius: 10px;
         }
 
+        /* ===== GRILLE ===== */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -186,6 +246,7 @@
             margin: 2rem 0 3rem;
         }
 
+        /* ===== CARTES ===== */
         .card {
             background: white;
             border-radius: 24px;
@@ -226,6 +287,7 @@
             text-transform: uppercase;
         }
 
+        /* ===== BOUTON COMMANDER (dans la boutique) ===== */
         .btn-commander {
             display: inline-block;
             margin-top: 0.8rem;
@@ -245,6 +307,7 @@
             transform: scale(1.05);
         }
 
+        /* ===== À PROPOS ===== */
         .about {
             background: white;
             border-radius: 24px;
@@ -270,6 +333,7 @@
             display: inline-block;
         }
 
+        /* ===== CONTACT ===== */
         .contact {
             background: #FCD116;
             border-radius: 24px;
@@ -329,6 +393,7 @@
             margin-top: 1rem;
         }
 
+        /* ===== FOOTER ===== */
         footer {
             margin-top: 4rem;
             text-align: center;
@@ -356,6 +421,7 @@
             transform: scale(1.15);
         }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 1rem; }
             nav { gap: 1rem; flex-wrap: wrap; justify-content: center; }
@@ -364,6 +430,7 @@
             .section-title { font-size: 2.2rem; }
             .contact-details { flex-direction: column; align-items: center; }
             footer { flex-direction: column; gap: 1rem; }
+            .cart-btn { padding: 0.5rem 1rem; font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -375,113 +442,172 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== PANIER FIXE ===== -->
+    <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge-cart" id="cartCount">0</span>
+    </button>
+
     <div class="container">
-        <!-- HEADER -->
-        <header>
-            <div class="logo">🍿 Pop C'Bon <span>Bénin</span></div>
-            <nav>
-                <a href="#produits">Nos goûts</a>
-                <a href="#boutique">Commander</a>
-                <a href="#a-propos">À propos</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
 
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-text">
-                <div class="slogan">🌍 100% béninois</div>
-                <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
-                <p>Sucré, salé, lacté et chocolaté – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
-                <a href="#boutique" class="btn">Commandez maintenant</a>
-            </div>
-            <div class="hero-image">
-                <div class="popcorn-illustration">🍿</div>
-            </div>
-        </section>
+        <!-- ===== PAGE ACCUEIL ===== -->
+        <div class="page" id="pageAccueil">
+            <!-- HEADER -->
+            <header>
+                <div class="logo" id="logoAccueil">
+                    🍿 Pop C'Bon <span>Bénin</span>
+                </div>
+                <nav>
+                    <a href="#produits">Nos goûts</a>
+                    <a href="#a-propos">À propos</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </header>
 
-        <!-- NOS GOÛTS (avec emojis) -->
-        <h2 class="section-title" id="produits">🍿 Nos 4 goûts</h2>
-        <div class="grid">
-            <div class="card"><span class="badge">⭐</span><span class="emoji-big">🍬</span><h3>Sucré</h3></div>
-            <div class="card"><span class="emoji-big">🧂</span><h3>Salé</h3></div>
-            <div class="card"><span class="emoji-big">🧈</span><h3>Lacté</h3></div>
-            <div class="card"><span class="emoji-big">🍫</span><h3>Chocolaté</h3></div>
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-text">
+                    <div class="slogan">🌍 100% béninois</div>
+                    <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
+                    <p>Sucré, salé, lacté et chocolaté – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
+                    <button class="btn" id="btnCommanderAccueil">Commandez maintenant</button>
+                </div>
+                <div class="hero-image">
+                    <div class="popcorn-illustration">🍿</div>
+                </div>
+            </section>
+
+            <!-- NOS GOÛTS (affichage simple) -->
+            <h2 class="section-title" id="produits">🍿 Nos 4 goûts</h2>
+            <div class="grid">
+                <div class="card"><span class="badge">⭐</span><span class="emoji-big">🍬</span><h3>Sucré</h3></div>
+                <div class="card"><span class="emoji-big">🧂</span><h3>Salé</h3></div>
+                <div class="card"><span class="emoji-big">🧈</span><h3>Lacté</h3></div>
+                <div class="card"><span class="emoji-big">🍫</span><h3>Chocolaté</h3></div>
+            </div>
+
+            <!-- À PROPOS -->
+            <section class="about" id="a-propos">
+                <h2>🇧🇯 L'histoire de Pop C'Bon</h2>
+                <p><strong>Pop C'Bon</strong> est née d'une passion : faire revivre le popcorn traditionnel béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits producteurs locaux, et chaque saveur est élaborée avec des ingrédients naturels du terroir.</p>
+                <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
+            </section>
+
+            <!-- CONTACT -->
+            <section class="contact" id="contact">
+                <h2>📬 Contactez-nous</h2>
+                <div class="contact-details">
+                    <a href="tel:0165694388"><i class="fas fa-phone"></i> 01 65 69 43 88</a>
+                    <a href="tel:0166561780"><i class="fas fa-phone"></i> 01 66 56 17 80</a>
+                    <a href="https://wa.me/22966561780" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i> olachalla@gmail.com</a>
+                    <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i> @cbonpop21</a>
+                </div>
+                <div class="address"><strong>📍 Adresse :</strong> Menontin, Cotonou, Bénin</div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer>
+                <div>© 2026 Pop C'Bon – Tous droits réservés</div>
+                <div class="socials">
+                    <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:0165694388"><i class="fas fa-phone"></i></a>
+                </div>
+            </footer>
         </div>
 
-        <!-- BOUTIQUE COMMANDER -->
-        <h2 class="section-title" id="boutique">🛒 Commander vos popcorns</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="emoji-big">🍬</span>
-                <h3>Sucré</h3>
-                <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Sucré%20🍬" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
-            </div>
-            <div class="card">
-                <span class="emoji-big">🧂</span>
-                <h3>Salé</h3>
-                <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Salé%20🧂" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
-            </div>
-            <div class="card">
-                <span class="emoji-big">🧈</span>
-                <h3>Lacté</h3>
-                <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Lacté%20🧈" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
-            </div>
-            <div class="card">
-                <span class="emoji-big">🍫</span>
-                <h3>Chocolaté</h3>
-                <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Chocolaté%20🍫" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
+        <!-- ===== PAGE BOUTIQUE (COMMANDER) ===== -->
+        <div class="page hidden" id="pageBoutique">
+            <header>
+                <div class="logo" id="logoBoutique">
+                    🍿 Pop C'Bon <span>Bénin</span>
+                </div>
+                <nav>
+                    <a id="btnRetourAccueil">← Retour à l'accueil</a>
+                </nav>
+            </header>
+
+            <h2 class="section-title">🛒 Commander vos popcorns</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="emoji-big">🍬</span>
+                    <h3>Sucré</h3>
+                    <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Sucré%20🍬" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
+                </div>
+                <div class="card">
+                    <span class="emoji-big">🧂</span>
+                    <h3>Salé</h3>
+                    <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Salé%20🧂" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
+                </div>
+                <div class="card">
+                    <span class="emoji-big">🧈</span>
+                    <h3>Lacté</h3>
+                    <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Lacté%20🧈" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
+                </div>
+                <div class="card">
+                    <span class="emoji-big">🍫</span>
+                    <h3>Chocolaté</h3>
+                    <a href="https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20Chocolaté%20🍫" target="_blank" class="btn-commander"><i class="fab fa-whatsapp"></i> Commander</a>
+                </div>
             </div>
         </div>
 
-        <!-- À PROPOS -->
-        <section class="about" id="a-propos">
-            <h2>🇧🇯 L'histoire de Pop C'Bon</h2>
-            <p><strong>Pop C'Bon</strong> est née d'une passion : faire revivre le popcorn traditionnel béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits producteurs locaux, et chaque saveur est élaborée avec des ingrédients naturels du terroir.</p>
-            <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact" id="contact">
-            <h2>📬 Contactez-nous</h2>
-            <div class="contact-details">
-                <a href="tel:0165694388"><i class="fas fa-phone"></i> 01 65 69 43 88</a>
-                <a href="tel:0166561780"><i class="fas fa-phone"></i> 01 66 56 17 80</a>
-                <a href="https://wa.me/22966561780" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i> olachalla@gmail.com</a>
-                <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i> @cbonpop21</a>
-            </div>
-            <div class="address"><strong>📍 Adresse :</strong> Menontin, Cotonou, Bénin</div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <div>© 2026 Pop C'Bon – Tous droits réservés</div>
-            <div class="socials">
-                <a href="https://www.tiktok.com/@cbonpop21" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="tel:0165694388"><i class="fas fa-phone"></i></a>
-            </div>
-        </footer>
     </div>
 
     <script>
-        // Effet de clic sur les cartes
+        // Éléments
+        const pageAccueil = document.getElementById('pageAccueil');
+        const pageBoutique = document.getElementById('pageBoutique');
+        const cartBtn = document.getElementById('cartBtn');
+        const btnCommanderAccueil = document.getElementById('btnCommanderAccueil');
+        const btnRetourAccueil = document.getElementById('btnRetourAccueil');
+        const logoAccueil = document.getElementById('logoAccueil');
+        const logoBoutique = document.getElementById('logoBoutique');
+
+        // Fonction pour afficher une page et cacher l'autre
+        function showPage(page) {
+            if (page === 'accueil') {
+                pageAccueil.classList.remove('hidden');
+                pageBoutique.classList.add('hidden');
+                // Mettre à jour le compteur du panier (simulé)
+                document.getElementById('cartCount').textContent = '0';
+            } else {
+                pageAccueil.classList.add('hidden');
+                pageBoutique.classList.remove('hidden');
+                document.getElementById('cartCount').textContent = '🛒';
+            }
+            // Scroll en haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Événements
+        cartBtn.addEventListener('click', () => showPage('boutique'));
+        btnCommanderAccueil.addEventListener('click', () => showPage('boutique'));
+        btnRetourAccueil.addEventListener('click', () => showPage('accueil'));
+        logoAccueil.addEventListener('click', () => showPage('accueil'));
+        logoBoutique.addEventListener('click', () => showPage('accueil'));
+
+        // Gérer les liens "Nos goûts" et "Contact" dans la page accueil (scroll)
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Effet de clic sur les cartes (sauf sur les boutons commander)
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function(e) {
                 if (e.target.closest('.btn-commander')) return;
                 this.style.transition = 'transform 0.1s ease';
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => { this.style.transform = 'scale(1)'; }, 150);
-            });
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
