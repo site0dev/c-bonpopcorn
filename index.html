@@ -245,6 +245,11 @@
             margin-bottom: 0.4rem;
             background: #f0e6d0;
             display: block;
+            cursor: pointer; /* indique que l'image est cliquable */
+            transition: opacity 0.2s;
+        }
+        .card img:hover {
+            opacity: 0.9;
         }
 
         .card .emoji-fallback {
@@ -406,7 +411,50 @@
             transform: scale(1.15);
         }
 
-        /* ===== RESPONSIVE : on garde 2 colonnes partout ===== */
+        /* ===== LIGHTBOX / VISIONNEUSE ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+        .lightbox .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background: none;
+            border: none;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .lightbox .close-lightbox:hover {
+            transform: scale(1.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 500px) {
             .grid-2x2 {
                 gap: 0.6rem;
@@ -462,6 +510,11 @@
                 font-size: 0.8rem;
                 padding: 0.2rem 0.6rem;
             }
+            .lightbox .close-lightbox {
+                top: 15px;
+                right: 20px;
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 380px) {
@@ -482,6 +535,12 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== LIGHTBOX (visionneuse) ===== -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-lightbox" id="closeLightbox">&times;</button>
+        <img id="lightboxImg" src="" alt="Agrandissement" />
+    </div>
 
     <!-- ===== PANIER EN BAS À DROITE ===== -->
     <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
@@ -562,6 +621,39 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
+            // ===== LIGHTBOX =====
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightboxImg');
+            var closeLightbox = document.getElementById('closeLightbox');
+
+            function openLightbox(imgSrc) {
+                if (!imgSrc) return;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // empêche le scroll
+            }
+
+            function closeLightboxFn() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // restaure le scroll
+            }
+
+            // Cliquer sur l'overlay ferme aussi
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightboxFn();
+                }
+            });
+
+            closeLightbox.addEventListener('click', closeLightboxFn);
+
+            // Touche Echap pour fermer
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightboxFn();
+                }
+            });
+
             // ===== DONNÉES =====
             var gouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur' },
@@ -586,6 +678,17 @@
                 img.alt = gout.nom;
                 img.loading = 'lazy';
 
+                // Au clic sur l'image, on ouvre la lightbox
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation(); // éviter de déclencher le clic sur la carte
+                    if (this.src && !this.classList.contains('error')) {
+                        openLightbox(this.src);
+                    } else {
+                        // Si l'image est en erreur, on peut afficher un message ou rien
+                        // On pourrait ouvrir avec un placeholder, mais on ignore.
+                    }
+                });
+
                 img.addEventListener('error', function() {
                     this.classList.add('error');
                     this.style.display = 'none';
@@ -598,6 +701,7 @@
                 fallback.className = 'emoji-fallback';
                 fallback.textContent = gout.emoji;
                 fallback.style.display = 'none';
+                // Le fallback n'est pas cliquable pour la lightbox (pas d'image)
                 card.appendChild(fallback);
 
                 var h3 = document.createElement('h3');
@@ -665,11 +769,16 @@
             cartes.forEach(function(card) {
                 card.addEventListener('click', function(e) {
                     if (e.target.closest('.btn-commander')) return;
-                    this.style.transition = 'transform 0.1s ease';
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(function() {
-                        card.style.transform = 'scale(1)';
-                    }, 150);
+                    // On peut garder l'effet de scale même si on clique sur l'image,
+                    // mais l'image a déjà son propre événement.
+                    // On évite de faire scale sur l'image car elle a déjà son clic.
+                    if (e.target.tagName !== 'IMG') {
+                        this.style.transition = 'transform 0.1s ease';
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(function() {
+                            card.style.transform = 'scale(1)';
+                        }, 150);
+                    }
                 });
             });
 
