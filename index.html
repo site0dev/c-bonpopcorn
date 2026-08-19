@@ -9,25 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
+        /* ===== BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Quicksand', sans-serif;
             background-color: #FFF8F0;
             color: #2D1B0E;
             line-height: 1.6;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1.5rem 1rem 3rem;
         }
 
+        /* ===== HEADER ===== */
         header {
             display: flex;
             flex-wrap: wrap;
@@ -38,34 +38,60 @@
             margin-bottom: 1.5rem;
             position: relative;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             font-family: 'Fredoka One', cursive;
-            font-size: 2rem;
+            font-size: 1.6rem; /* réduit pour tenir sur une ligne */
             color: #E8112D;
             text-shadow: 2px 2px 0 #FCD116;
             cursor: pointer;
             transition: transform 0.3s;
+            user-select: none;
         }
-        .logo:hover {
-            transform: scale(1.02);
-        }
+        .logo:hover { transform: scale(1.02); }
         .logo span {
             background: #00853E;
             color: white;
-            font-size: 1rem;
-            padding: 0.2rem 0.8rem;
+            font-size: 0.85rem;
+            padding: 0.15rem 0.6rem;
             border-radius: 40px;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             text-shadow: none;
         }
 
-        /* ===== BOUTONS FLOTTANTS EN BAS À DROITE ===== */
-        .floating-buttons {
+        /* ===== HAMBURGER MENU ===== */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #2D1B0E;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: color 0.3s;
+        }
+        .menu-toggle:hover { color: #E8112D; }
+
+        nav {
+            display: flex;
+            gap: 1.2rem;
+            font-weight: 600;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2D1B0E;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        nav a:hover { color: #E8112D; }
+
+        /* ===== BOUTONS FLOTTANTS ===== */
+        .floating-cart {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -75,7 +101,6 @@
             gap: 10px;
             align-items: center;
         }
-
         .cart-btn, .whatsapp-btn {
             border: none;
             border-radius: 50%;
@@ -87,11 +112,11 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             text-decoration: none;
             color: white;
+            position: relative;
         }
-
         .cart-btn {
             background: #E8112D;
         }
@@ -99,7 +124,22 @@
             transform: scale(1.1);
             background: #c00e24;
         }
-
+        .cart-btn .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #FCD116;
+            color: #2D1B0E;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
         .whatsapp-btn {
             background: #25D366;
         }
@@ -108,39 +148,101 @@
             background: #1da851;
         }
 
-        nav {
-            display: flex;
-            gap: 1.5rem;
-            font-weight: 600;
-        }
-        nav a {
-            text-decoration: none;
-            color: #2D1B0E;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-        nav a:hover {
-            color: #E8112D;
-        }
-
-        .page {
-            display: block;
-        }
-        .page.hidden {
+        /* ===== MINI PANIER ===== */
+        .mini-cart {
             display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            z-index: 999;
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            min-width: 280px;
+            max-width: 320px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid #FCD116;
         }
+        .mini-cart.active { display: block; }
+        .mini-cart .mini-cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 2px solid #FCD116;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .mini-cart .mini-cart-header .close-mini-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        .mini-cart .mini-cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #f0e6d0;
+            font-size: 0.9rem;
+        }
+        .mini-cart .mini-cart-item .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .mini-cart .mini-cart-item .item-controls button {
+            background: #FCD116;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .mini-cart .mini-cart-item .item-controls button:hover { background: #e6b800; }
+        .mini-cart .mini-cart-total {
+            font-weight: 700;
+            text-align: right;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 2px solid #FCD116;
+        }
+        .mini-cart .btn-checkout {
+            display: block;
+            width: 100%;
+            margin-top: 0.8rem;
+            background: #00853E;
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .mini-cart .btn-checkout:hover { background: #006b32; }
 
+        .page { display: block; }
+        .page.hidden { display: none; }
+
+        /* ===== HERO ===== */
         .hero {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 1.5rem;
-            padding: 1rem 0;
-            margin-bottom: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FCD11620 100%);
+            border-radius: 24px;
         }
-        .hero-text {
-            flex: 1 1 280px;
-        }
+        .hero-text { flex: 1 1 280px; }
         .hero-text h1 {
             font-family: 'Fredoka One', cursive;
             font-size: 3rem;
@@ -157,6 +259,7 @@
         .hero-text p {
             font-size: 1.1rem;
             margin: 1rem 0;
+            color: #4a3520;
         }
         .slogan {
             font-weight: 700;
@@ -167,12 +270,17 @@
             font-size: 1rem;
             margin-bottom: 0.3rem;
         }
-        .btn {
-            display: inline-block;
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
             margin-top: 1rem;
+        }
+        .btn-primary {
+            display: inline-block;
             background: #E8112D;
             color: white;
-            padding: 0.7rem 1.8rem;
+            padding: 0.7rem 2rem;
             border-radius: 60px;
             font-weight: 700;
             font-size: 1rem;
@@ -182,32 +290,45 @@
             cursor: pointer;
             border: none;
         }
-        .btn:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(232, 17, 45, 0.35);
+            box-shadow: 0 10px 20px rgba(232,17,45,0.35);
         }
-        .hero-image {
-            flex: 1 1 280px;
-            display: flex;
-            justify-content: center;
+        .btn-secondary {
+            display: inline-block;
+            background: #00853E;
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
         }
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,133,62,0.35);
+        }
+        .hero-image { flex: 1 1 280px; display: flex; justify-content: center; }
         .popcorn-illustration {
             width: 100%;
             max-width: 320px;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1;
             background: radial-gradient(circle at 30% 30%, #FCD116, #e6b800);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 6rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
             animation: float 4s ease-in-out infinite;
         }
         @keyframes float {
-            0% { transform: translateY(0px); }
+            0% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+            100% { transform: translateY(0); }
         }
 
         .section-title {
@@ -215,7 +336,7 @@
             font-size: 2.2rem;
             text-align: center;
             color: #00853E;
-            margin: 1.5rem 0 0.5rem;
+            margin: 2rem 0 0.5rem;
         }
         .section-title::after {
             content: '';
@@ -226,69 +347,72 @@
             margin: 0.4rem auto 0;
             border-radius: 10px;
         }
-
-        /* ===== GRILLE 2x2 TOUJOURS ===== */
-        .grid-2x2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin: 1rem 0 2rem;
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
-        /* ===== CARTES ===== */
-        .card {
+        /* ===== CATALOGUE ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .product-card {
             background: white;
             border-radius: 16px;
-            padding: 0.8rem 0.5rem 1rem;
+            padding: 0.8rem 0.8rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-            border: 1px solid rgba(252, 209, 22, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(252,209,22,0.3);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .card:hover {
-            transform: scale(1.02);
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-
-        .card img {
+        .product-card img {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: 8px;
             border: 2px solid #FCD116;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             margin-bottom: 0.4rem;
             background: #f0e6d0;
             display: block;
             cursor: pointer;
             transition: opacity 0.2s;
         }
-        .card img:hover {
-            opacity: 0.9;
-        }
-
-        .card .emoji-fallback {
+        .product-card img:hover { opacity: 0.9; }
+        .product-card .emoji-fallback {
             font-size: 3rem;
             display: none;
             margin-bottom: 0.3rem;
         }
-        .card img.error + .emoji-fallback,
-        .card img:not([src]) + .emoji-fallback {
-            display: block;
-        }
-
-        .card h3 {
+        .product-card img.error + .emoji-fallback,
+        .product-card img:not([src]) + .emoji-fallback { display: block; }
+        .product-card h3 {
             font-size: 1.1rem;
             color: #E8112D;
             margin-top: 0;
             font-weight: 700;
         }
-
-        .badge {
+        .product-card .price {
+            font-weight: 700;
+            color: #00853E;
+            font-size: 1rem;
+            margin: 0.1rem 0;
+        }
+        .product-card .badge {
             position: absolute;
             top: 8px;
             right: -24px;
@@ -300,32 +424,199 @@
             transform: rotate(45deg);
             text-transform: uppercase;
         }
-
-        .btn-commander {
-            display: inline-block;
+        .product-card .btn-add-cart {
             margin-top: 0.4rem;
             background: #00853E;
             color: white;
             padding: 0.3rem 1.2rem;
             border-radius: 60px;
             font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s;
             border: none;
             cursor: pointer;
+            transition: 0.3s;
             font-size: 0.85rem;
         }
-        .btn-commander:hover {
+        .product-card .btn-add-cart:hover {
             background: #006b32;
             transform: scale(1.05);
         }
+        .product-card .btn-add-cart.in-cart {
+            background: #E8112D;
+        }
 
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: linear-gradient(135deg, #E8112D, #c00e24);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .cta-banner h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .cta-banner .btn-secondary {
+            background: #FCD116;
+            color: #2D1B0E;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-banner .btn-secondary:hover {
+            background: #e6b800;
+            transform: translateY(-3px);
+        }
+
+        /* ===== AVIS ===== */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #FCD116;
+        }
+        .testimonial-card .stars {
+            color: #FCD116;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin: 0.4rem 0;
+            color: #444;
+        }
+        .testimonial-card cite {
+            font-weight: 600;
+            color: #E8112D;
+            font-style: normal;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            color: #2D1B0E;
+            transition: 0.2s;
+        }
+        .faq-question:hover { background: #FFF8F0; }
+        .faq-question .fa-chevron-down { transition: transform 0.3s; }
+        .faq-item.active .faq-question .fa-chevron-down { transform: rotate(180deg); }
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            display: none;
+            color: #555;
+        }
+        .faq-item.active .faq-answer { display: block; }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .contact-form-section h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #E8112D;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.2s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #E8112D;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(232,17,45,0.1);
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #E8112D;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #c00e24;
+            transform: translateY(-2px);
+        }
+
+        /* ===== BADGES DE CONFIANCE ===== */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .trust-badges .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            color: #2D1B0E;
+        }
+        .trust-badges .badge i {
+            font-size: 2rem;
+            color: #00853E;
+        }
+
+        /* ===== À PROPOS ===== */
         .about {
             background: white;
             border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            margin: 1rem 0 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             border-left: 6px solid #00853E;
         }
         .about h2 {
@@ -333,10 +624,6 @@
             color: #E8112D;
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
-        }
-        .about p {
-            font-size: 0.95rem;
-            margin-bottom: 0.6rem;
         }
         .quote {
             font-style: italic;
@@ -349,21 +636,21 @@
             font-size: 0.9rem;
         }
 
-        .contact {
+        /* ===== CONTACT INFO ===== */
+        .contact-info {
             background: #FCD116;
             border-radius: 16px;
-            padding: 1.2rem 1.5rem;
+            padding: 1.5rem;
             margin-top: 1rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
-        .contact h2 {
+        .contact-info h2 {
             font-family: 'Fredoka One', cursive;
             color: #E8112D;
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
         }
-        .contact-details {
+        .contact-info .contact-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -371,7 +658,7 @@
             margin: 0.8rem 0;
             font-size: 0.9rem;
         }
-        .contact-details a {
+        .contact-info .contact-details a {
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
@@ -380,17 +667,17 @@
             background: white;
             padding: 0.3rem 0.8rem;
             border-radius: 60px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             transition: 0.3s;
             font-weight: 600;
             font-size: 0.85rem;
         }
-        .contact-details a:hover {
+        .contact-info .contact-details a:hover {
             background: #00853E;
             color: white;
             transform: scale(1.05);
         }
-        .contact-details a i {
+        .contact-info .contact-details a i {
             font-size: 1rem;
             width: 1.2rem;
             text-align: center;
@@ -402,7 +689,6 @@
             border-radius: 60px;
             display: inline-block;
             margin-top: 0.3rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         footer {
@@ -442,22 +728,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0,0,0,0.9);
             z-index: 9999;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             padding: 20px;
         }
-        .lightbox.active {
-            display: flex;
-        }
+        .lightbox.active { display: flex; }
         .lightbox img {
             max-width: 95%;
             max-height: 90%;
             object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
             cursor: default;
         }
         .lightbox .close-lightbox {
@@ -473,89 +757,236 @@
             border: none;
             font-family: 'Quicksand', sans-serif;
         }
-        .lightbox .close-lightbox:hover {
-            transform: scale(1.2);
+        .lightbox .close-lightbox:hover { transform: scale(1.2); }
+
+        /* ===== ADMIN ===== */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        .admin-modal.active { display: flex; }
+        .admin-modal .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 700px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .admin-modal h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #E8112D;
+            margin-bottom: 1rem;
+        }
+        .admin-modal label {
+            display: block;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .admin-modal input[type="text"],
+        .admin-modal input[type="password"],
+        .admin-modal input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 0.2rem;
+        }
+        .admin-modal .btn-save {
+            margin-top: 1.2rem;
+            background: #00853E;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .admin-modal .btn-save:hover { background: #006b32; }
+        .admin-modal .btn-reset {
+            background: #E8112D;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-left: 0.5rem;
+        }
+        .admin-modal .btn-reset:hover { background: #c00e24; }
+        .admin-modal .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.8rem;
+        }
+        .admin-modal .btn-danger:hover { background: #b02a37; }
+        .admin-modal .close-modal {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+        .admin-modal .close-modal:hover { color: #E8112D; }
+        .admin-modal .password-error {
+            color: #E8112D;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .admin-modal .admin-gout-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .admin-modal .admin-gout-item .gout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-modal .admin-gout-item .gout-header .gout-name {
+            font-weight: 700;
+            color: #E8112D;
+        }
+        .admin-modal .admin-gout-item .gout-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .admin-modal .admin-gout-item .gout-fields label {
+            font-size: 0.8rem;
+            margin-top: 0;
+        }
+        .admin-modal .admin-gout-item .gout-fields input {
+            padding: 0.3rem;
+            font-size: 0.9rem;
+        }
+        .admin-modal .admin-gout-item .image-preview {
+            max-width: 60px;
+            max-height: 60px;
+            border-radius: 8px;
+            margin-top: 0.3rem;
+            border: 1px solid #ddd;
+        }
+        .admin-modal .add-gout-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px dashed #FCD116;
+        }
+        .admin-modal .add-gout-section h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #00853E;
+            font-size: 1.2rem;
+        }
+        .admin-modal .add-gout-section .add-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .admin-modal .add-gout-section .add-fields input {
+            padding: 0.3rem;
+            font-size: 0.9rem;
+        }
+        .admin-modal .admin-message {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: #00853E;
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 500px) {
-            .grid-2x2 {
-                gap: 0.6rem;
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
             }
-            .card {
-                padding: 0.5rem 0.3rem 0.7rem;
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                padding: 1rem 0;
+                border-top: 2px solid #FCD116;
+                margin-top: 0.5rem;
             }
-            .card img {
-                border-radius: 6px;
-                border-width: 2px;
+            nav.open {
+                display: flex;
             }
-            .card h3 {
-                font-size: 1rem;
+            nav a {
+                padding: 0.3rem 0;
+                border-bottom: 1px solid #f0e6d0;
             }
-            .btn-commander {
-                font-size: 0.75rem;
-                padding: 0.2rem 1rem;
+            header {
+                flex-wrap: wrap;
             }
             .hero-text h1 {
                 font-size: 2.4rem;
             }
-            .hero-text p {
-                font-size: 1rem;
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
             }
-            .section-title {
-                font-size: 1.8rem;
+            .testimonial-grid {
+                grid-template-columns: 1fr;
             }
-            .about h2, .contact h2 {
-                font-size: 1.5rem;
+            .trust-badges {
+                gap: 1rem;
+            }
+            .admin-modal .admin-gout-item .gout-fields {
+                grid-template-columns: 1fr;
+            }
+            .admin-modal .add-gout-section .add-fields {
+                grid-template-columns: 1fr;
             }
             .logo {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .logo span {
-                font-size: 0.8rem;
-                padding: 0.15rem 0.6rem;
-            }
-            nav {
-                gap: 0.8rem;
-                font-size: 0.9rem;
-            }
-            .cart-btn, .whatsapp-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.3rem;
-            }
-            .floating-buttons {
-                bottom: 12px;
-                right: 12px;
-                gap: 8px;
-            }
-            .contact-details {
-                gap: 0.5rem;
-            }
-            .contact-details a {
-                font-size: 0.8rem;
-                padding: 0.2rem 0.6rem;
-            }
-            .lightbox .close-lightbox {
-                top: 15px;
-                right: 20px;
-                font-size: 2.5rem;
+                font-size: 0.75rem;
             }
         }
-
-        @media (max-width: 380px) {
-            .grid-2x2 {
-                gap: 0.4rem;
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
             }
-            .card img {
-                border-width: 1px;
+            .product-card {
+                padding: 0.5rem 0.3rem 0.7rem;
             }
-            .card h3 {
+            .product-card h3 {
                 font-size: 0.9rem;
             }
-            .btn-commander {
+            .product-card .price {
+                font-size: 0.8rem;
+            }
+            .product-card .btn-add-cart {
                 font-size: 0.7rem;
-                padding: 0.15rem 0.8rem;
+                padding: 0.2rem 0.8rem;
+            }
+            .logo {
+                font-size: 1.3rem;
+            }
+            .logo span {
+                font-size: 0.65rem;
             }
         }
     </style>
@@ -568,14 +999,59 @@
         <img id="lightboxImg" src="" alt="Agrandissement" />
     </div>
 
-    <!-- ===== BOUTONS FLOTTANTS (panier + WhatsApp) ===== -->
-    <div class="floating-buttons">
-        <button class="cart-btn" id="cartBtn" title="Ouvrir la boutique">
+    <!-- ===== ADMIN MODAL ===== -->
+    <div class="admin-modal" id="adminModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeAdminModal">&times;</button>
+            <h2>🔐 Administration</h2>
+            <div id="adminLogin">
+                <label>Nom d'utilisateur</label>
+                <input type="text" id="adminUsername" placeholder="Nom d'utilisateur" />
+                <label>Mot de passe</label>
+                <input type="password" id="adminPassword" placeholder="Mot de passe" />
+                <button class="btn-save" id="loginBtn">Se connecter</button>
+                <div id="passwordError" class="password-error" style="display:none;">Identifiants incorrects</div>
+            </div>
+            <div id="adminPanel" style="display:none;">
+                <p>Gérez vos goûts : modifiez prix, images (sélectionnez depuis votre appareil), ajoutez ou supprimez.</p>
+                <div id="adminGoutList"></div>
+                <div class="add-gout-section">
+                    <h3>➕ Ajouter un nouveau goût</h3>
+                    <div class="add-fields">
+                        <input type="text" id="newGoutName" placeholder="Nom (ex: Noisette)" />
+                        <input type="text" id="newGoutPrice" placeholder="Prix (ex: 2 500 CFA)" />
+                        <input type="file" id="newGoutImageFile" accept="image/*" />
+                    </div>
+                    <button class="btn-save" id="addGoutBtn" style="margin-top:0.5rem;">Ajouter</button>
+                </div>
+                <div style="margin-top:1.5rem;">
+                    <button class="btn-reset" id="resetAdminData">↺ Réinitialiser tout</button>
+                </div>
+                <div id="adminMessage" class="admin-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BOUTONS FLOTTANTS ===== -->
+    <div class="floating-cart">
+        <button class="cart-btn" id="cartBtn" title="Ouvrir le panier">
             <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
         </button>
         <a href="https://wa.me/22966561780" target="_blank" class="whatsapp-btn" title="Nous contacter sur WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
+    </div>
+
+    <!-- ===== MINI-PANIER ===== -->
+    <div class="mini-cart" id="miniCart">
+        <div class="mini-cart-header">
+            <span>🛒 Mon panier</span>
+            <button class="close-mini-cart" id="closeMiniCart">&times;</button>
+        </div>
+        <div id="miniCartItems"></div>
+        <div class="mini-cart-total" id="miniCartTotal">Total : 0 CFA</div>
+        <a href="#boutique" class="btn-checkout" id="checkoutBtn">Passer la commande</a>
     </div>
 
     <div class="container">
@@ -584,35 +1060,129 @@
         <div class="page" id="pageAccueil">
             <header>
                 <div class="logo" id="logoAccueil">🍿 C'BON POP <span>Bénin</span></div>
-                <nav>
-                    <a href="#produits">Nos goûts</a>
-                    <a href="#a-propos">À propos</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <a href="#catalogue">Catalogue</a>
+                    <a href="#avis">Avis</a>
+                    <a href="#faq">FAQ</a>
                     <a href="#contact">Contact</a>
+                    <a href="#boutique" id="navCommander">Commander</a>
                 </nav>
             </header>
 
+            <!-- ===== HERO ===== -->
             <section class="hero">
                 <div class="hero-text">
                     <div class="slogan">🌍 100% Bénin</div>
-                    <h1><span class="highlight">4 goûts</span> pour croquer le Bénin !</h1>
-                    <p>Sucré, salé, lacté et caramel – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin.</p>
-                    <button class="btn" id="btnCommanderAccueil">Commandez maintenant</button>
+                    <h1><span class="highlight">Nos goûts</span> pour croquer le Bénin !</h1>
+                    <p>Sucré, salé, lacté et caramel – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin. Fabriqués avec des ingrédients locaux et beaucoup d'amour.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalogue" class="btn-primary">Découvrir le catalogue</a>
+                        <a href="#boutique" class="btn-secondary">Commander maintenant</a>
+                    </div>
                 </div>
                 <div class="hero-image">
                     <div class="popcorn-illustration">🍿</div>
                 </div>
             </section>
 
-            <h2 class="section-title" id="produits">🍿 Nos 4 goûts</h2>
-            <div class="grid-2x2" id="accueilGouts"></div>
+            <!-- ===== BADGES DE CONFIANCE ===== -->
+            <div class="trust-badges">
+                <div class="badge"><i class="fas fa-seedling"></i> Ingrédients locaux</div>
+                <div class="badge"><i class="fas fa-truck"></i> Livraison rapide</div>
+                <div class="badge"><i class="fas fa-star"></i> Satisfaction garantie</div>
+                <div class="badge"><i class="fas fa-hand-holding-heart"></i> 100% artisanal</div>
+            </div>
 
-            <section class="about" id="a-propos">
-                <h2>🇧🇯 L'histoire de C'BON POP</h2>
-                <p><strong>C'BON POP</strong> est née d'une passion : faire revivre le popcorn traditionnel béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits producteurs locaux, et chaque saveur est élaborée avec des ingrédients naturels du terroir.</p>
-                <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
+            <!-- ===== CATALOGUE ===== -->
+            <h2 class="section-title" id="catalogue">🍿 Nos goûts</h2>
+            <p class="section-subtitle">Des saveurs authentiques pour tous les gourmands</p>
+            <div class="products-grid" id="accueilGouts"></div>
+
+            <!-- ===== CTA BANNER ===== -->
+            <div class="cta-banner">
+                <h2>Envie de popcorns ?</h2>
+                <p>Commandez maintenant et recevez vos popcorns frais chez vous.</p>
+                <a href="#boutique" class="btn-secondary">Je commande</a>
+            </div>
+
+            <!-- ===== AVIS CLIENTS ===== -->
+            <section class="testimonials" id="avis">
+                <h2 class="section-title">⭐ Ils nous font confiance</h2>
+                <p class="section-subtitle">Ce que nos clients disent de C'BON POP</p>
+                <div class="testimonial-grid" id="testimonialsGrid">
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Les meilleurs popcorns du Bénin ! Le goût est incroyable et la livraison super rapide. Je recommande vivement."</p>
+                        <cite>– Marie, Cotonou</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Un vrai régal ! J'adore le goût caramel, c'est mon péché mignon. Et en plus, c'est fait avec des produits locaux."</p>
+                        <cite>– Jean, Porto-Novo</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Excellente qualité, des saveurs authentiques. Je suis devenu un fan de C'BON POP. Commandez les yeux fermés !"</p>
+                        <cite>– Amélie, Abomey-Calavi</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Popcorns délicieux et emballage soigné. Parfait pour les apéritifs entre amis. Merci C'BON POP !"</p>
+                        <cite>– David, Parakou</cite>
+                    </div>
+                </div>
             </section>
 
-            <section class="contact" id="contact">
+            <!-- ===== FAQ ===== -->
+            <section class="faq" id="faq">
+                <h2 class="section-title">❓ Questions fréquentes</h2>
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        Quels sont les délais de livraison ?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">Nous livrons sous 24 à 48h à Cotonou et dans les grandes villes du Bénin. Pour les zones plus éloignées, comptez 3 à 5 jours ouvrés. La livraison est offerte à partir de 5 000 CFA d'achat.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment conserver vos popcorns ?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">Conservez vos popcorns dans un endroit sec et frais, à l'abri de la lumière directe. Ils se gardent plusieurs semaines. Une fois le sachet ouvert, refermez-le bien pour qu'ils restent croustillants.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Proposez-vous des options sans sucre ?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">Oui ! Notre goût Salé est sans sucre ajouté. Nous proposons également des options sur mesure : contactez-nous pour une commande personnalisée.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment passer une commande ?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">Vous pouvez commander directement sur notre site via la boutique, ou nous contacter par WhatsApp au 66 56 17 80. Nous prenons également les commandes par téléphone au 01 65 69 43 88.</div>
+                </div>
+            </section>
+
+            <!-- ===== FORMULAIRE DE CONTACT ===== -->
+            <section class="contact-form-section" id="contact">
+                <h2>📩 Écrivez-nous</h2>
+                <p style="text-align:center;color:#666;margin-bottom:1rem;">Une question, une suggestion ? On vous répond dans les plus brefs délais.</p>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" name="nom" placeholder="Votre nom" required />
+                    <input type="email" name="email" placeholder="Votre email" required />
+                    <textarea name="message" placeholder="Votre message" required></textarea>
+                    <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </section>
+
+            <!-- ===== CONTACT ===== -->
+            <section class="contact-info" id="infos">
                 <h2>📬 Contactez-nous</h2>
                 <div class="contact-details">
                     <a href="tel:0165694388"><i class="fas fa-phone"></i> 01 65 69 43 88</a>
@@ -624,6 +1194,15 @@
                 <div class="address"><strong>📍 Adresse :</strong> Menontin, Cotonou, Bénin</div>
             </section>
 
+            <!-- ===== À PROPOS ===== -->
+            <section class="about" id="a-propos">
+                <h2>🇧🇯 L'histoire de C'BON POP</h2>
+                <p><strong>C'BON POP</strong> est née d'une passion : faire revivre le popcorn traditionnel béninois avec une touche de créativité. Nos grains sont sourcés auprès de petits producteurs locaux, et chaque saveur est élaborée avec des ingrédients naturels du terroir.</p>
+                <p>Nous croyons en une alimentation saine, savoureuse et solidaire. Chaque pop est préparé avec soin dans notre atelier à Cotonou.</p>
+                <div class="quote">« Chaque pop est un sourire, chaque croquant une histoire. »</div>
+            </section>
+
+            <!-- ===== FOOTER ===== -->
             <footer>
                 <div>© 2026 <span class="brand">C'BON POP</span> – Tous droits réservés</div>
                 <div class="socials">
@@ -638,19 +1217,169 @@
         <div class="page hidden" id="pageBoutique">
             <header>
                 <div class="logo" id="logoBoutique">🍿 C'BON POP <span>Bénin</span></div>
-                <nav>
+                <button class="menu-toggle" id="menuToggleBoutique" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNavBoutique">
                     <a id="btnRetourAccueil">← Retour à l'accueil</a>
+                    <a href="#boutique" class="active">Boutique</a>
                 </nav>
             </header>
 
             <h2 class="section-title">🛒 Commander vos popcorns</h2>
-            <div class="grid-2x2" id="boutiqueGouts"></div>
+            <p class="section-subtitle">Ajoutez vos produits au panier et passez commande</p>
+            <div class="products-grid" id="boutiqueGouts"></div>
         </div>
 
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            // ===== DONNÉES PAR DÉFAUT =====
+            var defaultGouts = [
+                { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500 },
+                { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '', prix: '1 200 CFA', prixNum: 1200 },
+                { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '', prix: '1 800 CFA', prixNum: 1800 },
+                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '', prix: '2 000 CFA', prixNum: 2000 }
+            ];
+
+            // ===== CHARGEMENT DES DONNÉES (avec images en data URL) =====
+            function loadGouts() {
+                var stored = localStorage.getItem('cbonpop_gouts');
+                if (stored) {
+                    try {
+                        var parsed = JSON.parse(stored);
+                        return parsed.map(function(p) {
+                            return {
+                                nom: p.nom || 'Inconnu',
+                                image: p.image || 'default',
+                                imageData: p.imageData || null,
+                                emoji: p.emoji || '🍿',
+                                badge: p.badge || '',
+                                prix: p.prix || '',
+                                prixNum: p.prixNum || 0
+                            };
+                        });
+                    } catch (e) {
+                        return defaultGouts.map(function(d) { return { ...d }; });
+                    }
+                }
+                return defaultGouts.map(function(d) { return { ...d }; });
+            }
+
+            var gouts = loadGouts();
+
+            // ===== SAUVEGARDE =====
+            function saveGouts() {
+                localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
+            }
+
+            // ===== PANIER =====
+            var cart = [];
+            loadCart();
+
+            function loadCart() {
+                var stored = localStorage.getItem('cbonpop_cart');
+                if (stored) {
+                    try { cart = JSON.parse(stored); } catch(e) { cart = []; }
+                }
+                updateCartUI();
+            }
+
+            function saveCart() {
+                localStorage.setItem('cbonpop_cart', JSON.stringify(cart));
+                updateCartUI();
+            }
+
+            function updateCartUI() {
+                var badge = document.getElementById('cartBadge');
+                var count = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
+                badge.textContent = count;
+
+                var miniCartItems = document.getElementById('miniCartItems');
+                var miniCartTotal = document.getElementById('miniCartTotal');
+                var total = 0;
+                miniCartItems.innerHTML = '';
+                if (cart.length === 0) {
+                    miniCartItems.innerHTML = '<p style="text-align:center;color:#999;padding:0.5rem 0;">Votre panier est vide.</p>';
+                    miniCartTotal.textContent = 'Total : 0 CFA';
+                    return;
+                }
+                cart.forEach(function(item, index) {
+                    var div = document.createElement('div');
+                    div.className = 'mini-cart-item';
+                    var price = item.prixNum || 0;
+                    var subtotal = price * item.qty;
+                    total += subtotal;
+                    div.innerHTML = `
+                        <span>${item.nom} x${item.qty}</span>
+                        <div class="item-controls">
+                            <button class="cart-decr" data-index="${index}">-</button>
+                            <span>${subtotal} CFA</span>
+                            <button class="cart-incr" data-index="${index}">+</button>
+                            <button class="cart-remove" data-index="${index}" style="background:#E8112D;color:white;border:none;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:0.7rem;">✕</button>
+                        </div>
+                    `;
+                    miniCartItems.appendChild(div);
+                });
+                miniCartTotal.textContent = 'Total : ' + total + ' CFA';
+
+                miniCartItems.querySelectorAll('.cart-decr').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var idx = parseInt(this.dataset.index);
+                        if (cart[idx].qty > 1) {
+                            cart[idx].qty--;
+                        } else {
+                            cart.splice(idx, 1);
+                        }
+                        saveCart();
+                        renderAll();
+                        document.getElementById('miniCart').classList.add('active');
+                    });
+                });
+                miniCartItems.querySelectorAll('.cart-incr').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var idx = parseInt(this.dataset.index);
+                        cart[idx].qty++;
+                        saveCart();
+                        renderAll();
+                        document.getElementById('miniCart').classList.add('active');
+                    });
+                });
+                miniCartItems.querySelectorAll('.cart-remove').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var idx = parseInt(this.dataset.index);
+                        cart.splice(idx, 1);
+                        saveCart();
+                        renderAll();
+                        document.getElementById('miniCart').classList.add('active');
+                    });
+                });
+            }
+
+            function addToCart(nom, image, prix, prixNum) {
+                var existing = cart.find(function(item) { return item.nom === nom; });
+                if (existing) {
+                    existing.qty++;
+                } else {
+                    cart.push({ nom: nom, image: image, prix: prix, prixNum: prixNum, qty: 1 });
+                }
+                saveCart();
+                renderAll();
+                document.getElementById('miniCart').classList.add('active');
+                var btns = document.querySelectorAll('.btn-add-cart');
+                btns.forEach(function(btn) {
+                    if (btn.dataset.name === nom) {
+                        btn.textContent = '✓ Ajouté';
+                        btn.classList.add('in-cart');
+                        setTimeout(function() {
+                            btn.textContent = 'Ajouter au panier';
+                            btn.classList.remove('in-cart');
+                        }, 2000);
+                    }
+                });
+            }
 
             // ===== LIGHTBOX =====
             var lightbox = document.getElementById('lightbox');
@@ -663,37 +1392,22 @@
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
-
             function closeLightboxFn() {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
             }
-
             lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightboxFn();
-                }
+                if (e.target === lightbox) closeLightboxFn();
             });
-
             closeLightbox.addEventListener('click', closeLightboxFn);
-
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightboxFn();
-                }
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxFn();
             });
 
-            // ===== DONNÉES =====
-            var gouts = [
-                { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur' },
-                { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '' },
-                { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '' },
-                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '' }
-            ];
-
+            // ===== GÉNÉRATEUR DE CARTE =====
             function genererCarte(gout, avecBouton) {
                 var card = document.createElement('div');
-                card.className = 'card';
+                card.className = 'product-card';
 
                 if (gout.badge) {
                     var badge = document.createElement('span');
@@ -703,7 +1417,13 @@
                 }
 
                 var img = document.createElement('img');
-                img.src = gout.image + '.jpg';
+                if (gout.imageData) {
+                    img.src = gout.imageData;
+                } else {
+                    var imgSrc = gout.image;
+                    if (!imgSrc.includes('.')) imgSrc += '.jpg';
+                    img.src = imgSrc;
+                }
                 img.alt = gout.nom;
                 img.loading = 'lazy';
 
@@ -724,7 +1444,7 @@
 
                 var fallback = document.createElement('span');
                 fallback.className = 'emoji-fallback';
-                fallback.textContent = gout.emoji;
+                fallback.textContent = gout.emoji || '🍿';
                 fallback.style.display = 'none';
                 card.appendChild(fallback);
 
@@ -732,75 +1452,426 @@
                 h3.textContent = gout.nom;
                 card.appendChild(h3);
 
+                var priceSpan = document.createElement('div');
+                priceSpan.className = 'price';
+                priceSpan.textContent = gout.prix || '';
+                card.appendChild(priceSpan);
+
                 if (avecBouton) {
-                    var a = document.createElement('a');
-                    a.className = 'btn-commander';
-                    a.href = 'https://wa.me/22966561780?text=Je%20souhaite%20commander%20du%20popcorn%20' +
-                        encodeURIComponent(gout.nom) + '%20' + gout.emoji;
-                    a.target = '_blank';
-                    a.innerHTML = '<i class="fab fa-whatsapp"></i> Commander';
-                    card.appendChild(a);
+                    var btn = document.createElement('button');
+                    btn.className = 'btn-add-cart';
+                    btn.dataset.name = gout.nom;
+                    btn.dataset.image = gout.image;
+                    btn.dataset.prix = gout.prix;
+                    btn.dataset.prixNum = gout.prixNum || 0;
+                    btn.textContent = 'Ajouter au panier';
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        addToCart(this.dataset.name, this.dataset.image, this.dataset.prix, parseInt(this.dataset.prixNum));
+                    });
+                    card.appendChild(btn);
                 }
 
                 return card;
             }
 
-            var accueilGrid = document.getElementById('accueilGouts');
-            var boutiqueGrid = document.getElementById('boutiqueGouts');
-
-            if (accueilGrid && boutiqueGrid) {
+            function renderAll() {
+                var accueilGrid = document.getElementById('accueilGouts');
+                var boutiqueGrid = document.getElementById('boutiqueGouts');
+                accueilGrid.innerHTML = '';
+                boutiqueGrid.innerHTML = '';
                 gouts.forEach(function(g) {
                     accueilGrid.appendChild(genererCarte(g, false));
                     boutiqueGrid.appendChild(genererCarte(g, true));
                 });
+                updateCartUI();
             }
 
-            var pageAccueil = document.getElementById('pageAccueil');
-            var pageBoutique = document.getElementById('pageBoutique');
+            renderAll();
+
+            // ===== MINI-PANIER =====
+            var miniCart = document.getElementById('miniCart');
             var cartBtn = document.getElementById('cartBtn');
-            var btnCommanderAccueil = document.getElementById('btnCommanderAccueil');
-            var btnRetourAccueil = document.getElementById('btnRetourAccueil');
+            var closeMiniCart = document.getElementById('closeMiniCart');
+
+            cartBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                miniCart.classList.toggle('active');
+            });
+            closeMiniCart.addEventListener('click', function() {
+                miniCart.classList.remove('active');
+            });
+            document.addEventListener('click', function(e) {
+                if (!miniCart.contains(e.target) && e.target !== cartBtn) {
+                    miniCart.classList.remove('active');
+                }
+            });
+
+            // ===== CHECKOUT =====
+            document.getElementById('checkoutBtn').addEventListener('click', function(e) {
+                if (cart.length === 0) {
+                    e.preventDefault();
+                    alert('Votre panier est vide. Ajoutez des produits avant de commander.');
+                    return;
+                }
+                var message = '🛒 Commande C\'BON POP :\n';
+                cart.forEach(function(item) {
+                    message += '- ' + item.nom + ' x' + item.qty + ' = ' + (item.prixNum * item.qty) + ' CFA\n';
+                });
+                var total = cart.reduce(function(sum, item) { return sum + (item.prixNum * item.qty); }, 0);
+                message += '\nTotal : ' + total + ' CFA';
+                window.location.href = 'https://wa.me/22966561780?text=' + encodeURIComponent(message);
+            });
+
+            // ===== ADMIN PANEL =====
+            var adminModal = document.getElementById('adminModal');
+            var closeAdminModal = document.getElementById('closeAdminModal');
+            var adminLogin = document.getElementById('adminLogin');
+            var adminPanel = document.getElementById('adminPanel');
+            var adminUsername = document.getElementById('adminUsername');
+            var adminPassword = document.getElementById('adminPassword');
+            var loginBtn = document.getElementById('loginBtn');
+            var passwordError = document.getElementById('passwordError');
+            var adminGoutList = document.getElementById('adminGoutList');
+            var addGoutBtn = document.getElementById('addGoutBtn');
+            var newGoutName = document.getElementById('newGoutName');
+            var newGoutPrice = document.getElementById('newGoutPrice');
+            var newGoutImageFile = document.getElementById('newGoutImageFile');
+            var resetAdminBtn = document.getElementById('resetAdminData');
+            var adminMessage = document.getElementById('adminMessage');
+
+            var ADMIN_USER = 'challa';
+            var ADMIN_PASS = '66561780';
+
+            // ===== DÉTECTION 6 CLICS SUR LE LOGO =====
             var logoAccueil = document.getElementById('logoAccueil');
             var logoBoutique = document.getElementById('logoBoutique');
+            var clickCount = 0;
+            var clickTimer = null;
 
-            function showPage(page) {
-                if (page === 'accueil') {
-                    pageAccueil.classList.remove('hidden');
-                    pageBoutique.classList.add('hidden');
-                } else {
-                    pageAccueil.classList.add('hidden');
-                    pageBoutique.classList.remove('hidden');
+            function handleLogoClick(e) {
+                e.stopPropagation();
+                clickCount++;
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(function() { clickCount = 0; }, 2000);
+                if (clickCount >= 6) {
+                    clickCount = 0;
+                    adminModal.classList.add('active');
+                    adminLogin.style.display = 'block';
+                    adminPanel.style.display = 'none';
+                    adminUsername.value = '';
+                    adminPassword.value = '';
+                    passwordError.style.display = 'none';
+                    adminMessage.textContent = '';
                 }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            if (cartBtn) cartBtn.addEventListener('click', function() { showPage('boutique'); });
-            if (btnCommanderAccueil) btnCommanderAccueil.addEventListener('click', function() { showPage('boutique'); });
-            if (btnRetourAccueil) btnRetourAccueil.addEventListener('click', function() { showPage('accueil'); });
-            if (logoAccueil) logoAccueil.addEventListener('click', function() { showPage('accueil'); });
-            if (logoBoutique) logoBoutique.addEventListener('click', function() { showPage('accueil'); });
+            logoAccueil.addEventListener('click', handleLogoClick);
+            logoBoutique.addEventListener('click', handleLogoClick);
 
-            var ancres = document.querySelectorAll('#pageAccueil nav a[href^="#"]');
-            ancres.forEach(function(ancre) {
-                ancre.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var target = document.querySelector(this.getAttribute('href'));
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            closeAdminModal.addEventListener('click', function() { adminModal.classList.remove('active'); });
+            adminModal.addEventListener('click', function(e) {
+                if (e.target === adminModal) adminModal.classList.remove('active');
+            });
+
+            loginBtn.addEventListener('click', function() {
+                if (adminUsername.value === ADMIN_USER && adminPassword.value === ADMIN_PASS) {
+                    adminLogin.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    passwordError.style.display = 'none';
+                    buildAdminList();
+                } else {
+                    passwordError.style.display = 'block';
+                }
+            });
+
+            adminPassword.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') loginBtn.click();
+            });
+            adminUsername.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') loginBtn.click();
+            });
+
+            // ===== CONSTRUIRE LA LISTE ADMIN =====
+            function buildAdminList() {
+                adminGoutList.innerHTML = '';
+                gouts.forEach(function(g, index) {
+                    var div = document.createElement('div');
+                    div.className = 'admin-gout-item';
+                    var header = document.createElement('div');
+                    header.className = 'gout-header';
+                    var nameSpan = document.createElement('span');
+                    nameSpan.className = 'gout-name';
+                    nameSpan.textContent = g.nom;
+                    header.appendChild(nameSpan);
+                    var deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-danger';
+                    deleteBtn.textContent = '🗑️';
+                    deleteBtn.title = 'Supprimer ce goût';
+                    if (gouts.length <= 1) {
+                        deleteBtn.disabled = true;
+                        deleteBtn.style.opacity = '0.5';
+                    }
+                    deleteBtn.addEventListener('click', function() {
+                        if (gouts.length <= 1) return;
+                        if (confirm('Supprimer le goût "' + g.nom + '" ?')) {
+                            gouts.splice(index, 1);
+                            saveGouts();
+                            renderAll();
+                            buildAdminList();
+                            adminMessage.textContent = '🗑️ Goût supprimé';
+                            adminMessage.style.color = '#E8112D';
+                            setTimeout(function() { adminMessage.textContent = ''; }, 2000);
+                        }
+                    });
+                    header.appendChild(deleteBtn);
+                    div.appendChild(header);
+
+                    var fields = document.createElement('div');
+                    fields.className = 'gout-fields';
+
+                    var prixLabel = document.createElement('label');
+                    prixLabel.textContent = 'Prix';
+                    fields.appendChild(prixLabel);
+                    var prixInput = document.createElement('input');
+                    prixInput.type = 'text';
+                    prixInput.value = g.prix || '';
+                    prixInput.dataset.index = index;
+                    prixInput.dataset.field = 'prix';
+                    prixInput.addEventListener('change', function() {
+                        gouts[this.dataset.index][this.dataset.field] = this.value.trim();
+                        var prixNum = parseInt(this.value.trim().replace(/\D/g, ''));
+                        gouts[this.dataset.index].prixNum = prixNum || 0;
+                        saveGouts();
+                        renderAll();
+                        adminMessage.textContent = '✅ Prix mis à jour';
+                        adminMessage.style.color = '#00853E';
+                        setTimeout(function() { adminMessage.textContent = ''; }, 1500);
+                    });
+                    fields.appendChild(prixInput);
+
+                    var imgLabel = document.createElement('label');
+                    imgLabel.textContent = 'Image (sélectionner un fichier)';
+                    fields.appendChild(imgLabel);
+                    var imgPreview = document.createElement('img');
+                    imgPreview.className = 'image-preview';
+                    if (g.imageData) {
+                        imgPreview.src = g.imageData;
+                    } else {
+                        var imgSrc = g.image;
+                        if (!imgSrc.includes('.')) imgSrc += '.jpg';
+                        imgPreview.src = imgSrc;
+                    }
+                    imgPreview.alt = g.nom;
+                    fields.appendChild(imgPreview);
+
+                    var fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = 'image/*';
+                    fileInput.dataset.index = index;
+                    fileInput.addEventListener('change', function(e) {
+                        var file = e.target.files[0];
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function(ev) {
+                                var dataUrl = ev.target.result;
+                                gouts[this.dataset.index].imageData = dataUrl;
+                                gouts[this.dataset.index].image = file.name;
+                                saveGouts();
+                                renderAll();
+                                buildAdminList();
+                                adminMessage.textContent = '✅ Image mise à jour';
+                                adminMessage.style.color = '#00853E';
+                                setTimeout(function() { adminMessage.textContent = ''; }, 1500);
+                            }.bind(this);
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                    fields.appendChild(fileInput);
+
+                    div.appendChild(fields);
+                    adminGoutList.appendChild(div);
+                });
+            }
+
+            // ===== AJOUTER UN GOÛT AVEC IMAGE =====
+            addGoutBtn.addEventListener('click', function() {
+                var nom = newGoutName.value.trim();
+                var prix = newGoutPrice.value.trim();
+                var file = newGoutImageFile.files[0];
+
+                if (!nom || !prix) {
+                    adminMessage.textContent = '⚠️ Veuillez remplir le nom et le prix.';
+                    adminMessage.style.color = '#E8112D';
+                    return;
+                }
+                if (gouts.some(function(g) { return g.nom.toLowerCase() === nom.toLowerCase(); })) {
+                    adminMessage.textContent = '⚠️ Un goût avec ce nom existe déjà.';
+                    adminMessage.style.color = '#E8112D';
+                    return;
+                }
+
+                var prixNum = parseInt(prix.replace(/\D/g, ''));
+                var newGout = {
+                    nom: nom,
+                    image: file ? file.name : 'default',
+                    imageData: null,
+                    emoji: '🍿',
+                    badge: '',
+                    prix: prix,
+                    prixNum: prixNum || 0
+                };
+
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        newGout.imageData = e.target.result;
+                        gouts.push(newGout);
+                        saveGouts();
+                        renderAll();
+                        buildAdminList();
+                        newGoutName.value = '';
+                        newGoutPrice.value = '';
+                        newGoutImageFile.value = '';
+                        adminMessage.textContent = '✅ Nouveau goût ajouté avec image !';
+                        adminMessage.style.color = '#00853E';
+                        setTimeout(function() { adminMessage.textContent = ''; }, 2000);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    gouts.push(newGout);
+                    saveGouts();
+                    renderAll();
+                    buildAdminList();
+                    newGoutName.value = '';
+                    newGoutPrice.value = '';
+                    adminMessage.textContent = '✅ Nouveau goût ajouté !';
+                    adminMessage.style.color = '#00853E';
+                    setTimeout(function() { adminMessage.textContent = ''; }, 2000);
+                }
+            });
+
+            // ===== RÉINITIALISATION =====
+            resetAdminBtn.addEventListener('click', function() {
+                if (confirm('Réinitialiser tous les goûts aux 4 par défaut ? Les modifications seront perdues.')) {
+                    localStorage.removeItem('cbonpop_gouts');
+                    gouts = defaultGouts.map(function(d) { return { ...d }; });
+                    saveGouts();
+                    renderAll();
+                    buildAdminList();
+                    adminMessage.textContent = '↺ Réinitialisé aux valeurs par défaut.';
+                    adminMessage.style.color = '#E8112D';
+                    setTimeout(function() { adminMessage.textContent = ''; }, 2000);
+                }
+            });
+
+            // ===== FAQ ACCORDÉON =====
+            document.querySelectorAll('.faq-question').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var parent = this.parentElement;
+                    parent.classList.toggle('active');
                 });
             });
 
-            var cartes = document.querySelectorAll('.card');
-            cartes.forEach(function(card) {
-                card.addEventListener('click', function(e) {
-                    if (e.target.closest('.btn-commander')) return;
-                    if (e.target.tagName !== 'IMG') {
-                        this.style.transition = 'transform 0.1s ease';
-                        this.style.transform = 'scale(0.95)';
+            // ===== FORMULAIRE DE CONTACT =====
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nom = this.querySelector('[name="nom"]').value;
+                var email = this.querySelector('[name="email"]').value;
+                var message = this.querySelector('[name="message"]').value;
+                var msg = '📩 Nouveau message de ' + nom + ' (' + email + ')\n\n' + message;
+                window.location.href = 'https://wa.me/22966561780?text=' + encodeURIComponent(msg);
+            });
+
+            // ===== HAMBURGER MENU =====
+            var menuToggle = document.getElementById('menuToggle');
+            var mainNav = document.getElementById('mainNav');
+            var menuToggleBoutique = document.getElementById('menuToggleBoutique');
+            var mainNavBoutique = document.getElementById('mainNavBoutique');
+
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('open');
+            });
+            menuToggleBoutique.addEventListener('click', function() {
+                mainNavBoutique.classList.toggle('open');
+            });
+
+            mainNav.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('open');
+                });
+            });
+            mainNavBoutique.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mainNavBoutique.classList.remove('open');
+                });
+            });
+
+            // ===== NAVIGATION =====
+            var pageAccueil = document.getElementById('pageAccueil');
+            var pageBoutique = document.getElementById('pageBoutique');
+            var btnCommanderAccueil = document.getElementById('btnCommanderAccueil');
+            var btnRetourAccueil = document.getElementById('btnRetourAccueil');
+            var navCommander = document.getElementById('navCommander');
+
+            document.querySelectorAll('nav a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#boutique') {
+                        e.preventDefault();
+                        pageAccueil.classList.add('hidden');
+                        pageBoutique.classList.remove('hidden');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        if (!pageAccueil.classList.contains('hidden')) {} else {
+                            pageAccueil.classList.remove('hidden');
+                            pageBoutique.classList.add('hidden');
+                        }
                         setTimeout(function() {
-                            card.style.transform = 'scale(1)';
-                        }, 150);
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
                     }
                 });
+            });
+
+            btnCommanderAccueil.addEventListener('click', function(e) {
+                e.preventDefault();
+                pageAccueil.classList.add('hidden');
+                pageBoutique.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            btnRetourAccueil.addEventListener('click', function() {
+                pageAccueil.classList.remove('hidden');
+                pageBoutique.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            navCommander.addEventListener('click', function(e) {
+                e.preventDefault();
+                pageAccueil.classList.add('hidden');
+                pageBoutique.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.getElementById('logoBoutique').addEventListener('click', function() {
+                pageAccueil.classList.remove('hidden');
+                pageBoutique.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ===== EFFET DE CLIC SUR LES CARTES =====
+            document.addEventListener('click', function(e) {
+                var card = e.target.closest('.product-card');
+                if (card && !e.target.closest('.btn-add-cart') && e.target.tagName !== 'IMG') {
+                    card.style.transition = 'transform 0.1s ease';
+                    card.style.transform = 'scale(0.97)';
+                    setTimeout(function() { card.style.transform = 'scale(1)'; }, 150);
+                }
             });
 
         });
