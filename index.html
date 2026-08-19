@@ -392,7 +392,8 @@
             gap: 0.8rem;
         }
         .btn-primary,
-        .btn-secondary {
+        .btn-secondary,
+        .btn-success {
             display: inline-block;
             padding: 0.8rem 2.2rem;
             border-radius: 60px;
@@ -419,6 +420,14 @@
         .btn-secondary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 133, 62, 0.35);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #FCD116, #e6b800);
+            color: #2D1B0E;
+        }
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(252, 209, 22, 0.4);
         }
         .hero-image {
             flex: 1 1 280px;
@@ -535,6 +544,13 @@
             margin-top: 0;
             font-weight: 700;
         }
+        .product-card .description {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.2rem 0 0.3rem;
+            padding: 0 0.5rem;
+            line-height: 1.4;
+        }
         .product-card .price {
             font-weight: 700;
             color: #00853E;
@@ -576,7 +592,7 @@
             box-shadow: 0 4px 12px rgba(232, 17, 45, 0.2);
         }
 
-        /* ===== CHECKBOX DE SÉLECTION (pour la boutique) ===== */
+        /* ===== CHECKBOX DE SÉLECTION ===== */
         .product-card .select-wrapper {
             margin-top: 0.5rem;
             display: flex;
@@ -602,7 +618,7 @@
             color: #2D1B0E;
         }
 
-        /* Boutons de sélection globale */
+        /* ===== BOUTONS DE SÉLECTION (boutique) ===== */
         .selection-actions {
             display: flex;
             flex-wrap: wrap;
@@ -610,9 +626,9 @@
             gap: 1rem;
             margin: 1rem 0 2rem;
         }
-        .selection-actions .btn-select-all,
-        .selection-actions .btn-add-selected {
-            padding: 0.6rem 2rem;
+        .selection-actions .btn-add-selected,
+        .selection-actions .btn-commander-main {
+            padding: 0.7rem 2.2rem;
             border-radius: 60px;
             font-weight: 700;
             border: none;
@@ -621,14 +637,6 @@
             font-size: 1rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        .selection-actions .btn-select-all {
-            background: #FCD116;
-            color: #2D1B0E;
-        }
-        .selection-actions .btn-select-all:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(252, 209, 22, 0.4);
-        }
         .selection-actions .btn-add-selected {
             background: linear-gradient(135deg, #00853E, #006b32);
             color: white;
@@ -636,6 +644,14 @@
         .selection-actions .btn-add-selected:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 133, 62, 0.4);
+        }
+        .selection-actions .btn-commander-main {
+            background: linear-gradient(135deg, #E8112D, #c00e24);
+            color: white;
+        }
+        .selection-actions .btn-commander-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 17, 45, 0.4);
         }
 
         /* ===== CTA BANNER ===== */
@@ -1051,7 +1067,19 @@
             margin-top: 0.2rem;
             transition: 0.3s;
         }
-        .admin-modal input:focus {
+        .admin-modal textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 0.2rem;
+            transition: 0.3s;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .admin-modal input:focus,
+        .admin-modal textarea:focus {
             border-color: #E8112D;
             outline: none;
             box-shadow: 0 0 0 4px rgba(232, 17, 45, 0.1);
@@ -1136,7 +1164,7 @@
         }
         .admin-modal .admin-gout-item .gout-fields {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
@@ -1147,6 +1175,11 @@
         .admin-modal .admin-gout-item .gout-fields input {
             padding: 0.3rem;
             font-size: 0.9rem;
+        }
+        .admin-modal .admin-gout-item .gout-fields textarea {
+            padding: 0.3rem;
+            font-size: 0.9rem;
+            min-height: 50px;
         }
         .admin-modal .admin-gout-item .image-preview {
             max-width: 60px;
@@ -1168,13 +1201,17 @@
         }
         .admin-modal .add-gout-section .add-fields {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
-        .admin-modal .add-gout-section .add-fields input {
+        .admin-modal .add-gout-section .add-fields input,
+        .admin-modal .add-gout-section .add-fields textarea {
             padding: 0.4rem;
             font-size: 0.9rem;
+        }
+        .admin-modal .add-gout-section .add-fields textarea {
+            min-height: 50px;
         }
         .admin-modal .admin-message {
             margin-top: 0.5rem;
@@ -1240,9 +1277,9 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .selection-actions .btn-select-all,
-            .selection-actions .btn-add-selected {
-                width: 80%;
+            .selection-actions .btn-add-selected,
+            .selection-actions .btn-commander-main {
+                width: 90%;
                 text-align: center;
             }
         }
@@ -1256,6 +1293,9 @@
             }
             .product-card h3 {
                 font-size: 0.95rem;
+            }
+            .product-card .description {
+                font-size: 0.75rem;
             }
             .product-card .price {
                 font-size: 0.85rem;
@@ -1310,13 +1350,14 @@
                 <div id="passwordError" class="password-error" style="display:none;">Identifiants incorrects</div>
             </div>
             <div id="adminPanel" style="display:none;">
-                <p>Gérez vos goûts : modifiez prix, images (sélectionnez depuis votre appareil), ajoutez ou supprimez.</p>
+                <p>Gérez vos goûts : modifiez prix, images, descriptions (facultatif), ajoutez ou supprimez.</p>
                 <div id="adminGoutList"></div>
                 <div class="add-gout-section">
                     <h3>➕ Ajouter un nouveau goût</h3>
                     <div class="add-fields">
                         <input type="text" id="newGoutName" placeholder="Nom (ex: Noisette)" />
                         <input type="text" id="newGoutPrice" placeholder="Prix (ex: 2 500 CFA)" />
+                        <textarea id="newGoutDescription" placeholder="Description (facultatif)"></textarea>
                         <input type="file" id="newGoutImageFile" accept="image/*" />
                     </div>
                     <button class="btn-save" id="addGoutBtn" style="margin-top:0.5rem;">Ajouter</button>
@@ -1374,10 +1415,10 @@
                 <div class="hero-text">
                     <div class="slogan">🌍 100% Bénin</div>
                     <h1><span class="highlight">Nos goûts</span> pour croquer le Bénin !</h1>
-                    <p>Sucré, salé, lacté et caramel – nos popcorns authentiques vous transportent au cœur des saveurs du Bénin. Fabriqués avec des ingrédients locaux et beaucoup d'amour.</p>
+                    <p>Découvrez nos popcorns authentiques aux saveurs uniques, fabriqués avec des ingrédients locaux et beaucoup d'amour.</p>
                     <div class="hero-buttons">
                         <a href="#catalogue" class="btn-primary">Découvrir le catalogue</a>
-                        <a href="#boutique" class="btn-secondary">Commander maintenant</a>
+                        <a href="#boutique" class="btn-success">Commander maintenant</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -1402,7 +1443,7 @@
             <div class="cta-banner">
                 <h2>Envie de popcorns ?</h2>
                 <p>Commandez maintenant et recevez vos popcorns frais chez vous.</p>
-                <a href="#boutique" class="btn-secondary">Je commande</a>
+                <a href="#boutique" class="btn-success">Je commande</a>
             </div>
 
             <!-- ===== AVIS CLIENTS ===== -->
@@ -1527,10 +1568,10 @@
             <p class="section-subtitle">Sélectionnez les produits à ajouter au panier ou utilisez le bouton individuel</p>
             <div class="products-grid" id="boutiqueGouts"></div>
 
-            <!-- ===== BOUTONS DE SÉLECTION GLOBALE ===== -->
+            <!-- ===== BOUTONS DE SÉLECTION ===== -->
             <div class="selection-actions">
-                <button class="btn-select-all" id="selectAllBtn">✅ Tout sélectionner</button>
                 <button class="btn-add-selected" id="addSelectedBtn">➕ Ajouter la sélection au panier</button>
+                <button class="btn-commander-main" id="commanderMainBtn">🛒 Commander maintenant</button>
             </div>
         </div>
 
@@ -1541,10 +1582,10 @@
 
             // ===== DONNÉES PAR DÉFAUT =====
             var defaultGouts = [
-                { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500 },
-                { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '', prix: '1 200 CFA', prixNum: 1200 },
-                { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '', prix: '1 800 CFA', prixNum: 1800 },
-                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '', prix: '2 000 CFA', prixNum: 2000 }
+                { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
+                { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '', prix: '1 200 CFA', prixNum: 1200, description: 'La touche parfaite pour les apéritifs' },
+                { nom: 'Lacté', image: 'lacte', emoji: '🧈', badge: '', prix: '1 800 CFA', prixNum: 1800, description: 'Onctuosité et douceur garanties' },
+                { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '', prix: '2 000 CFA', prixNum: 2000, description: 'Un délice sucré et fondant' }
             ];
 
             // ===== CHARGEMENT DES DONNÉES =====
@@ -1561,7 +1602,8 @@
                                 emoji: p.emoji || '🍿',
                                 badge: p.badge || '',
                                 prix: p.prix || '',
-                                prixNum: p.prixNum || 0
+                                prixNum: p.prixNum || 0,
+                                description: p.description || ''
                             };
                         });
                     } catch (e) {
@@ -1629,7 +1671,6 @@
                 });
                 miniCartTotal.textContent = 'Total : ' + total + ' CFA';
 
-                // Événements
                 miniCartItems.querySelectorAll('.cart-decr').forEach(function(btn) {
                     btn.addEventListener('click', function() {
                         var idx = parseInt(this.dataset.index);
@@ -1673,7 +1714,6 @@
                 saveCart();
                 renderAll();
                 document.getElementById('miniCart').classList.add('active');
-                // Feedback visuel sur le bouton individuel
                 var btns = document.querySelectorAll('.btn-add-cart');
                 btns.forEach(function(btn) {
                     if (btn.dataset.name === nom) {
@@ -1711,8 +1751,7 @@
             });
 
             // ===== GÉNÉRATEUR DE CARTE =====
-            // avecCheckbox: booléen pour ajouter une case à cocher sous le produit
-            function genererCarte(gout, avecBouton, avecCheckbox) {
+            function genererCarte(gout, avecBouton, avecCheckbox, avecPrix) {
                 var card = document.createElement('div');
                 card.className = 'product-card';
                 card.dataset.nom = gout.nom;
@@ -1763,12 +1802,22 @@
                 h3.textContent = gout.nom;
                 card.appendChild(h3);
 
-                var priceSpan = document.createElement('div');
-                priceSpan.className = 'price';
-                priceSpan.textContent = gout.prix || '';
-                card.appendChild(priceSpan);
+                // Description (si présente)
+                if (gout.description && gout.description.trim() !== '') {
+                    var desc = document.createElement('div');
+                    desc.className = 'description';
+                    desc.textContent = gout.description;
+                    card.appendChild(desc);
+                }
 
-                // Bouton "Ajouter au panier" individuel
+                // Prix (uniquement si demandé)
+                if (avecPrix) {
+                    var priceSpan = document.createElement('div');
+                    priceSpan.className = 'price';
+                    priceSpan.textContent = gout.prix || '';
+                    card.appendChild(priceSpan);
+                }
+
                 if (avecBouton) {
                     var btn = document.createElement('button');
                     btn.className = 'btn-add-cart';
@@ -1784,7 +1833,6 @@
                     card.appendChild(btn);
                 }
 
-                // Checkbox de sélection (pour la page boutique)
                 if (avecCheckbox) {
                     var selectWrapper = document.createElement('div');
                     selectWrapper.className = 'select-wrapper';
@@ -1801,7 +1849,6 @@
                     checkbox.id = 'chk-' + gout.nom.replace(/\s/g, '');
                     selectWrapper.appendChild(checkbox);
                     selectWrapper.appendChild(label);
-                    // Clic sur le wrapper déclenche le checkbox
                     selectWrapper.addEventListener('click', function(e) {
                         if (e.target.tagName !== 'INPUT') {
                             var cb = this.querySelector('input[type="checkbox"]');
@@ -1821,30 +1868,19 @@
                 accueilGrid.innerHTML = '';
                 boutiqueGrid.innerHTML = '';
                 gouts.forEach(function(g) {
-                    accueilGrid.appendChild(genererCarte(g, false, false));
-                    boutiqueGrid.appendChild(genererCarte(g, true, true)); // avec checkbox
+                    // Accueil : sans bouton, sans checkbox, sans prix
+                    accueilGrid.appendChild(genererCarte(g, false, false, false));
+                    // Boutique : avec bouton, avec checkbox, avec prix
+                    boutiqueGrid.appendChild(genererCarte(g, true, true, true));
                 });
                 updateCartUI();
-
-                // Après rendu, on réattache les événements pour la sélection multiple
                 setupSelectionButtons();
             }
 
             // ===== GESTION DE LA SÉLECTION MULTIPLE =====
             function setupSelectionButtons() {
-                var selectAllBtn = document.getElementById('selectAllBtn');
                 var addSelectedBtn = document.getElementById('addSelectedBtn');
-
-                if (selectAllBtn) {
-                    selectAllBtn.addEventListener('click', function() {
-                        var checkboxes = document.querySelectorAll('#boutiqueGouts .product-select');
-                        var allChecked = Array.from(checkboxes).every(function(cb) { return cb.checked; });
-                        checkboxes.forEach(function(cb) {
-                            cb.checked = !allChecked;
-                        });
-                        this.textContent = allChecked ? '✅ Tout sélectionner' : '⬜ Tout désélectionner';
-                    });
-                }
+                var commanderMainBtn = document.getElementById('commanderMainBtn');
 
                 if (addSelectedBtn) {
                     addSelectedBtn.addEventListener('click', function() {
@@ -1859,16 +1895,24 @@
                             var prix = cb.dataset.prix;
                             var prixNum = parseInt(cb.dataset.prixNum);
                             var image = cb.dataset.image;
-                            // Ajouter au panier (quantité 1)
                             addToCart(nom, image, prix, prixNum);
-                            // Décocher après ajout
                             cb.checked = false;
                             added++;
                         });
-                        // Réinitialiser le texte du bouton "Tout sélectionner"
-                        var selectAllBtn = document.getElementById('selectAllBtn');
-                        if (selectAllBtn) selectAllBtn.textContent = '✅ Tout sélectionner';
                         alert(added + ' produit(s) ajouté(s) au panier !');
+                    });
+                }
+
+                // BOUTON "COMMANDER MAINTENANT" : redirige vers la boutique
+                if (commanderMainBtn) {
+                    commanderMainBtn.addEventListener('click', function() {
+                        if (!document.getElementById('pageBoutique').classList.contains('hidden')) {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            document.getElementById('pageAccueil').classList.add('hidden');
+                            document.getElementById('pageBoutique').classList.remove('hidden');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
                     });
                 }
             }
@@ -1910,7 +1954,6 @@
 
                 var url = 'https://wa.me/22966561780?text=' + encodeURIComponent(message);
                 window.open(url, '_blank');
-                // Vider le panier après confirmation (optionnel)
                 cart = [];
                 saveCart();
                 renderAll();
@@ -1930,6 +1973,7 @@
             var addGoutBtn = document.getElementById('addGoutBtn');
             var newGoutName = document.getElementById('newGoutName');
             var newGoutPrice = document.getElementById('newGoutPrice');
+            var newGoutDescription = document.getElementById('newGoutDescription');
             var newGoutImageFile = document.getElementById('newGoutImageFile');
             var resetAdminBtn = document.getElementById('resetAdminData');
             var adminMessage = document.getElementById('adminMessage');
@@ -2023,6 +2067,7 @@
                     var fields = document.createElement('div');
                     fields.className = 'gout-fields';
 
+                    // Prix
                     var prixLabel = document.createElement('label');
                     prixLabel.textContent = 'Prix';
                     fields.appendChild(prixLabel);
@@ -2043,6 +2088,25 @@
                     });
                     fields.appendChild(prixInput);
 
+                    // Description
+                    var descLabel = document.createElement('label');
+                    descLabel.textContent = 'Description (facultatif)';
+                    fields.appendChild(descLabel);
+                    var descInput = document.createElement('textarea');
+                    descInput.value = g.description || '';
+                    descInput.dataset.index = index;
+                    descInput.dataset.field = 'description';
+                    descInput.addEventListener('change', function() {
+                        gouts[this.dataset.index][this.dataset.field] = this.value.trim();
+                        saveGouts();
+                        renderAll();
+                        adminMessage.textContent = '✅ Description mise à jour';
+                        adminMessage.style.color = '#00853E';
+                        setTimeout(function() { adminMessage.textContent = ''; }, 1500);
+                    });
+                    fields.appendChild(descInput);
+
+                    // Image
                     var imgLabel = document.createElement('label');
                     imgLabel.textContent = 'Image (sélectionner)';
                     fields.appendChild(imgLabel);
@@ -2090,6 +2154,7 @@
             addGoutBtn.addEventListener('click', function() {
                 var nom = newGoutName.value.trim();
                 var prix = newGoutPrice.value.trim();
+                var description = newGoutDescription.value.trim();
                 var file = newGoutImageFile.files[0];
 
                 if (!nom || !prix) {
@@ -2111,7 +2176,8 @@
                     emoji: '🍿',
                     badge: '',
                     prix: prix,
-                    prixNum: prixNum || 0
+                    prixNum: prixNum || 0,
+                    description: description
                 };
 
                 if (file) {
@@ -2124,6 +2190,7 @@
                         buildAdminList();
                         newGoutName.value = '';
                         newGoutPrice.value = '';
+                        newGoutDescription.value = '';
                         newGoutImageFile.value = '';
                         adminMessage.textContent = '✅ Nouveau goût ajouté avec image !';
                         adminMessage.style.color = '#00853E';
@@ -2137,6 +2204,7 @@
                     buildAdminList();
                     newGoutName.value = '';
                     newGoutPrice.value = '';
+                    newGoutDescription.value = '';
                     adminMessage.textContent = '✅ Nouveau goût ajouté !';
                     adminMessage.style.color = '#00853E';
                     setTimeout(function() { adminMessage.textContent = ''; }, 2000);
@@ -2228,6 +2296,16 @@
                     }
                 });
             });
+
+            var btnCommanderHero = document.querySelector('.hero .btn-success');
+            if (btnCommanderHero) {
+                btnCommanderHero.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pageAccueil.classList.add('hidden');
+                    pageBoutique.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
 
             btnCommanderAccueil.addEventListener('click', function(e) {
                 e.preventDefault();
