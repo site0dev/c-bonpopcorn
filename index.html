@@ -1058,7 +1058,8 @@
         }
         .admin-modal input[type="text"],
         .admin-modal input[type="password"],
-        .admin-modal input[type="file"] {
+        .admin-modal input[type="file"],
+        .admin-modal textarea {
             width: 100%;
             padding: 0.6rem;
             border: 2px solid #eee;
@@ -1068,13 +1069,6 @@
             transition: 0.3s;
         }
         .admin-modal textarea {
-            width: 100%;
-            padding: 0.6rem;
-            border: 2px solid #eee;
-            border-radius: 12px;
-            font-family: 'Quicksand', sans-serif;
-            margin-top: 0.2rem;
-            transition: 0.3s;
             resize: vertical;
             min-height: 60px;
         }
@@ -1172,13 +1166,12 @@
             font-size: 0.8rem;
             margin-top: 0;
         }
-        .admin-modal .admin-gout-item .gout-fields input {
+        .admin-modal .admin-gout-item .gout-fields input,
+        .admin-modal .admin-gout-item .gout-fields textarea {
             padding: 0.3rem;
             font-size: 0.9rem;
         }
         .admin-modal .admin-gout-item .gout-fields textarea {
-            padding: 0.3rem;
-            font-size: 0.9rem;
             min-height: 50px;
         }
         .admin-modal .admin-gout-item .image-preview {
@@ -1802,7 +1795,6 @@
                 h3.textContent = gout.nom;
                 card.appendChild(h3);
 
-                // Description (si présente)
                 if (gout.description && gout.description.trim() !== '') {
                     var desc = document.createElement('div');
                     desc.className = 'description';
@@ -1810,7 +1802,6 @@
                     card.appendChild(desc);
                 }
 
-                // Prix (uniquement si demandé)
                 if (avecPrix) {
                     var priceSpan = document.createElement('div');
                     priceSpan.className = 'price';
@@ -1868,9 +1859,7 @@
                 accueilGrid.innerHTML = '';
                 boutiqueGrid.innerHTML = '';
                 gouts.forEach(function(g) {
-                    // Accueil : sans bouton, sans checkbox, sans prix
                     accueilGrid.appendChild(genererCarte(g, false, false, false));
-                    // Boutique : avec bouton, avec checkbox, avec prix
                     boutiqueGrid.appendChild(genererCarte(g, true, true, true));
                 });
                 updateCartUI();
@@ -1903,7 +1892,6 @@
                     });
                 }
 
-                // BOUTON "COMMANDER MAINTENANT" : redirige vers la boutique
                 if (commanderMainBtn) {
                     commanderMainBtn.addEventListener('click', function() {
                         if (!document.getElementById('pageBoutique').classList.contains('hidden')) {
@@ -1981,9 +1969,10 @@
             var ADMIN_USER = 'challa';
             var ADMIN_PASS = '66561780';
 
-            // ===== DÉTECTION 6 CLICS SUR LE LOGO =====
+            // ===== COMPORTEMENT DU LOGO : 1 clic = recharge, 6 clics = admin =====
             var logoAccueil = document.getElementById('logoAccueil');
             var logoBoutique = document.getElementById('logoBoutique');
+
             var clickCount = 0;
             var clickTimer = null;
 
@@ -1991,9 +1980,11 @@
                 e.stopPropagation();
                 clickCount++;
                 clearTimeout(clickTimer);
-                clickTimer = setTimeout(function() { clickCount = 0; }, 2000);
+
+                // Si on atteint 6 clics, on ouvre l'admin et on réinitialise
                 if (clickCount >= 6) {
                     clickCount = 0;
+                    // Ouvrir l'admin
                     adminModal.classList.add('active');
                     adminLogin.style.display = 'block';
                     adminPanel.style.display = 'none';
@@ -2001,13 +1992,25 @@
                     adminPassword.value = '';
                     passwordError.style.display = 'none';
                     adminMessage.textContent = '';
+                    return;
                 }
+
+                // Sinon, on démarre un timer de 3s pour recharger si pas d'autre clic
+                clickTimer = setTimeout(function() {
+                    clickCount = 0;
+                    // Recharger la page pour revenir à l'accueil
+                    location.reload();
+                }, 3000);
             }
 
+            // Appliquer le gestionnaire sur les deux logos
             logoAccueil.addEventListener('click', handleLogoClick);
             logoBoutique.addEventListener('click', handleLogoClick);
 
-            closeAdminModal.addEventListener('click', function() { adminModal.classList.remove('active'); });
+            // ===== ADMIN - CONNEXION =====
+            closeAdminModal.addEventListener('click', function() {
+                adminModal.classList.remove('active');
+            });
             adminModal.addEventListener('click', function(e) {
                 if (e.target === adminModal) adminModal.classList.remove('active');
             });
@@ -2067,7 +2070,6 @@
                     var fields = document.createElement('div');
                     fields.className = 'gout-fields';
 
-                    // Prix
                     var prixLabel = document.createElement('label');
                     prixLabel.textContent = 'Prix';
                     fields.appendChild(prixLabel);
@@ -2088,7 +2090,6 @@
                     });
                     fields.appendChild(prixInput);
 
-                    // Description
                     var descLabel = document.createElement('label');
                     descLabel.textContent = 'Description (facultatif)';
                     fields.appendChild(descLabel);
@@ -2106,7 +2107,6 @@
                     });
                     fields.appendChild(descInput);
 
-                    // Image
                     var imgLabel = document.createElement('label');
                     imgLabel.textContent = 'Image (sélectionner)';
                     fields.appendChild(imgLabel);
@@ -2327,11 +2327,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            document.getElementById('logoBoutique').addEventListener('click', function() {
-                pageAccueil.classList.remove('hidden');
-                pageBoutique.classList.add('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            // ===== SUPPRESSION DE LA REDIRECTION DU LOGO (déjà gérée par le comportement ci-dessus) =====
 
             // ===== EFFET DE CLIC SUR LES CARTES =====
             document.addEventListener('click', function(e) {
