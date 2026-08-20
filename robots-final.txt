@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://c-bonpopcorn.vercel.app/sitemap.xml
