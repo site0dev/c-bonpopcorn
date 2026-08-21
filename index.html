@@ -3,41 +3,87 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- ===== SEO / META ===== -->
-    <title>C'BON POP – Popcorn artisanal du Bénin</title>
-    <meta name="description" content="Découvrez les popcorns authentiques du Bénin : Sucré, Salé, Lacté, Caramel. Fabriqués avec des ingrédients locaux, livraison en Afrique de l'Ouest, France et Belgique." />
-    <meta name="keywords" content="popcorn béninois, pop corn artisanal, C'BON POP, Cotonou, Bénin, Afrique de l'Ouest, snack, livraison France, Belgique" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://cbonpop.bj" />
-
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="C'BON POP propose du popcorn artisanal à Cotonou, au Bénin : popcorn sucré, salé, lacté et caramel. Découvrez nos saveurs et commandez en ligne avec livraison." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://cbonpopcorn.vercel.app/" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cbonpop.bj" />
-    <meta property="og:title" content="C'BON POP – Popcorn artisanal du Bénin" />
-    <meta property="og:description" content="Popcorns authentiques du Bénin : 4 goûts uniques. Livraison en Afrique de l'Ouest, France et Belgique." />
-    <meta property="og:image" content="https://cbonpop.bj/images/og-image.jpg" />
+    <meta property="og:title" content="C'BON POP | Popcorn artisanal à Cotonou, Bénin" />
+    <meta property="og:description" content="Popcorn sucré, salé, lacté et caramel à Cotonou. Découvrez C'BON POP et commandez vos popcorns." />
+    <meta property="og:url" content="https://cbonpopcorn.vercel.app/" />
+    <meta property="og:locale" content="fr_BJ" />
+    <meta property="og:site_name" content="C'BON POP" />
+    <title>C'BON POP | Popcorn à Cotonou, Bénin – Sucré, Salé, Lacté & Caramel</title>
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="C'BON POP – Popcorn artisanal du Bénin" />
-    <meta name="twitter:description" content="Popcorns authentiques du Bénin : 4 goûts uniques. Livraison en Afrique de l'Ouest, France et Belgique." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "@id": "https://cbonpopcorn.vercel.app/#business",
+      "name": "C'BON POP",
+      "url": "https://cbonpopcorn.vercel.app/",
+      "description": "C'BON POP propose du popcorn artisanal aux saveurs sucrée, salée, lactée et caramel à Cotonou, au Bénin.",
+      "telephone": "+22966561780",
+      "priceRange": "CFA",
+      "servesCuisine": "Popcorn",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Menontin",
+        "addressLocality": "Cotonou",
+        "addressCountry": "BJ"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Cotonou"
+      }
+    }
+    </script>
 
-    <!-- Geo / Region -->
-    <meta name="geo.region" content="BJ" />
-    <meta name="geo.placename" content="Cotonou" />
-    <meta name="geo.position" content="6.365;2.418" />
-    <meta name="ICBM" content="6.365, 2.418" />
-
-    <!-- ===== FONTS & ICONS ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quels sont les délais de livraison ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous livrons sous 24 à 48h à Cotonou et dans les grandes villes du Bénin. Pour les zones plus éloignées, comptez 3 à 5 jours ouvrés. La livraison est offerte à partir de 5 000 CFA d'achat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment conserver vos popcorns ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conservez-les dans un endroit sec et frais, à l'abri de la lumière directe. Ils se gardent plusieurs semaines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Proposez-vous des options sans sucre ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Le goût Salé est sans sucre ajouté. Des options sur mesure sont également proposées."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment passer une commande ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vous pouvez commander directement sur le site via la boutique ou contacter C'BON POP par WhatsApp au 66 56 17 80."
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
         /* ===== BASE ===== */
         * {
@@ -136,7 +182,7 @@
             margin-left: 0.2rem;
         }
 
-        /* ===== BOUTONS FLOTTANTS ===== */
+        /* ===== BOUTONS FLOTTANTS (panier + WhatsApp) ===== */
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -163,7 +209,9 @@
             color: white;
             position: relative;
         }
-        .floating-buttons .btn-float:hover { transform: scale(1.1); }
+        .floating-buttons .btn-float:hover {
+            transform: scale(1.1);
+        }
         .floating-buttons .cart-float {
             background: linear-gradient(135deg, #E8112D, #c00e24);
         }
@@ -187,7 +235,7 @@
             background: linear-gradient(135deg, #25D366, #1da851);
         }
 
-        /* ===== PAGES ===== */
+        /* ===== PAGE ===== */
         .page { display: block; }
         .page.hidden { display: none; }
 
@@ -468,7 +516,9 @@
             border-bottom: 1px solid #f0e6d0;
             vertical-align: middle;
         }
-        .cart-table tr:last-child td { border-bottom: none; }
+        .cart-table tr:last-child td {
+            border-bottom: none;
+        }
         .cart-table .item-controls {
             display: flex;
             align-items: center;
@@ -540,7 +590,9 @@
             background: #ddd;
             color: #555;
         }
-        .cart-actions .btn-cart-empty:hover { background: #ccc; }
+        .cart-actions .btn-cart-empty:hover {
+            background: #ccc;
+        }
         .cart-actions .btn-cart-checkout {
             background: linear-gradient(135deg, #00853E, #006b32);
             color: white;
@@ -550,6 +602,7 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0,133,62,0.3);
         }
+
         .cart-empty-message {
             text-align: center;
             padding: 3rem 0;
@@ -999,25 +1052,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(232,17,45,0.35);
         }
-        .admin-header .admin-actions .btn-back {
-            background: #FCD116;
-            color: #2D1B0E;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 12px rgba(252,209,22,0.25);
-        }
-        .admin-header .admin-actions .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(252,209,22,0.35);
-        }
 
         .admin-tabs {
             display: flex;
@@ -1048,7 +1082,9 @@
             display: none;
             flex: 1;
         }
-        .admin-tab-content.active { display: block; }
+        .admin-tab-content.active {
+            display: block;
+        }
 
         .admin-stats {
             display: grid;
@@ -1291,7 +1327,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            max-width: 100%;
+            max-width: 500px;
         }
         .admin-settings-section .settings-fields label {
             font-weight: 600;
@@ -1511,7 +1547,10 @@
                 height: 28px;
                 font-size: 0.9rem;
             }
-            .cart-actions { flex-direction: column; align-items: stretch; }
+            .cart-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
             .floating-buttons .btn-float {
                 width: 44px;
                 height: 44px;
@@ -1554,7 +1593,6 @@
                         <h2>Tableau de bord</h2>
                     </div>
                     <div class="admin-actions">
-                        <button class="btn-back" id="backAdminBtn"><i class="fas fa-arrow-left"></i> Retour</button>
                         <button class="btn-logout" id="logoutAdminBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
                     </div>
                 </div>
@@ -1607,12 +1645,14 @@
         </div>
     </div>
 
-    <!-- ===== BOUTONS FLOTTANTS ===== -->
+    <!-- ===== BOUTONS FLOTTANTS (Panier + WhatsApp) ===== -->
     <div class="floating-buttons">
+        <!-- Bouton Panier avec badge -->
         <button class="btn-float cart-float" id="floatCartBtn" title="Voir le panier">
             <i class="fas fa-shopping-cart"></i>
             <span class="badge" id="floatCartBadge">0</span>
         </button>
+        <!-- Bouton WhatsApp -->
         <a href="https://wa.me/22966561780" target="_blank" class="btn-float whatsapp-float" title="Nous contacter sur WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
@@ -1639,8 +1679,8 @@
             <section class="hero">
                 <div class="hero-text">
                     <div class="slogan">🌍 100% Bénin</div>
-                    <h1><span class="highlight">Nos goûts</span> pour croquer le Bénin !</h1>
-                    <p>Découvrez nos popcorns authentiques aux saveurs uniques, fabriqués avec des ingrédients locaux et beaucoup d'amour.</p>
+                    <h1><span class="highlight">C'BON POP</span> : Popcorn artisanal à Cotonou, Bénin</h1>
+                    <p>Découvrez nos popcorns authentiques aux saveurs sucrée, salée, lactée et caramel, fabriqués avec soin à Cotonou au Bénin.</p>
                     <div class="hero-buttons">
                         <a href="#catalogue" class="btn-primary">Découvrir le catalogue</a>
                         <a href="#boutique" class="btn-success">Commander maintenant</a>
@@ -1659,6 +1699,16 @@
             <h2 class="section-title" id="catalogue">🍿 Nos goûts</h2>
             <p class="section-subtitle">Des saveurs authentiques pour tous les gourmands</p>
             <div class="products-grid" id="accueilGouts"></div>
+
+            <!-- Contenu SEO accessible sans JavaScript : les produits principaux sont lisibles par les moteurs. -->
+            <noscript>
+                <div class="seo-products">
+                    <article><h3>Popcorn sucré</h3><p>Popcorn sucré artisanal C'BON POP à Cotonou.</p><strong>1 500 CFA</strong></article>
+                    <article><h3>Popcorn salé</h3><p>Popcorn salé artisanal C'BON POP à Cotonou, sans sucre ajouté.</p><strong>1 500 CFA</strong></article>
+                    <article><h3>Popcorn lacté</h3><p>Popcorn lacté gourmand C'BON POP au Bénin.</p><strong>Prix selon format</strong></article>
+                    <article><h3>Popcorn caramel</h3><p>Popcorn caramel artisanal C'BON POP à Cotonou.</p><strong>Prix selon format</strong></article>
+                </div>
+            </noscript>
 
             <div class="cta-banner">
                 <h2>Envie de popcorns ?</h2>
@@ -1765,7 +1815,9 @@
             </header>
             <h2 class="section-title">🛒 Votre panier</h2>
             <div id="cartContent">
-                <div id="cartBodyContainer"></div>
+                <div id="cartBodyContainer">
+                    <!-- Rempli par JS -->
+                </div>
                 <div class="cart-total" id="cartTotal">Total : 0 CFA</div>
                 <div class="cart-actions">
                     <button class="btn-cart btn-cart-empty" id="emptyCartBtn">Vider le panier</button>
@@ -1779,17 +1831,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ================================================================
-            // 0. CONFIGURATION SUPABASE (HARDCODED)
-            // ================================================================
+            // ===== SUPABASE =====
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
             var SUPABASE_ANON_KEY = 'sb_publishable_ALEP5mzHFd4K4iFpopfbjA_J2Q5B5_b';
             var TABLE_NAME = 'gouts';
-
-            var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            var supabaseClient = null;
+            try {
+                if (!window.supabase || typeof window.supabase.createClient !== 'function') throw new Error('Supabase JS non chargé');
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            } catch (err) { console.error('Supabase init:', err); }
 
             // ================================================================
-            // 1. DONNÉES PAR DÉFAUT (pour la première synchronisation)
+            // 1. DONNÉES PAR DÉFAUT
             // ================================================================
             var defaultGouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
@@ -1799,7 +1852,7 @@
             ];
 
             // ================================================================
-            // 2. GESTION DES GOÛTS (localStorage + Supabase)
+            // 2. GESTION DES GOÛTS (localStorage)
             // ================================================================
             function loadGouts() {
                 var stored = localStorage.getItem('cbonpop_gouts');
@@ -1827,79 +1880,49 @@
 
             var gouts = loadGouts();
 
-            function saveGouts() {
-                localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                // Sync to Supabase
-                syncToSupabase();
+            async function saveGouts() {
                 updateAdminStats();
+                if (!supabaseClient) return { error: new Error('Supabase non initialisé') };
+                var rows = gouts.map(function(g) { return {
+                    nom: g.nom, image: g.image || 'default', image_data: g.imageData || null,
+                    emoji: g.emoji || '🍿', badge: g.badge || '', prix: g.prix || '',
+                    prix_num: Number(g.prixNum) || 0, description: g.description || ''
+                }; });
+                try {
+                    var del = await supabaseClient.from(TABLE_NAME).delete().not('id', 'is', null);
+                    if (del.error) throw del.error;
+                    if (rows.length) {
+                        var ins = await supabaseClient.from(TABLE_NAME).insert(rows);
+                        if (ins.error) throw ins.error;
+                    }
+                    return { error: null };
+                } catch (err) { console.error('Supabase save:', err); return { error: err }; }
             }
 
-            // ================================================================
-            // 3. SYNCHRONISATION SUPABASE
-            // ================================================================
-            function syncToSupabase() {
-                // On supprime toutes les lignes puis on insère les nouvelles
-                supabase.from(TABLE_NAME).delete().neq('id', 0).then(function(res) {
-                    if (res.error) {
-                        console.warn('Supabase delete error:', res.error);
-                        return;
-                    }
-                    var data = gouts.map(function(g) {
-                        return {
-                            nom: g.nom,
-                            image: g.image,
-                            image_data: g.imageData,
-                            emoji: g.emoji,
-                            badge: g.badge || '',
-                            prix: g.prix,
-                            prix_num: g.prixNum || 0,
-                            description: g.description || ''
-                        };
-                    });
-                    if (data.length === 0) return;
-                    supabase.from(TABLE_NAME).insert(data).then(function(ins) {
-                        if (ins.error) {
-                            console.warn('Supabase insert error:', ins.error);
-                        }
-                    });
-                });
-            }
-
-            function loadFromSupabase() {
-                return supabase.from(TABLE_NAME).select('*').then(function(res) {
-                    if (res.error) {
-                        console.warn('Supabase select error:', res.error);
-                        return;
-                    }
-                    if (res.data && res.data.length > 0) {
-                        var loaded = res.data.map(function(p) {
-                            return {
-                                nom: p.nom || 'Inconnu',
-                                image: p.image || 'default',
-                                imageData: p.image_data || null,
-                                emoji: p.emoji || '🍿',
-                                badge: p.badge || '',
-                                prix: p.prix || '',
-                                prixNum: p.prix_num || 0,
-                                description: p.description || ''
-                            };
-                        });
-                        gouts = loaded;
-                        localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                        renderAll();
-                        buildAdminList();
-                        updateAdminStats();
+            async function loadFromSupabase() {
+                if (!supabaseClient) return;
+                try {
+                    var res = await supabaseClient.from(TABLE_NAME).select('*').order('id', { ascending: true });
+                    if (res.error) throw res.error;
+                    if (res.data && res.data.length) {
+                        gouts = res.data.map(function(p) { return {
+                            nom: p.nom || 'Inconnu', image: p.image || 'default', imageData: p.image_data || null,
+                            emoji: p.emoji || '🍿', badge: p.badge || '', prix: p.prix || '',
+                            prixNum: Number(p.prix_num) || 0, description: p.description || ''
+                        }; });
+                        renderAll(); buildAdminList(); updateAdminStats();
                     } else {
-                        // Si la table est vide, on pousse les données par défaut
-                        if (gouts.length > 0) {
-                            syncToSupabase();
-                        }
+                        var saved = await saveGouts();
+                        if (saved.error) throw saved.error;
                     }
-                });
+                } catch (err) {
+                    console.error('Supabase load:', err);
+                    console.warn('Vérifiez les politiques RLS de la table gouts.');
+                }
             }
 
             // ================================================================
-            // 4. PANIER
+            // 3. PANIER
             // ================================================================
             var cart = [];
 
@@ -1918,9 +1941,11 @@
 
             function updateCartUI() {
                 var count = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
+                // Mettre à jour tous les compteurs
                 document.querySelectorAll('.cart-count, #floatCartBadge').forEach(function(el) {
                     if (el) el.textContent = count;
                 });
+                // Mettre à jour la page panier si visible
                 renderCartPage();
             }
 
@@ -1962,8 +1987,10 @@
                 });
                 table.appendChild(tbody);
                 container.appendChild(table);
+
                 totalEl.textContent = 'Total : ' + total + ' CFA';
 
+                // Événements
                 tbody.querySelectorAll('.cart-decr').forEach(function(btn) {
                     btn.addEventListener('click', function() {
                         var idx = parseInt(this.dataset.index);
@@ -2006,6 +2033,7 @@
                 }
                 saveCart();
                 renderAll();
+                // Feedback visuel sur le bouton
                 var btns = document.querySelectorAll('.btn-add-cart');
                 btns.forEach(function(btn) {
                     if (btn.dataset.name === nom) {
@@ -2017,11 +2045,12 @@
                         }, 2000);
                     }
                 });
+                // Mise à jour du badge flottant
                 updateCartUI();
             }
 
             // ================================================================
-            // 5. LIGHTBOX
+            // 4. LIGHTBOX
             // ================================================================
             var lightbox = document.getElementById('lightbox');
             var lightboxImg = document.getElementById('lightboxImg');
@@ -2046,7 +2075,7 @@
             });
 
             // ================================================================
-            // 6. GÉNÉRATEUR DE CARTE
+            // 5. GÉNÉRATEUR DE CARTE
             // ================================================================
             function genererCarte(gout, avecBouton) {
                 var card = document.createElement('div');
@@ -2071,8 +2100,10 @@
                     if (!imgSrc.includes('.')) imgSrc += '.jpg';
                     img.src = imgSrc;
                 }
-                img.alt = gout.nom;
+                img.alt = "Popcorn " + String(gout.nom || '').toLowerCase() + " artisanal C'BON POP à Cotonou, Bénin";
                 img.loading = 'lazy';
+                img.width = 600;
+                img.height = 600;
 
                 img.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -2142,7 +2173,7 @@
             }
 
             // ================================================================
-            // 7. CHECKOUT
+            // 6. CHECKOUT (depuis le panier)
             // ================================================================
             document.getElementById('checkoutBtnPanier').addEventListener('click', function() {
                 if (cart.length === 0) {
@@ -2159,6 +2190,7 @@
 
                 var url = 'https://wa.me/22966561780?text=' + encodeURIComponent(message);
                 window.open(url, '_blank');
+                // Vider le panier après confirmation
                 cart = [];
                 saveCart();
                 renderAll();
@@ -2176,7 +2208,7 @@
             });
 
             // ================================================================
-            // 8. ADMIN
+            // 7. ADMIN - LOGIQUE COMPLÈTE
             // ================================================================
             var adminModal = document.getElementById('adminModal');
             var adminLogin = document.getElementById('adminLogin');
@@ -2199,9 +2231,8 @@
             var settingsPassword = document.getElementById('settingsPassword');
             var saveSettingsBtn = document.getElementById('saveSettingsBtn');
             var settingsMessage = document.getElementById('settingsMessage');
-            var backAdminBtn = document.getElementById('backAdminBtn');
 
-            // Identifiants admin
+            // Identifiants
             function loadAdminCredentials() {
                 var stored = localStorage.getItem('cbonpop_admin_creds');
                 if (stored) {
@@ -2257,12 +2288,7 @@
                 adminModal.classList.remove('active');
             }
 
-            // Bouton "Retour" : ferme la modale sans déconnexion
-            backAdminBtn.addEventListener('click', function() {
-                closeAdminModal();
-            });
-
-            // Logo clicks
+            // Logo click : 6 clics pour admin, 1 clic pour recharger
             var logoAccueil = document.getElementById('logoAccueil');
             var logoBoutique = document.getElementById('logoBoutique');
             var logoPanier = document.getElementById('logoPanier');
@@ -2461,7 +2487,7 @@
                 });
             }
 
-            // Sauvegarde
+            // Sauvegarde de toutes les modifications
             saveAllBtn.addEventListener('click', function() {
                 var fields = adminGoutList.querySelectorAll('.admin-field');
                 var files = adminGoutList.querySelectorAll('.admin-file');
@@ -2490,14 +2516,14 @@
                     }
                 });
 
-                saveGouts();
+                saveGouts().then(function(r){ if(r && r.error) showAdminMessage('❌ Échec de sauvegarde Supabase.', true); });
                 renderAll();
                 buildAdminList();
                 updateAdminStats();
                 showAdminMessage('✅ Toutes les modifications ont été enregistrées avec succès !', false);
             });
 
-            // Ajout
+            // Ajout d'un goût
             addGoutBtn.addEventListener('click', function() {
                 var nom = newGoutName.value.trim();
                 var prix = newGoutPrice.value.trim();
@@ -2536,7 +2562,7 @@
                     reader.onload = function(e) {
                         newGout.imageData = e.target.result;
                         gouts.push(newGout);
-                        saveGouts();
+                        saveGouts().then(function(r){ if(r && r.error) showAdminMessage('❌ Échec de sauvegarde Supabase.', true); });
                         renderAll();
                         buildAdminList();
                         updateAdminStats();
@@ -2552,7 +2578,7 @@
                     reader.readAsDataURL(file);
                 } else {
                     gouts.push(newGout);
-                    saveGouts();
+                    saveGouts().then(function(r){ if(r && r.error) showAdminMessage('❌ Échec de sauvegarde Supabase.', true); });
                     renderAll();
                     buildAdminList();
                     updateAdminStats();
@@ -2566,7 +2592,7 @@
                 }
             });
 
-            // Identifiants admin
+            // Sauvegarde des identifiants
             saveSettingsBtn.addEventListener('click', function() {
                 var newUser = settingsUsername.value.trim();
                 var newPass = settingsPassword.value.trim();
@@ -2614,7 +2640,7 @@
             }
 
             // ================================================================
-            // 9. CONTACT FORM
+            // 8. FORMULAIRE DE CONTACT
             // ================================================================
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -2626,7 +2652,7 @@
             });
 
             // ================================================================
-            // 10. NAVIGATION
+            // 9. NAVIGATION ENTRE PAGES
             // ================================================================
             var pages = {
                 accueil: document.getElementById('pageAccueil'),
@@ -2639,9 +2665,12 @@
                     pages[key].classList.toggle('hidden', key !== page);
                 });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (page === 'panier') renderCartPage();
+                if (page === 'panier') {
+                    renderCartPage();
+                }
             }
 
+            // Liens de navigation
             document.getElementById('navCommander').addEventListener('click', function(e) {
                 e.preventDefault();
                 showPage('boutique');
@@ -2656,16 +2685,7 @@
             });
             document.getElementById('btnRetourAccueil').addEventListener('click', function(e) {
                 e.preventDefault();
-                showPage('accueil<!DOCTYPE html>
-                <html lang="fr">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Titre de la page</title>
-                </head>
-                <body>
-                    
-                </body>
-                </html>');
+                showPage('accueil');
             });
             document.getElementById('btnRetourAccueilPanier').addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2675,20 +2695,24 @@
                 e.preventDefault();
                 showPage('boutique');
             });
+            // Bouton "Commander maintenant" du héros
             document.querySelector('.hero .btn-success').addEventListener('click', function(e) {
                 e.preventDefault();
                 showPage('boutique');
             });
+            // Lien "Je commande" du CTA
             document.querySelector('.cta-banner .btn-success').addEventListener('click', function(e) {
                 e.preventDefault();
                 showPage('boutique');
             });
+
+            // Bouton flottant panier
             document.getElementById('floatCartBtn').addEventListener('click', function() {
                 showPage('panier');
             });
 
             // ================================================================
-            // 11. HAMBURGER MENU
+            // 10. HAMBURGER MENU
             // ================================================================
             var menuToggle = document.getElementById('menuToggle');
             var mainNav = document.getElementById('mainNav');
@@ -2703,6 +2727,7 @@
                 menuTogglePanier.addEventListener('click', function() { mainNavPanier.classList.toggle('open'); });
             }
 
+            // Fermeture auto des menus après clic
             mainNav.querySelectorAll('a').forEach(function(link) {
                 link.addEventListener('click', function() { mainNav.classList.remove('open'); });
             });
@@ -2716,16 +2741,8 @@
             }
 
             // ================================================================
-            // 12. INITIALISATION
+            // 11. EFFET DE CLIC SUR LES CARTES
             // ================================================================
-            // Charger depuis Supabase
-            loadFromSupabase().finally(function() {
-                loadCart();
-                renderAll();
-                showPage('accueil');
-            });
-
-            // Effet de clic sur les cartes
             document.addEventListener('click', function(e) {
                 var card = e.target.closest('.product-card');
                 if (card && !e.target.closest('.btn-add-cart') && e.target.tagName !== 'IMG') {
@@ -2734,6 +2751,15 @@
                     setTimeout(function() { card.style.transform = 'scale(1)'; }, 150);
                 }
             });
+
+            // ================================================================
+            // 12. INITIALISATION
+            // ================================================================
+            loadCart();
+            renderAll();
+            // Par défaut, page accueil
+            showPage('accueil');
+            loadFromSupabase();
 
         });
     </script>
