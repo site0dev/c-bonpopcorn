@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="C'BON POP propose du popcorn artisanal à Cotonou, au Bénin : popcorn sucré, salé, lacté et caramel. Découvrez nos saveurs et commandez en ligne avec livraison." />
+    <meta name="description" content="C'BON POP, popcorn artisanal à Cotonou au Bénin : popcorn sucré, salé, lacté et caramel. Découvrez nos saveurs, commandez en ligne et retrouvez la marque depuis la France et la Belgique." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="keywords" content="C'BON POP, popcorn Cotonou, popcorn Bénin, popcorn béninois, popcorn artisanal, popcorn sucré, popcorn salé, popcorn lacté, popcorn caramel, popcorn France, popcorn Belgique" />
     <link rel="canonical" href="https://cbonpopcorn.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="C'BON POP | Popcorn artisanal à Cotonou, Bénin" />
-    <meta property="og:description" content="Popcorn sucré, salé, lacté et caramel à Cotonou. Découvrez C'BON POP et commandez vos popcorns." />
+    <meta property="og:description" content="Popcorn artisanal à Cotonou, Bénin : sucré, salé, lacté et caramel. C'BON POP, une marque béninoise visible au Bénin, en France et en Belgique." />
     <meta property="og:url" content="https://cbonpopcorn.vercel.app/" />
     <meta property="og:locale" content="fr_BJ" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="fr_BE" />
     <meta property="og:site_name" content="C'BON POP" />
     <title>C'BON POP | Popcorn à Cotonou, Bénin – Sucré, Salé, Lacté & Caramel</title>
 
@@ -31,10 +34,10 @@
         "addressLocality": "Cotonou",
         "addressCountry": "BJ"
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Cotonou"
-      }
+      "areaServed": [
+        {"@type":"City","name":"Cotonou"},
+        {"@type":"Country","name":"Bénin"}
+      ]
     }
     </script>
 
@@ -788,6 +791,15 @@
         .contact-form button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(232,17,45,0.3);
+        }
+
+        .seo-location-text {
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+            color: #5b4a3a;
+            font-size: 0.98rem;
+            line-height: 1.7;
         }
 
         .trust-badges {
@@ -1705,6 +1717,12 @@
                 <div class="hero-image"><div class="popcorn-illustration">🍿</div></div>
             </section>
 
+            <p class="seo-location-text">
+                C'BON POP est une marque de popcorn artisanal basée à Cotonou, au Bénin.
+                Découvrez nos quatre saveurs et retrouvez nos informations en ligne depuis le Bénin,
+                la France et la Belgique.
+            </p>
+
             <div class="trust-badges">
                 <div class="badge"><i class="fas fa-seedling"></i> Ingrédients locaux</div>
                 <div class="badge"><i class="fas fa-truck"></i> Livraison rapide</div>
@@ -1868,33 +1886,11 @@
             ];
 
             // ================================================================
-            // 2. GESTION DES GOÛTS (localStorage)
+            // 2. GESTION DES GOÛTS — SOURCE UNIQUE : SUPABASE
             // ================================================================
-            function loadGouts() {
-                var stored = localStorage.getItem('cbonpop_gouts');
-                if (stored) {
-                    try {
-                        var parsed = JSON.parse(stored);
-                        return parsed.map(function(p) {
-                            return {
-                                nom: p.nom || 'Inconnu',
-                                image: p.image || 'default',
-                                imageData: p.imageData || null,
-                                emoji: p.emoji || '🍿',
-                                badge: p.badge || '',
-                                prix: p.prix || '',
-                                prixNum: p.prixNum || 0,
-                                description: p.description || ''
-                            };
-                        });
-                    } catch (e) {
-                        return defaultGouts.map(function(d) { return { ...d }; });
-                    }
-                }
-                return defaultGouts.map(function(d) { return { ...d }; });
-            }
-
-            var gouts = loadGouts();
+            // Les produits ne sont plus conservés dans localStorage.
+            // Supabase est la source de vérité du catalogue.
+            var gouts = defaultGouts.map(function(d) { return { ...d }; });
 
             async function saveGouts() {
                 updateAdminStats();
@@ -2093,7 +2089,7 @@
             // ================================================================
             // 5. GÉNÉRATEUR DE CARTE
             // ================================================================
-            function genererCarte(gout, avecBouton) {
+            function genererCarte(gout, avecBouton, afficherPrix) {
                 var card = document.createElement('div');
                 card.className = 'product-card';
                 card.dataset.nom = gout.nom;
@@ -2128,12 +2124,6 @@
                     }
                 });
 
-                img.addEventListener('error', function() {
-                    this.classList.add('error');
-                    this.style.display = 'none';
-                    var fallback = this.parentElement.querySelector('.emoji-fallback');
-                    if (fallback) fallback.style.display = 'block';
-                });
                 // Conteneur carré : l'image est recadrée sans déformer le produit.
                 var imageWrap = document.createElement('div');
                 imageWrap.className = 'product-image-wrap';
@@ -2146,6 +2136,12 @@
                 fallback.style.display = 'none';
                 card.appendChild(fallback);
 
+                img.addEventListener('error', function() {
+                    this.classList.add('error');
+                    this.parentElement.style.display = 'none';
+                    fallback.style.display = 'block';
+                });
+
                 var h3 = document.createElement('h3');
                 h3.textContent = gout.nom;
                 card.appendChild(h3);
@@ -2157,10 +2153,12 @@
                     card.appendChild(desc);
                 }
 
-                var priceSpan = document.createElement('div');
-                priceSpan.className = 'price';
-                priceSpan.textContent = gout.prix || '';
-                card.appendChild(priceSpan);
+                if (afficherPrix) {
+                    var priceSpan = document.createElement('div');
+                    priceSpan.className = 'price';
+                    priceSpan.textContent = gout.prix || '';
+                    card.appendChild(priceSpan);
+                }
 
                 if (avecBouton) {
                     var btn = document.createElement('button');
@@ -2186,8 +2184,8 @@
                 accueilGrid.innerHTML = '';
                 boutiqueGrid.innerHTML = '';
                 gouts.forEach(function(g) {
-                    accueilGrid.appendChild(genererCarte(g, false));
-                    boutiqueGrid.appendChild(genererCarte(g, true));
+                    accueilGrid.appendChild(genererCarte(g, false, false));
+                    boutiqueGrid.appendChild(genererCarte(g, true, true));
                 });
                 updateCartUI();
             }
@@ -2672,7 +2670,17 @@
             });
 
             // ================================================================
-            // 9. NAVIGATION ENTRE PAGES
+            // 9. FAQ
+            // ================================================================
+            document.querySelectorAll('.faq-question').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var item = this.closest('.faq-item');
+                    if (item) item.classList.toggle('active');
+                });
+            });
+
+            // ================================================================
+            // 10. NAVIGATION ENTRE PAGES
             // ================================================================
             var pages = {
                 accueil: document.getElementById('pageAccueil'),
@@ -2732,7 +2740,7 @@
             });
 
             // ================================================================
-            // 10. HAMBURGER MENU
+            // 11. HAMBURGER MENU
             // ================================================================
             var menuToggle = document.getElementById('menuToggle');
             var mainNav = document.getElementById('mainNav');
@@ -2761,7 +2769,7 @@
             }
 
             // ================================================================
-            // 11. EFFET DE CLIC SUR LES CARTES
+            // 12. EFFET DE CLIC SUR LES CARTES
             // ================================================================
             document.addEventListener('click', function(e) {
                 var card = e.target.closest('.product-card');
@@ -2773,7 +2781,7 @@
             });
 
             // ================================================================
-            // 12. INITIALISATION
+            // 13. INITIALISATION
             // ================================================================
             loadCart();
             renderAll();
