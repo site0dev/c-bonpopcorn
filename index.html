@@ -1747,7 +1747,7 @@
             <div class="cta-banner">
                 <h2>Envie de popcorns ?</h2>
                 <p>Commandez maintenant et recevez vos popcorns frais chez vous.</p>
-                <a href="#boutique" class="btn-success">Je commande</a>
+                <a href="#pageBoutique" class="btn-success" id="ctaCommander" aria-label="Commander des popcorns C'BON POP">Je commande</a>
             </div>
 
             <section class="testimonials" id="avis">
@@ -1864,6 +1864,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            // ================================================================
+            // NAVIGATION CTA — INITIALISÉE EN PREMIER
+            // Ce gestionnaire est placé avant le reste du JavaScript afin que
+            // « Je commande » fonctionne même si une autre partie du script
+            // rencontre un problème.
+            // ================================================================
+            document.querySelectorAll('.cta-banner .btn-success').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    var accueil = document.getElementById('pageAccueil');
+                    var boutique = document.getElementById('pageBoutique');
+                    var panier = document.getElementById('pagePanier');
+
+                    if (accueil) accueil.classList.add('hidden');
+                    if (panier) panier.classList.add('hidden');
+                    if (boutique) {
+                        boutique.classList.remove('hidden');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
 
             // ===== SUPABASE =====
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
@@ -2728,11 +2751,7 @@
                 e.preventDefault();
                 showPage('boutique');
             });
-            // Lien "Je commande" du CTA
-            document.querySelector('.cta-banner .btn-success').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('boutique');
-            });
+            // Le CTA « Je commande » est déjà géré au début du script.
 
             // Bouton flottant panier
             document.getElementById('floatCartBtn').addEventListener('click', function() {
