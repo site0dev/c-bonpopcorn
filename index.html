@@ -9,27 +9,22 @@
     <meta name="description" content="C'BON POP : popcorn artisanal 100% béninois. Sucré, salé, lacté, caramel – livraison à Cotonou, Porto-Novo, Abomey-Calavi. Découvrez nos saveurs authentiques." />
     <meta name="keywords" content="popcorn béninois, popcorn artisanale, Cotonou, Bénin, Afrique de l'Ouest, snacks, goûts, caramel, salé, sucré, lacté" />
     <meta name="robots" content="index, follow" />
-
-    <!-- Balises géographiques -->
     <meta name="geo.region" content="BJ" />
     <meta name="geo.placename" content="Cotonou" />
     <meta name="geo.position" content="6.367;2.423" />
     <meta name="ICBM" content="6.367, 2.423" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:title" content="C'BON POP – Popcorn béninois" />
     <meta property="og:description" content="Popcorn artisanal 100% béninois – saveurs authentiques pour tous les gourmands." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cbonpop.bj" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="C'BON POP" />
-
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="C'BON POP – Popcorn béninois" />
     <meta name="twitter:description" content="Popcorn artisanal 100% béninois – commandez en ligne." />
 
-    <!-- Hreflang -->
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BJ" />
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-FR" />
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BE" />
@@ -47,1650 +42,265 @@
 
     <style>
         /* ===== BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background: #FFF8F0;
-            color: #2D1B0E;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem 3rem;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Quicksand',sans-serif; background:#FFF8F0; color:#2D1B0E; line-height:1.6; min-height:100vh; }
+        .container { max-width:1200px; margin:0 auto; padding:1.5rem 1rem 3rem; }
 
         /* ===== HEADER ===== */
-        header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0 0.8rem;
-            border-bottom: 3px dashed #FCD116;
-            margin-bottom: 1.5rem;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.6rem;
-            color: #E8112D;
-            text-shadow: 2px 2px 0 #FCD116;
-            cursor: pointer;
-            user-select: none;
-            transition: transform 0.3s;
-        }
-        .logo:hover { transform: scale(1.03); }
-        .logo span {
-            background: #00853E;
-            color: white;
-            font-size: 0.85rem;
-            padding: 0.15rem 0.7rem;
-            border-radius: 40px;
-            font-weight: 700;
-            text-shadow: none;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #2D1B0E;
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-            transition: color 0.3s;
-        }
-        .menu-toggle:hover { color: #E8112D; }
-        nav {
-            display: flex;
-            gap: 1.2rem;
-            font-weight: 600;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #2D1B0E;
-            transition: color 0.3s;
-            cursor: pointer;
-            font-size: 0.95rem;
-            position: relative;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #E8112D;
-            transition: width 0.3s;
-        }
-        nav a:hover { color: #E8112D; }
-        nav a:hover::after { width: 100%; }
-        nav a .cart-count {
-            background: #E8112D;
-            color: white;
-            border-radius: 50%;
-            padding: 0 0.4rem;
-            font-size: 0.75rem;
-            margin-left: 0.2rem;
-        }
+        header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:0.5rem 0 0.8rem; border-bottom:3px dashed #FCD116; margin-bottom:1.5rem; }
+        .logo { display:flex; align-items:center; gap:0.4rem; font-family:'Fredoka One',cursive; font-size:1.6rem; color:#E8112D; text-shadow:2px 2px 0 #FCD116; cursor:pointer; user-select:none; transition:transform .3s; }
+        .logo:hover { transform:scale(1.03); }
+        .logo span { background:#00853E; color:white; font-size:.85rem; padding:.15rem .7rem; border-radius:40px; font-weight:700; text-shadow:none; }
+        .menu-toggle { display:none; background:none; border:none; font-size:1.8rem; color:#2D1B0E; cursor:pointer; padding:.2rem .5rem; transition:color .3s; }
+        .menu-toggle:hover { color:#E8112D; }
+        nav { display:flex; gap:1.2rem; font-weight:600; align-items:center; }
+        nav a { text-decoration:none; color:#2D1B0E; transition:color .3s; cursor:pointer; font-size:.95rem; position:relative; }
+        nav a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#E8112D; transition:width .3s; }
+        nav a:hover { color:#E8112D; }
+        nav a:hover::after { width:100%; }
+        nav a .cart-count { background:#E8112D; color:white; border-radius:50%; padding:0 .4rem; font-size:.75rem; margin-left:.2rem; }
 
         /* ===== BOUTONS FLOTTANTS ===== */
-        .floating-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-        }
-        .floating-buttons .btn-float {
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.6rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            text-decoration: none;
-            color: white;
-            position: relative;
-        }
-        .floating-buttons .btn-float:hover { transform: scale(1.1); }
-        .floating-buttons .cart-float {
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-        }
-        .floating-buttons .cart-float .badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #FCD116;
-            color: #2D1B0E;
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .floating-buttons .whatsapp-float {
-            background: linear-gradient(135deg, #25D366, #1da851);
-        }
+        .floating-buttons { position:fixed; bottom:20px; right:20px; z-index:999; display:flex; flex-direction:column; gap:12px; align-items:center; }
+        .floating-buttons .btn-float { border:none; border-radius:50%; width:60px; height:60px; font-size:1.6rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:transform .3s, box-shadow .3s; box-shadow:0 6px 20px rgba(0,0,0,.25); text-decoration:none; color:white; position:relative; }
+        .floating-buttons .btn-float:hover { transform:scale(1.1); }
+        .floating-buttons .cart-float { background:linear-gradient(135deg,#E8112D,#c00e24); }
+        .floating-buttons .cart-float .badge { position:absolute; top:-6px; right:-6px; background:#FCD116; color:#2D1B0E; border-radius:50%; width:26px; height:26px; font-size:.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+        .floating-buttons .whatsapp-float { background:linear-gradient(135deg,#25D366,#1da851); }
 
         /* ===== PAGES ===== */
-        .page { display: block; }
-        .page.hidden { display: none; }
+        .page { display:block; }
+        .page.hidden { display:none; }
 
         /* ===== HERO ===== */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-            padding: 2.5rem 2rem;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(135deg, #FFF8F0 0%, #FCD11620 100%);
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '🍿';
-            position: absolute;
-            right: -30px;
-            bottom: -30px;
-            font-size: 15rem;
-            opacity: 0.05;
-            transform: rotate(-10deg);
-        }
-        .hero-text {
-            flex: 1 1 300px;
-            z-index: 1;
-        }
-        .hero-text h1 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 3.2rem;
-            line-height: 1.1;
-            color: #E8112D;
-            margin-bottom: 0.5rem;
-        }
-        .hero-text h1 .highlight {
-            color: #00853E;
-            background: #FCD116;
-            padding: 0 0.4rem;
-            border-radius: 16px 4px 16px 4px;
-            display: inline-block;
-        }
-        .hero-text p {
-            font-size: 1.2rem;
-            margin: 1rem 0 1.5rem;
-            color: #4a3520;
-            max-width: 500px;
-        }
-        .slogan {
-            font-weight: 700;
-            background: #FCD116;
-            display: inline-block;
-            padding: 0.3rem 1.8rem;
-            border-radius: 40px;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            box-shadow: 0 2px 10px rgba(252,209,22,0.3);
-        }
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        .btn-primary, .btn-secondary, .btn-success {
-            display: inline-block;
-            padding: 0.8rem 2.2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: 0.3s;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-            color: white;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(232,17,45,0.35);
-        }
-        .btn-secondary {
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-        }
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.35);
-        }
-        .btn-success {
-            background: linear-gradient(135deg, #FCD116, #e6b800);
-            color: #2D1B0E;
-        }
-        .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(252,209,22,0.4);
-        }
-        .hero-image {
-            flex: 1 1 280px;
-            display: flex;
-            justify-content: center;
-            z-index: 1;
-        }
-        .popcorn-illustration {
-            width: 100%;
-            max-width: 320px;
-            aspect-ratio: 1/1;
-            background: radial-gradient(circle at 30% 30%, #FCD116, #e6b800);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 7rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            animation: float 5s ease-in-out infinite;
-            transition: transform 0.3s;
-        }
-        .popcorn-illustration:hover {
-            transform: scale(1.03) rotate(2deg);
-        }
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+        .hero { display:flex; flex-wrap:wrap; align-items:center; gap:2rem; padding:2.5rem 2rem; margin-bottom:2.5rem; background:linear-gradient(135deg,#FFF8F0 0%,#FCD11620 100%); border-radius:30px; box-shadow:0 10px 40px rgba(0,0,0,.05); position:relative; overflow:hidden; }
+        .hero::before { content:'🍿'; position:absolute; right:-30px; bottom:-30px; font-size:15rem; opacity:.05; transform:rotate(-10deg); }
+        .hero-text { flex:1 1 300px; z-index:1; }
+        .hero-text h1 { font-family:'Fredoka One',cursive; font-size:3.2rem; line-height:1.1; color:#E8112D; margin-bottom:.5rem; }
+        .hero-text h1 .highlight { color:#00853E; background:#FCD116; padding:0 .4rem; border-radius:16px 4px 16px 4px; display:inline-block; }
+        .hero-text p { font-size:1.2rem; margin:1rem 0 1.5rem; color:#4a3520; max-width:500px; }
+        .slogan { font-weight:700; background:#FCD116; display:inline-block; padding:.3rem 1.8rem; border-radius:40px; font-size:1rem; margin-bottom:.5rem; box-shadow:0 2px 10px rgba(252,209,22,.3); }
+        .hero-buttons { display:flex; flex-wrap:wrap; gap:.8rem; }
+        .btn-primary, .btn-secondary, .btn-success { display:inline-block; padding:.8rem 2.2rem; border-radius:60px; font-weight:700; font-size:1rem; text-decoration:none; transition:.3s; cursor:pointer; border:none; box-shadow:0 4px 15px rgba(0,0,0,.1); }
+        .btn-primary { background:linear-gradient(135deg,#E8112D,#c00e24); color:white; }
+        .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(232,17,45,.35); }
+        .btn-secondary { background:linear-gradient(135deg,#00853E,#006b32); color:white; }
+        .btn-secondary:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(0,133,62,.35); }
+        .btn-success { background:linear-gradient(135deg,#FCD116,#e6b800); color:#2D1B0E; }
+        .btn-success:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(252,209,22,.4); }
+        .hero-image { flex:1 1 280px; display:flex; justify-content:center; z-index:1; }
+        .popcorn-illustration { width:100%; max-width:320px; aspect-ratio:1/1; background:radial-gradient(circle at 30% 30%,#FCD116,#e6b800); border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:7rem; box-shadow:0 20px 50px rgba(0,0,0,.15); animation:float 5s ease-in-out infinite; transition:transform .3s; }
+        .popcorn-illustration:hover { transform:scale(1.03) rotate(2deg); }
+        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-15px); } }
 
-        .section-title {
-            font-family: 'Fredoka One', cursive;
-            font-size: 2.4rem;
-            text-align: center;
-            color: #00853E;
-            margin: 2.5rem 0 0.5rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 5px;
-            background: linear-gradient(90deg, #FCD116, #e6b800);
-            margin: 0.5rem auto 0;
-            border-radius: 10px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
+        .section-title { font-family:'Fredoka One',cursive; font-size:2.4rem; text-align:center; color:#00853E; margin:2.5rem 0 .5rem; position:relative; }
+        .section-title::after { content:''; display:block; width:70px; height:5px; background:linear-gradient(90deg,#FCD116,#e6b800); margin:.5rem auto 0; border-radius:10px; }
+        .section-subtitle { text-align:center; color:#666; margin-bottom:1.5rem; font-size:1.1rem; }
 
         /* ===== CATALOGUE ===== */
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 1.5rem 0 2rem;
-        }
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1rem 1rem 1.2rem;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(252,209,22,0.2);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
-        }
-        .product-card img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 3px solid #FCD116;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            margin-bottom: 0.6rem;
-            background: #f0e6d0;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .product-card img:hover {
-            transform: scale(1.02);
-            border-color: #E8112D;
-        }
-        .product-card .emoji-fallback {
-            font-size: 3.5rem;
-            display: none;
-            margin-bottom: 0.4rem;
-        }
-        .product-card img.error + .emoji-fallback,
-        .product-card img:not([src]) + .emoji-fallback {
-            display: block;
-        }
-        .product-card h3 {
-            font-size: 1.2rem;
-            color: #E8112D;
-            margin-top: 0;
-            font-weight: 700;
-        }
-        .product-card .description {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0.2rem 0 0.3rem;
-            padding: 0 0.5rem;
-            line-height: 1.4;
-        }
-        .product-card .price {
-            font-weight: 700;
-            color: #00853E;
-            font-size: 1.1rem;
-            margin: 0.2rem 0;
-        }
-        .product-card .badge {
-            position: absolute;
-            top: 10px;
-            right: -26px;
-            background: #FCD116;
-            color: #2D1B0E;
-            font-weight: 700;
-            font-size: 0.65rem;
-            padding: 0.15rem 2.2rem;
-            transform: rotate(45deg);
-            text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .product-card .btn-add-cart {
-            margin-top: 0.5rem;
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            padding: 0.4rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0,133,62,0.2);
-        }
-        .product-card .btn-add-cart:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,133,62,0.3);
-        }
-        .product-card .btn-add-cart.in-cart {
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-            box-shadow: 0 4px 12px rgba(232,17,45,0.2);
-        }
+        .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0 2rem; }
+        .product-card { background:white; border-radius:20px; padding:1rem 1rem 1.2rem; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,.06); transition:transform .3s, box-shadow .3s; border:1px solid rgba(252,209,22,.2); position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; }
+        .product-card:hover { transform:translateY(-6px); box-shadow:0 15px 45px rgba(0,0,0,.1); }
+        .product-card img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; border:3px solid #FCD116; box-shadow:0 4px 15px rgba(0,0,0,.06); margin-bottom:.6rem; background:#f0e6d0; display:block; cursor:pointer; transition:transform .3s, border-color .3s; }
+        .product-card img:hover { transform:scale(1.02); border-color:#E8112D; }
+        .product-card .emoji-fallback { font-size:3.5rem; display:none; margin-bottom:.4rem; }
+        .product-card img.error + .emoji-fallback, .product-card img:not([src]) + .emoji-fallback { display:block; }
+        .product-card h3 { font-size:1.2rem; color:#E8112D; margin-top:0; font-weight:700; }
+        .product-card .description { font-size:.9rem; color:#555; margin:.2rem 0 .3rem; padding:0 .5rem; line-height:1.4; }
+        .product-card .price { font-weight:700; color:#00853E; font-size:1.1rem; margin:.2rem 0; }
+        .product-card .badge { position:absolute; top:10px; right:-26px; background:#FCD116; color:#2D1B0E; font-weight:700; font-size:.65rem; padding:.15rem 2.2rem; transform:rotate(45deg); text-transform:uppercase; box-shadow:0 2px 10px rgba(0,0,0,.1); }
+        .product-card .btn-add-cart { margin-top:.5rem; background:linear-gradient(135deg,#00853E,#006b32); color:white; padding:.4rem 1.5rem; border-radius:60px; font-weight:700; border:none; cursor:pointer; transition:.3s; font-size:.9rem; box-shadow:0 4px 12px rgba(0,133,62,.2); }
+        .product-card .btn-add-cart:hover { transform:scale(1.05); box-shadow:0 6px 20px rgba(0,133,62,.3); }
+        .product-card .btn-add-cart.in-cart { background:linear-gradient(135deg,#E8112D,#c00e24); box-shadow:0 4px 12px rgba(232,17,45,.2); }
 
-        /* ===== PAGE PANIER ===== */
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-        }
-        .cart-table th {
-            background: #FCD116;
-            color: #2D1B0E;
-            padding: 0.8rem 1rem;
-            text-align: left;
-            font-weight: 700;
-        }
-        .cart-table td {
-            padding: 0.8rem 1rem;
-            border-bottom: 1px solid #f0e6d0;
-            vertical-align: middle;
-        }
-        .cart-table tr:last-child td { border-bottom: none; }
-        .cart-table .item-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .cart-table .item-controls button {
-            background: #FCD116;
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: 0.2s;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .cart-table .item-controls button:hover {
-            background: #e6b800;
-            transform: scale(1.05);
-        }
-        .cart-table .item-controls .qty-display {
-            font-weight: 700;
-            min-width: 30px;
-            text-align: center;
-        }
-        .cart-table .remove-item {
-            background: #E8112D;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.9rem;
-        }
-        .cart-table .remove-item:hover {
-            background: #c00e24;
-            transform: scale(1.1);
-        }
-        .cart-total {
-            text-align: right;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-top: 1rem;
-            border-top: 2px solid #FCD116;
-            padding-top: 1rem;
-        }
-        .cart-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .cart-actions .btn-cart {
-            padding: 0.7rem 2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-        }
-        .cart-actions .btn-cart-empty {
-            background: #ddd;
-            color: #555;
-        }
-        .cart-actions .btn-cart-empty:hover { background: #ccc; }
-        .cart-actions .btn-cart-checkout {
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-        }
-        .cart-actions .btn-cart-checkout:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
-        }
-        .cart-empty-message {
-            text-align: center;
-            padding: 3rem 0;
-            color: #999;
-            font-size: 1.2rem;
-        }
-        .cart-empty-message i {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 1rem;
-            color: #ddd;
-        }
+        /* ===== PANIER ===== */
+        .cart-table { width:100%; border-collapse:collapse; margin:1.5rem 0; background:white; border-radius:20px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.06); }
+        .cart-table th { background:#FCD116; color:#2D1B0E; padding:.8rem 1rem; text-align:left; font-weight:700; }
+        .cart-table td { padding:.8rem 1rem; border-bottom:1px solid #f0e6d0; vertical-align:middle; }
+        .cart-table tr:last-child td { border-bottom:none; }
+        .cart-table .item-controls { display:flex; align-items:center; gap:.5rem; }
+        .cart-table .item-controls button { background:#FCD116; border:none; border-radius:50%; width:32px; height:32px; cursor:pointer; font-weight:700; transition:.2s; font-size:1.1rem; display:flex; align-items:center; justify-content:center; }
+        .cart-table .item-controls button:hover { background:#e6b800; transform:scale(1.05); }
+        .cart-table .item-controls .qty-display { font-weight:700; min-width:30px; text-align:center; }
+        .cart-table .remove-item { background:#E8112D; color:white; border:none; border-radius:50%; width:32px; height:32px; cursor:pointer; transition:.2s; font-size:.9rem; }
+        .cart-table .remove-item:hover { background:#c00e24; transform:scale(1.1); }
+        .cart-total { text-align:right; font-size:1.4rem; font-weight:700; margin-top:1rem; border-top:2px solid #FCD116; padding-top:1rem; }
+        .cart-actions { display:flex; justify-content:flex-end; gap:1rem; margin-top:1.5rem; flex-wrap:wrap; }
+        .cart-actions .btn-cart { padding:.7rem 2rem; border-radius:60px; font-weight:700; border:none; cursor:pointer; transition:.3s; font-size:1rem; }
+        .cart-actions .btn-cart-empty { background:#ddd; color:#555; }
+        .cart-actions .btn-cart-empty:hover { background:#ccc; }
+        .cart-actions .btn-cart-checkout { background:linear-gradient(135deg,#00853E,#006b32); color:white; box-shadow:0 4px 15px rgba(0,133,62,.2); }
+        .cart-actions .btn-cart-checkout:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(0,133,62,.3); }
+        .cart-empty-message { text-align:center; padding:3rem 0; color:#999; font-size:1.2rem; }
+        .cart-empty-message i { font-size:3rem; display:block; margin-bottom:1rem; color:#ddd; }
 
         /* ===== AUTRES SECTIONS ===== */
-        .cta-banner {
-            background: linear-gradient(135deg, #E8112D, #a00d1f);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 30px;
-            text-align: center;
-            margin: 2.5rem 0;
-            box-shadow: 0 10px 40px rgba(232,17,45,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-banner::after {
-            content: '🍿';
-            position: absolute;
-            right: 20px;
-            bottom: 10px;
-            font-size: 8rem;
-            opacity: 0.1;
-        }
-        .cta-banner h2 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .cta-banner .btn-secondary {
-            background: #FCD116;
-            color: #2D1B0E;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .cta-banner .btn-secondary:hover {
-            background: #e6b800;
-            transform: translateY(-3px);
-        }
+        .cta-banner { background:linear-gradient(135deg,#E8112D,#a00d1f); color:white; padding:2.5rem; border-radius:30px; text-align:center; margin:2.5rem 0; box-shadow:0 10px 40px rgba(232,17,45,.2); position:relative; overflow:hidden; }
+        .cta-banner::after { content:'🍿'; position:absolute; right:20px; bottom:10px; font-size:8rem; opacity:.1; }
+        .cta-banner h2 { font-family:'Fredoka One',cursive; font-size:2.2rem; margin-bottom:.5rem; }
+        .cta-banner .btn-secondary { background:#FCD116; color:#2D1B0E; box-shadow:0 4px 15px rgba(0,0,0,.2); }
+        .cta-banner .btn-secondary:hover { background:#e6b800; transform:translateY(-3px); }
 
-        /* ===== NOUVEAU SYSTÈME DE COMMENTAIRES (MODERNE) ===== */
-        .comments-section {
-            background: white;
-            border-radius: 30px;
-            padding: 2.5rem;
-            margin: 2.5rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border: 1px solid rgba(252,209,22,0.15);
-        }
-        .comments-section h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 0.3rem;
-        }
-        .comments-section .section-subtitle {
-            margin-bottom: 1.8rem;
-        }
+        /* ===== COMMENTAIRES ===== */
+        .comments-section { background:white; border-radius:30px; padding:2.5rem; margin:2.5rem 0; box-shadow:0 10px 40px rgba(0,0,0,.05); border:1px solid rgba(252,209,22,.15); }
+        .comments-section h2 { font-family:'Fredoka One',cursive; color:#E8112D; font-size:2rem; text-align:center; margin-bottom:.3rem; }
+        .comment-form-modern { display:flex; flex-direction:column; gap:1.2rem; max-width:600px; margin:0 auto 2.5rem; }
+        .comment-form-modern .form-group { display:flex; flex-direction:column; gap:.3rem; }
+        .comment-form-modern .form-group label { font-weight:600; font-size:.9rem; color:#444; }
+        .comment-form-modern .form-group input, .comment-form-modern .form-group textarea { width:100%; padding:.8rem 1rem; border:2px solid #eee; border-radius:16px; font-family:'Quicksand',sans-serif; font-size:1rem; transition:.3s; background:#fafafa; }
+        .comment-form-modern .form-group input:focus, .comment-form-modern .form-group textarea:focus { border-color:#E8112D; outline:none; box-shadow:0 0 0 4px rgba(232,17,45,.08); background:white; }
+        .comment-form-modern .form-group textarea { min-height:120px; resize:vertical; }
+        .comment-form-modern .btn-submit { background:linear-gradient(135deg,#00853E,#006b32); color:white; border:none; padding:.9rem 2rem; border-radius:60px; font-weight:700; font-size:1rem; cursor:pointer; transition:.3s; box-shadow:0 4px 15px rgba(0,133,62,.2); align-self:flex-start; }
+        .comment-form-modern .btn-submit:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(0,133,62,.3); }
+        .comment-form-modern .btn-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+        .comments-list-modern { display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem; }
+        .comment-card { background:#fafaf8; border-radius:20px; padding:1.5rem; border:1px solid #f0e6d0; transition:.3s; }
+        .comment-card:hover { border-color:#FCD116; box-shadow:0 4px 12px rgba(0,0,0,.04); }
+        .comment-card .comment-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; margin-bottom:.4rem; }
+        .comment-card .comment-header strong { font-size:1.1rem; color:#E8112D; }
+        .comment-card .comment-header .comment-date { font-size:.8rem; color:#999; }
+        .comment-card .comment-text { color:#444; white-space:pre-wrap; word-break:break-word; margin-bottom:.4rem; }
+        .comment-card .admin-reply { margin-top:.8rem; padding:.8rem 1rem; background:#f0f7ed; border-left:4px solid #00853E; border-radius:12px; }
+        .comment-card .admin-reply strong { display:block; font-size:.8rem; color:#00853E; text-transform:uppercase; letter-spacing:.3px; margin-bottom:.2rem; }
+        .comment-card .admin-reply p { color:#2D1B0E; margin:0; }
+        .no-comments { text-align:center; color:#999; padding:2rem 0; font-size:1.1rem; }
 
-        .comment-form-modern {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-        }
-        .comment-form-modern .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-        .comment-form-modern .form-group label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #444;
-        }
-        .comment-form-modern .form-group input,
-        .comment-form-modern .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #eee;
-            border-radius: 16px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1rem;
-            transition: 0.3s;
-            background: #fafafa;
-        }
-        .comment-form-modern .form-group input:focus,
-        .comment-form-modern .form-group textarea:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(232,17,45,0.08);
-            background: white;
-        }
-        .comment-form-modern .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .comment-form-modern .btn-submit {
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-            align-self: flex-start;
-        }
-        .comment-form-modern .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
-        }
-        .comment-form-modern .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
+        /* ===== FAQ ===== */
+        .faq-item { background:white; border-radius:16px; margin-bottom:.8rem; box-shadow:0 4px 15px rgba(0,0,0,.04); overflow:hidden; transition:box-shadow .3s; }
+        .faq-item:hover { box-shadow:0 6px 25px rgba(0,0,0,.08); }
+        .faq-question { width:100%; padding:1.2rem 1.5rem; background:none; border:none; text-align:left; font-weight:700; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Quicksand',sans-serif; color:#2D1B0E; transition:.2s; }
+        .faq-question:hover { background:#FFF8F0; }
+        .faq-question .fa-chevron-down { transition:transform .3s; color:#E8112D; }
+        .faq-item.active .faq-question .fa-chevron-down { transform:rotate(180deg); }
+        .faq-answer { padding:0 1.5rem 1.5rem; display:none; color:#555; }
+        .faq-item.active .faq-answer { display:block; }
 
-        .comments-list-modern {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .comment-card {
-            background: #fafaf8;
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid #f0e6d0;
-            transition: 0.3s;
-        }
-        .comment-card:hover {
-            border-color: #FCD116;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-        .comment-card .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.4rem;
-        }
-        .comment-card .comment-header strong {
-            font-size: 1.1rem;
-            color: #E8112D;
-        }
-        .comment-card .comment-header .comment-date {
-            font-size: 0.8rem;
-            color: #999;
-        }
-        .comment-card .comment-text {
-            color: #444;
-            white-space: pre-wrap;
-            word-break: break-word;
-            margin-bottom: 0.4rem;
-        }
-        .comment-card .admin-reply {
-            margin-top: 0.8rem;
-            padding: 0.8rem 1rem;
-            background: #f0f7ed;
-            border-left: 4px solid #00853E;
-            border-radius: 12px;
-        }
-        .comment-card .admin-reply strong {
-            display: block;
-            font-size: 0.8rem;
-            color: #00853E;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-bottom: 0.2rem;
-        }
-        .comment-card .admin-reply p {
-            color: #2D1B0E;
-            margin: 0;
-        }
-        .no-comments {
-            text-align: center;
-            color: #999;
-            padding: 2rem 0;
-            font-size: 1.1rem;
-        }
+        /* ===== CONTACT & ABOUT ===== */
+        .contact-info { background:linear-gradient(135deg,#FCD116,#e6b800); border-radius:20px; padding:2rem; margin-top:1.5rem; text-align:center; box-shadow:0 8px 30px rgba(252,209,22,.2); }
+        .contact-info h2 { font-family:'Fredoka One',cursive; color:#E8112D; font-size:2rem; margin-bottom:.3rem; }
+        .contact-info .contact-details { display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; margin:.8rem 0; font-size:.9rem; }
+        .contact-info .contact-details a { display:inline-flex; align-items:center; gap:.4rem; text-decoration:none; color:#2D1B0E; background:white; padding:.4rem 1rem; border-radius:60px; box-shadow:0 2px 10px rgba(0,0,0,.05); transition:.3s; font-weight:600; font-size:.85rem; }
+        .contact-info .contact-details a:hover { background:#00853E; color:white; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,133,62,.2); }
+        .contact-info .address { font-size:.9rem; background:white; padding:.4rem 1.5rem; border-radius:60px; display:inline-block; margin-top:.3rem; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+        .about { background:white; border-radius:20px; padding:2rem; margin:2rem 0; box-shadow:0 8px 30px rgba(0,0,0,.05); border-left:6px solid #00853E; }
+        .about h2 { font-family:'Fredoka One',cursive; color:#E8112D; font-size:2rem; margin-bottom:.5rem; }
+        .quote { font-style:italic; font-weight:600; color:#00853E; background:#FFF8F0; padding:.8rem 1.8rem; border-radius:40px 8px 40px 8px; display:inline-block; font-size:.95rem; margin-top:.5rem; }
 
-        .faq-item {
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-        }
-        .faq-item:hover { box-shadow: 0 6px 25px rgba(0,0,0,0.08); }
-        .faq-question {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            background: none;
-            border: none;
-            text-align: left;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Quicksand', sans-serif;
-            color: #2D1B0E;
-            transition: 0.2s;
-        }
-        .faq-question:hover { background: #FFF8F0; }
-        .faq-question .fa-chevron-down {
-            transition: transform 0.3s;
-            color: #E8112D;
-        }
-        .faq-item.active .faq-question .fa-chevron-down { transform: rotate(180deg); }
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            display: none;
-            color: #555;
-        }
-        .faq-item.active .faq-answer { display: block; }
-
-        .contact-info {
-            background: linear-gradient(135deg, #FCD116, #e6b800);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 1.5rem;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(252,209,22,0.2);
-        }
-        .contact-info h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 2rem;
-            margin-bottom: 0.3rem;
-        }
-        .contact-info .contact-details {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 0.8rem 0;
-            font-size: 0.9rem;
-        }
-        .contact-info .contact-details a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            text-decoration: none;
-            color: #2D1B0E;
-            background: white;
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        .contact-info .contact-details a:hover {
-            background: #00853E;
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-        }
-        .contact-info .address {
-            font-size: 0.9rem;
-            background: white;
-            padding: 0.4rem 1.5rem;
-            border-radius: 60px;
-            display: inline-block;
-            margin-top: 0.3rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .about {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-            border-left: 6px solid #00853E;
-        }
-        .about h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .quote {
-            font-style: italic;
-            font-weight: 600;
-            color: #00853E;
-            background: #FFF8F0;
-            padding: 0.8rem 1.8rem;
-            border-radius: 40px 8px 40px 8px;
-            display: inline-block;
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-        }
-
-        footer {
-            margin-top: 2.5rem;
-            text-align: center;
-            border-top: 2px solid #FCD116;
-            padding-top: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-        }
-        footer .brand {
-            font-weight: 700;
-            color: #E8112D;
-        }
-        .socials {
-            display: flex;
-            gap: 0.8rem;
-        }
-        .socials a {
-            color: #2D1B0E;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            display: inline-flex;
-        }
-        .socials a:hover {
-            color: #E8112D;
-            transform: scale(1.15);
-        }
+        footer { margin-top:2.5rem; text-align:center; border-top:2px solid #FCD116; padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; font-size:.85rem; }
+        footer .brand { font-weight:700; color:#E8112D; }
+        .socials { display:flex; gap:.8rem; }
+        .socials a { color:#2D1B0E; font-size:1.4rem; transition:.3s; display:inline-flex; }
+        .socials a:hover { color:#E8112D; transform:scale(1.15); }
 
         /* ===== LIGHTBOX ===== */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.92);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            padding: 20px;
-            backdrop-filter: blur(5px);
-        }
-        .lightbox.active {
-            display: flex;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity:0; }
-            to { opacity:1; }
-        }
-        .lightbox img {
-            max-width: 95%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            cursor: default;
-        }
-        .lightbox .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 3rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: transform 0.3s;
-            background: none;
-            border: none;
-            font-family: 'Quicksand', sans-serif;
-        }
-        .lightbox .close-lightbox:hover {
-            transform: scale(1.2) rotate(90deg);
-        }
+        .lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.92); z-index:9999; justify-content:center; align-items:center; cursor:pointer; padding:20px; backdrop-filter:blur(5px); }
+        .lightbox.active { display:flex; animation:fadeIn .3s; }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        .lightbox img { max-width:95%; max-height:90%; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.6); cursor:default; }
+        .lightbox .close-lightbox { position:absolute; top:20px; right:30px; color:white; font-size:3rem; font-weight:300; cursor:pointer; transition:transform .3s; background:none; border:none; font-family:'Quicksand',sans-serif; }
+        .lightbox .close-lightbox:hover { transform:scale(1.2) rotate(90deg); }
 
-        /* ============================================================ */
-        /* ===== ADMIN - TABLEAU DE BORD ===== */
-        /* ============================================================ */
-        .admin-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-        .admin-modal.active {
-            display: flex;
-            animation: fadeIn 0.25s ease;
-        }
-        .admin-modal .modal-content {
-            background: #fff;
-            border-radius: 28px;
-            padding: 2rem 2rem 1rem;
-            max-width: 950px;
-            width: 95%;
-            max-height: 92vh;
-            overflow-y: auto;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .admin-modal .modal-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .admin-modal .modal-content::-webkit-scrollbar-track {
-            background: #f0e6d0;
-            border-radius: 10px;
-        }
-        .admin-modal .modal-content::-webkit-scrollbar-thumb {
-            background: #E8112D;
-            border-radius: 10px;
-        }
+        /* ===== ADMIN ===== */
+        .admin-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.4); backdrop-filter:blur(4px); z-index:10000; justify-content:center; align-items:center; }
+        .admin-modal.active { display:flex; animation:fadeIn .25s ease; }
+        .admin-modal .modal-content { background:#fff; border-radius:28px; padding:2rem 2rem 1rem; max-width:950px; width:95%; max-height:92vh; overflow-y:auto; box-shadow:0 30px 80px rgba(0,0,0,.25); position:relative; display:flex; flex-direction:column; }
+        .admin-modal .modal-content::-webkit-scrollbar { width:6px; }
+        .admin-modal .modal-content::-webkit-scrollbar-track { background:#f0e6d0; border-radius:10px; }
+        .admin-modal .modal-content::-webkit-scrollbar-thumb { background:#E8112D; border-radius:10px; }
+        .admin-header { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #FCD116; padding-bottom:1rem; margin-bottom:1.8rem; flex-wrap:wrap; gap:.8rem; flex-shrink:0; }
+        .admin-header .admin-title { display:flex; align-items:center; gap:.8rem; }
+        .admin-header .admin-title i { font-size:2.2rem; color:#E8112D; }
+        .admin-header .admin-title h2 { font-family:'Fredoka One',cursive; color:#E8112D; font-size:1.8rem; margin:0; }
+        .admin-header .admin-actions { display:flex; gap:.6rem; flex-wrap:wrap; }
+        .admin-header .admin-actions .btn-logout { background:#E8112D; color:white; border:none; padding:.5rem 1.2rem; border-radius:60px; font-weight:700; font-size:.9rem; cursor:pointer; transition:.3s; display:flex; align-items:center; gap:.4rem; box-shadow:0 4px 12px rgba(232,17,45,.25); }
+        .admin-header .admin-actions .btn-logout:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(232,17,45,.35); }
+        .admin-header .admin-actions .btn-back { background:#6c757d; color:white; border:none; padding:.5rem 1.2rem; border-radius:60px; font-weight:700; font-size:.9rem; cursor:pointer; transition:.3s; display:flex; align-items:center; gap:.4rem; box-shadow:0 4px 12px rgba(108,117,125,.25); }
+        .admin-header .admin-actions .btn-back:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(108,117,125,.35); }
+        .admin-tabs { display:flex; gap:.4rem; margin-bottom:1.8rem; border-bottom:2px solid #f0e6d0; flex-wrap:wrap; flex-shrink:0; }
+        .admin-tabs .tab-btn { padding:.6rem 1.5rem; border:none; background:none; font-weight:600; font-size:.95rem; cursor:pointer; border-bottom:3px solid transparent; transition:.2s; color:#555; font-family:'Quicksand',sans-serif; }
+        .admin-tabs .tab-btn:hover { color:#2D1B0E; }
+        .admin-tabs .tab-btn.active { color:#E8112D; border-bottom-color:#E8112D; }
+        .admin-tab-content { display:none; flex:1; }
+        .admin-tab-content.active { display:block; }
+        .admin-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1.2rem; margin-bottom:2rem; }
+        .admin-stats .stat-card { background:#faf6f0; border-radius:18px; padding:1rem 1.2rem; text-align:center; border:1px solid #f0e6d0; transition:.2s; }
+        .admin-stats .stat-card:hover { border-color:#FCD116; }
+        .admin-stats .stat-card .stat-number { font-size:2rem; font-weight:700; color:#E8112D; line-height:1.2; }
+        .admin-stats .stat-card .stat-label { font-size:.8rem; color:#666; font-weight:600; text-transform:uppercase; letter-spacing:.3px; }
+        .admin-section-title { font-family:'Fredoka One',cursive; font-size:1.3rem; color:#00853E; margin:1.5rem 0 .8rem; display:flex; align-items:center; gap:.6rem; }
+        .admin-section-title i { color:#E8112D; }
+        .admin-gout-list { display:flex; flex-direction:column; gap:.8rem; margin-bottom:1.5rem; }
+        .admin-gout-item { background:#faf6f0; border-radius:18px; padding:1rem 1.2rem; border:1px solid #f0e6d0; transition:.2s; display:flex; flex-direction:column; gap:.6rem; }
+        .admin-gout-item:hover { border-color:#FCD116; box-shadow:0 4px 12px rgba(0,0,0,.04); }
+        .admin-gout-item .gout-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+        .admin-gout-item .gout-header .gout-name { font-weight:700; color:#E8112D; font-size:1.1rem; }
+        .admin-gout-item .gout-header .gout-actions { display:flex; gap:.5rem; }
+        .admin-gout-item .gout-header .gout-actions button { background:none; border:none; cursor:pointer; font-size:.9rem; padding:.2rem .8rem; border-radius:40px; transition:.2s; font-weight:600; }
+        .admin-gout-item .gout-header .gout-actions .btn-delete { color:#E8112D; background:#fde8e8; }
+        .admin-gout-item .gout-header .gout-actions .btn-delete:hover { background:#E8112D; color:white; }
+        .admin-gout-item .gout-fields { display:grid; grid-template-columns:1fr 1fr; gap:.6rem 1.2rem; background:white; border-radius:14px; padding:.8rem 1rem; border:1px solid #f0e6d0; }
+        .admin-gout-item .gout-fields label { font-size:.8rem; font-weight:600; color:#555; display:block; margin-bottom:.1rem; }
+        .admin-gout-item .gout-fields input, .admin-gout-item .gout-fields textarea { width:100%; padding:.4rem .6rem; border:1px solid #ddd; border-radius:10px; font-family:'Quicksand',sans-serif; font-size:.9rem; transition:.2s; background:#fafafa; }
+        .admin-gout-item .gout-fields input:focus, .admin-gout-item .gout-fields textarea:focus { border-color:#E8112D; outline:none; box-shadow:0 0 0 3px rgba(232,17,45,.1); }
+        .admin-gout-item .gout-fields textarea { resize:vertical; min-height:50px; }
+        .admin-gout-item .image-preview { max-width:60px; max-height:60px; border-radius:10px; object-fit:cover; border:2px solid #f0e6d0; margin-top:.3rem; }
+        .admin-add-section { background:#faf6f0; border-radius:20px; padding:1.5rem; border:1px solid #f0e6d0; margin-top:.5rem; }
+        .admin-add-section h3 { font-family:'Fredoka One',cursive; color:#00853E; font-size:1.3rem; margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
+        .admin-add-section .add-fields { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .admin-add-section .add-fields .full-width { grid-column:1 / -1; }
+        .admin-add-section .add-fields label { font-weight:600; font-size:.9rem; color:#444; }
+        .admin-add-section .add-fields input, .admin-add-section .add-fields textarea { width:100%; padding:.5rem .8rem; border:1px solid #ddd; border-radius:12px; font-family:'Quicksand',sans-serif; font-size:.95rem; transition:.2s; background:white; }
+        .admin-add-section .add-fields input:focus, .admin-add-section .add-fields textarea:focus { border-color:#00853E; outline:none; box-shadow:0 0 0 3px rgba(0,133,62,.12); }
+        .admin-add-section .add-fields textarea { min-height:60px; resize:vertical; }
+        .admin-add-section .btn-add { margin-top:1rem; background:linear-gradient(135deg,#00853E,#006b32); color:white; border:none; padding:.7rem 2rem; border-radius:60px; font-weight:700; font-size:1rem; cursor:pointer; transition:.3s; box-shadow:0 4px 15px rgba(0,133,62,.2); display:inline-flex; align-items:center; gap:.6rem; }
+        .admin-add-section .btn-add:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(0,133,62,.3); }
+        .admin-comment-list { display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem; }
+        .admin-comment-item { background:#faf6f0; border:1px solid #f0e6d0; border-radius:18px; padding:1rem 1.2rem; }
+        .admin-comment-item.is-hidden { opacity:.7; }
+        .admin-comment-item .comment-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem; margin-bottom:.4rem; }
+        .admin-comment-item .comment-author { font-weight:700; color:#E8112D; }
+        .admin-comment-item .comment-meta { font-size:.78rem; color:#777; }
+        .admin-comment-item .comment-text { margin:.6rem 0; background:white; border:1px solid #f0e6d0; border-radius:14px; padding:.8rem 1rem; white-space:pre-wrap; }
+        .admin-comment-item .comment-reply-box { margin:.6rem 0 .4rem; }
+        .admin-comment-item .comment-reply-box textarea { width:100%; padding:.6rem .8rem; border:2px solid #eee; border-radius:12px; font-family:'Quicksand',sans-serif; font-size:.9rem; resize:vertical; min-height:60px; transition:.2s; }
+        .admin-comment-item .comment-reply-box textarea:focus { border-color:#00853E; outline:none; box-shadow:0 0 0 3px rgba(0,133,62,.1); }
+        .admin-comment-item .comment-actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem; }
+        .admin-comment-item .comment-actions button { border:none; border-radius:40px; padding:.35rem .8rem; font-weight:600; cursor:pointer; font-size:.85rem; transition:.2s; }
+        .admin-comment-item .comment-actions .btn-comment-toggle { background:#e8f5ee; color:#006b32; }
+        .admin-comment-item .comment-actions .btn-comment-toggle:hover { background:#00853E; color:white; }
+        .admin-comment-item .comment-actions .btn-comment-delete { background:#fde8e8; color:#E8112D; }
+        .admin-comment-item .comment-actions .btn-comment-delete:hover { background:#E8112D; color:white; }
+        .admin-comment-item .comment-actions .btn-comment-reply { background:#f0e6d0; color:#2D1B0E; }
+        .admin-comment-item .comment-actions .btn-comment-reply:hover { background:#FCD116; color:#2D1B0E; }
+        .admin-comment-item .comment-actions .btn-comment-save-reply { background:#00853E; color:white; }
+        .admin-comment-item .comment-actions .btn-comment-save-reply:hover { background:#006b32; }
+        .admin-comment-item .existing-reply { margin-top:.6rem; padding:.6rem .8rem; background:#e8f5ee; border-left:4px solid #00853E; border-radius:12px; }
+        .admin-comment-item .existing-reply strong { color:#00853E; font-size:.8rem; text-transform:uppercase; letter-spacing:.3px; }
+        .admin-comment-item .existing-reply p { margin:.2rem 0 0; color:#2D1B0E; }
+        .admin-settings-section { background:#faf6f0; border-radius:20px; padding:1.5rem; border:1px solid #f0e6d0; }
+        .admin-settings-section h3 { font-family:'Fredoka One',cursive; color:#E8112D; font-size:1.3rem; margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
+        .admin-settings-section .settings-fields { display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:100%; }
+        .admin-settings-section .settings-fields label { font-weight:600; font-size:.9rem; color:#444; }
+        .admin-settings-section .settings-fields input { width:100%; padding:.5rem .8rem; border:1px solid #ddd; border-radius:12px; font-family:'Quicksand',sans-serif; font-size:.95rem; transition:.2s; background:white; }
+        .admin-settings-section .settings-fields input:focus { border-color:#E8112D; outline:none; box-shadow:0 0 0 3px rgba(232,17,45,.1); }
+        .admin-settings-section .btn-save-settings { margin-top:1rem; background:linear-gradient(135deg,#E8112D,#c00e24); color:white; border:none; padding:.6rem 2rem; border-radius:60px; font-weight:700; font-size:1rem; cursor:pointer; transition:.3s; box-shadow:0 4px 15px rgba(232,17,45,.2); display:inline-flex; align-items:center; gap:.6rem; }
+        .admin-settings-section .btn-save-settings:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(232,17,45,.3); }
+        .admin-footer { position:sticky; bottom:0; background:rgba(255,255,255,.95); padding:1rem 0; border-top:1px solid #f0e6d0; margin-top:1.5rem; text-align:right; backdrop-filter:blur(5px); flex-shrink:0; }
+        .admin-footer .btn-save-all { background:linear-gradient(135deg,#00853E,#006b32); color:white; border:none; padding:.6rem 2rem; border-radius:60px; font-weight:700; font-size:1rem; cursor:pointer; transition:.3s; box-shadow:0 4px 15px rgba(0,133,62,.2); display:inline-flex; align-items:center; gap:.6rem; }
+        .admin-footer .btn-save-all:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(0,133,62,.3); }
+        .admin-footer .admin-message { margin-top:.6rem; font-weight:600; padding:.6rem 1rem; border-radius:12px; background:#e8f5ee; color:#006b32; border-left:4px solid #00853E; display:none; text-align:left; }
+        .admin-footer .admin-message.error { background:#fde8e8; color:#b02a37; border-left-color:#E8112D; }
+        .admin-login-box { max-width:380px; margin:0 auto; padding:1.5rem 0; }
+        .admin-login-box label { font-weight:600; display:block; margin-top:.8rem; }
+        .admin-login-box input { width:100%; padding:.6rem 1rem; border:2px solid #eee; border-radius:14px; font-family:'Quicksand',sans-serif; font-size:1rem; transition:.2s; margin-top:.2rem; }
+        .admin-login-box input:focus { border-color:#E8112D; outline:none; box-shadow:0 0 0 4px rgba(232,17,45,.1); }
+        .admin-login-box .btn-login { width:100%; margin-top:1.5rem; background:linear-gradient(135deg,#E8112D,#c00e24); color:white; border:none; padding:.8rem; border-radius:60px; font-weight:700; font-size:1.1rem; cursor:pointer; transition:.3s; box-shadow:0 4px 15px rgba(232,17,45,.2); }
+        .admin-login-box .btn-login:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(232,17,45,.3); }
+        .admin-login-box .password-error { color:#E8112D; font-weight:600; margin-top:.5rem; text-align:center; display:none; }
 
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #FCD116;
-            padding-bottom: 1rem;
-            margin-bottom: 1.8rem;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            flex-shrink: 0;
-        }
-        .admin-header .admin-title {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .admin-header .admin-title i {
-            font-size: 2.2rem;
-            color: #E8112D;
-        }
-        .admin-header .admin-title h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 1.8rem;
-            margin: 0;
-        }
-        .admin-header .admin-actions {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-        .admin-header .admin-actions .btn-logout {
-            background: #E8112D;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 12px rgba(232,17,45,0.25);
-        }
-        .admin-header .admin-actions .btn-logout:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(232,17,45,0.35);
-        }
-        .admin-header .admin-actions .btn-back {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 12px rgba(108,117,125,0.25);
-        }
-        .admin-header .admin-actions .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(108,117,125,0.35);
-        }
-
-        .admin-tabs {
-            display: flex;
-            gap: 0.4rem;
-            margin-bottom: 1.8rem;
-            border-bottom: 2px solid #f0e6d0;
-            flex-wrap: wrap;
-            flex-shrink: 0;
-        }
-        .admin-tabs .tab-btn {
-            padding: 0.6rem 1.5rem;
-            border: none;
-            background: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: 0.2s;
-            color: #555;
-            font-family: 'Quicksand', sans-serif;
-        }
-        .admin-tabs .tab-btn:hover { color: #2D1B0E; }
-        .admin-tabs .tab-btn.active {
-            color: #E8112D;
-            border-bottom-color: #E8112D;
-        }
-        .admin-tab-content {
-            display: none;
-            flex: 1;
-        }
-        .admin-tab-content.active { display: block; }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .admin-stats .stat-card {
-            background: #faf6f0;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
-            text-align: center;
-            border: 1px solid #f0e6d0;
-            transition: 0.2s;
-        }
-        .admin-stats .stat-card:hover { border-color: #FCD116; }
-        .admin-stats .stat-card .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #E8112D;
-            line-height: 1.2;
-        }
-        .admin-stats .stat-card .stat-label {
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .admin-section-title {
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.3rem;
-            color: #00853E;
-            margin: 1.5rem 0 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-section-title i { color: #E8112D; }
-
-        .admin-gout-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-        .admin-gout-item {
-            background: #faf6f0;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
-            border: 1px solid #f0e6d0;
-            transition: 0.2s;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .admin-gout-item:hover {
-            border-color: #FCD116;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-        .admin-gout-item .gout-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .admin-gout-item .gout-header .gout-name {
-            font-weight: 700;
-            color: #E8112D;
-            font-size: 1.1rem;
-        }
-        .admin-gout-item .gout-header .gout-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .admin-gout-item .gout-header .gout-actions button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0.2rem 0.8rem;
-            border-radius: 40px;
-            transition: 0.2s;
-            font-weight: 600;
-        }
-        .admin-gout-item .gout-header .gout-actions .btn-delete {
-            color: #E8112D;
-            background: #fde8e8;
-        }
-        .admin-gout-item .gout-header .gout-actions .btn-delete:hover {
-            background: #E8112D;
-            color: white;
-        }
-        .admin-gout-item .gout-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.6rem 1.2rem;
-            background: white;
-            border-radius: 14px;
-            padding: 0.8rem 1rem;
-            border: 1px solid #f0e6d0;
-        }
-        .admin-gout-item .gout-fields label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #555;
-            display: block;
-            margin-bottom: 0.1rem;
-        }
-        .admin-gout-item .gout-fields input,
-        .admin-gout-item .gout-fields textarea {
-            width: 100%;
-            padding: 0.4rem 0.6rem;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            background: #fafafa;
-        }
-        .admin-gout-item .gout-fields input:focus,
-        .admin-gout-item .gout-fields textarea:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(232,17,45,0.1);
-        }
-        .admin-gout-item .gout-fields textarea {
-            resize: vertical;
-            min-height: 50px;
-        }
-        .admin-gout-item .image-preview {
-            max-width: 60px;
-            max-height: 60px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid #f0e6d0;
-            margin-top: 0.3rem;
-        }
-        .admin-gout-item .gout-fields .file-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-        .admin-gout-item .gout-fields .file-input-wrapper input[type="file"] {
-            padding: 0.3rem;
-            font-size: 0.8rem;
-            border: none;
-            background: none;
-        }
-
-        .admin-add-section {
-            background: #faf6f0;
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid #f0e6d0;
-            margin-top: 0.5rem;
-        }
-        .admin-add-section h3 {
-            font-family: 'Fredoka One', cursive;
-            color: #00853E;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-add-section .add-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        .admin-add-section .add-fields .full-width {
-            grid-column: 1 / -1;
-        }
-        .admin-add-section .add-fields label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #444;
-        }
-        .admin-add-section .add-fields input,
-        .admin-add-section .add-fields textarea {
-            width: 100%;
-            padding: 0.5rem 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.2s;
-            background: white;
-        }
-        .admin-add-section .add-fields input:focus,
-        .admin-add-section .add-fields textarea:focus {
-            border-color: #00853E;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0,133,62,0.12);
-        }
-        .admin-add-section .add-fields textarea {
-            min-height: 60px;
-            resize: vertical;
-        }
-        .admin-add-section .btn-add {
-            margin-top: 1rem;
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            border: none;
-            padding: 0.7rem 2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-add-section .btn-add:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
-        }
-
-        /* Administration des commentaires */
-        .admin-comment-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .admin-comment-item {
-            background: #faf6f0;
-            border: 1px solid #f0e6d0;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
-        }
-        .admin-comment-item.is-hidden {
-            opacity: 0.7;
-        }
-        .admin-comment-item .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.4rem;
-        }
-        .admin-comment-item .comment-author {
-            font-weight: 700;
-            color: #E8112D;
-        }
-        .admin-comment-item .comment-meta {
-            font-size: 0.78rem;
-            color: #777;
-        }
-        .admin-comment-item .comment-text {
-            margin: 0.6rem 0;
-            background: white;
-            border: 1px solid #f0e6d0;
-            border-radius: 14px;
-            padding: 0.8rem 1rem;
-            white-space: pre-wrap;
-        }
-        .admin-comment-item .comment-reply-box {
-            margin: 0.6rem 0 0.4rem;
-        }
-        .admin-comment-item .comment-reply-box textarea {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 2px solid #eee;
-            border-radius: 12px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.9rem;
-            resize: vertical;
-            min-height: 60px;
-            transition: 0.2s;
-        }
-        .admin-comment-item .comment-reply-box textarea:focus {
-            border-color: #00853E;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0,133,62,0.1);
-        }
-        .admin-comment-item .comment-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.4rem;
-        }
-        .admin-comment-item .comment-actions button {
-            border: none;
-            border-radius: 40px;
-            padding: 0.35rem 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.2s;
-        }
-        .admin-comment-item .comment-actions .btn-comment-toggle {
-            background: #e8f5ee;
-            color: #006b32;
-        }
-        .admin-comment-item .comment-actions .btn-comment-toggle:hover {
-            background: #00853E;
-            color: white;
-        }
-        .admin-comment-item .comment-actions .btn-comment-delete {
-            background: #fde8e8;
-            color: #E8112D;
-        }
-        .admin-comment-item .comment-actions .btn-comment-delete:hover {
-            background: #E8112D;
-            color: white;
-        }
-        .admin-comment-item .comment-actions .btn-comment-reply {
-            background: #f0e6d0;
-            color: #2D1B0E;
-        }
-        .admin-comment-item .comment-actions .btn-comment-reply:hover {
-            background: #FCD116;
-            color: #2D1B0E;
-        }
-        .admin-comment-item .comment-actions .btn-comment-save-reply {
-            background: #00853E;
-            color: white;
-        }
-        .admin-comment-item .comment-actions .btn-comment-save-reply:hover {
-            background: #006b32;
-        }
-        .admin-comment-item .existing-reply {
-            margin-top: 0.6rem;
-            padding: 0.6rem 0.8rem;
-            background: #e8f5ee;
-            border-left: 4px solid #00853E;
-            border-radius: 12px;
-        }
-        .admin-comment-item .existing-reply strong {
-            color: #00853E;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .admin-comment-item .existing-reply p {
-            margin: 0.2rem 0 0;
-            color: #2D1B0E;
-        }
-
-        .admin-settings-section {
-            background: #faf6f0;
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid #f0e6d0;
-        }
-        .admin-settings-section h3 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-settings-section .settings-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            max-width: 100%;
-        }
-        .admin-settings-section .settings-fields label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #444;
-        }
-        .admin-settings-section .settings-fields input {
-            width: 100%;
-            padding: 0.5rem 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.2s;
-            background: white;
-        }
-        .admin-settings-section .settings-fields input:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(232,17,45,0.1);
-        }
-        .admin-settings-section .btn-save-settings {
-            margin-top: 1rem;
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-            color: white;
-            border: none;
-            padding: 0.6rem 2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(232,17,45,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-settings-section .btn-save-settings:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(232,17,45,0.3);
-        }
-
-        .admin-footer {
-            position: sticky;
-            bottom: 0;
-            background: rgba(255,255,255,0.95);
-            padding: 1rem 0;
-            border-top: 1px solid #f0e6d0;
-            margin-top: 1.5rem;
-            text-align: right;
-            backdrop-filter: blur(5px);
-            flex-shrink: 0;
-        }
-        .admin-footer .btn-save-all {
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            border: none;
-            padding: 0.6rem 2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .admin-footer .btn-save-all:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
-        }
-        .admin-footer .admin-message {
-            margin-top: 0.6rem;
-            font-weight: 600;
-            padding: 0.6rem 1rem;
-            border-radius: 12px;
-            background: #e8f5ee;
-            color: #006b32;
-            border-left: 4px solid #00853E;
-            display: none;
-            text-align: left;
-        }
-        .admin-footer .admin-message.error {
-            background: #fde8e8;
-            color: #b02a37;
-            border-left-color: #E8112D;
-        }
-
-        .admin-login-box {
-            max-width: 380px;
-            margin: 0 auto;
-            padding: 1.5rem 0;
-        }
-        .admin-login-box label {
-            font-weight: 600;
-            display: block;
-            margin-top: 0.8rem;
-        }
-        .admin-login-box input {
-            width: 100%;
-            padding: 0.6rem 1rem;
-            border: 2px solid #eee;
-            border-radius: 14px;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1rem;
-            transition: 0.2s;
-            margin-top: 0.2rem;
-        }
-        .admin-login-box input:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(232,17,45,0.1);
-        }
-        .admin-login-box .btn-login {
-            width: 100%;
-            margin-top: 1.5rem;
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-            color: white;
-            border: none;
-            padding: 0.8rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(232,17,45,0.2);
-        }
-        .admin-login-box .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(232,17,45,0.3);
-        }
-        .admin-login-box .password-error {
-            color: #E8112D;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            text-align: center;
-            display: none;
-        }
-
-        /* ============================================================ */
         /* ===== RESPONSIVE ===== */
-        /* ============================================================ */
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-                padding: 1rem 0;
-                border-top: 2px solid #FCD116;
-                margin-top: 0.5rem;
-            }
-            nav.open { display: flex; }
-            nav a {
-                padding: 0.3rem 0;
-                border-bottom: 1px solid #f0e6d0;
-            }
-            .hero { padding: 1.5rem; }
-            .hero-text h1 { font-size: 2.4rem; }
-            .products-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
-            }
-            .admin-gout-item .gout-fields { grid-template-columns: 1fr; }
-            .admin-add-section .add-fields { grid-template-columns: 1fr; }
-            .admin-add-section .add-fields .full-width { grid-column: 1; }
-            .admin-stats { grid-template-columns: 1fr 1fr; }
-            .admin-settings-section .settings-fields { grid-template-columns: 1fr; }
-            .admin-header .admin-title h2 { font-size: 1.4rem; }
-            .floating-buttons .btn-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            .floating-buttons .cart-float .badge {
-                width: 22px;
-                height: 22px;
-                font-size: 0.7rem;
-            }
-            .comments-section { padding: 1.5rem; }
-            .comment-form-modern { max-width: 100%; }
-        }
-        @media (max-width: 480px) {
-            .admin-modal .modal-content { padding: 1.2rem; }
-            .admin-stats { grid-template-columns: 1fr; }
-            .admin-header {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .admin-header .admin-actions { justify-content: center; }
-            .products-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.5rem;
-            }
-            .product-card { padding: 0.5rem 0.3rem 0.7rem; }
-            .product-card h3 { font-size: 0.95rem; }
-            .product-card .description { font-size: 0.75rem; }
-            .product-card .price { font-size: 0.85rem; }
-            .product-card .btn-add-cart {
-                font-size: 0.75rem;
-                padding: 0.2rem 1rem;
-            }
-            .logo { font-size: 1.2rem; }
-            .logo span { font-size: 0.65rem; }
-            .hero-text h1 { font-size: 2rem; }
-            .cart-table th, .cart-table td {
-                padding: 0.5rem;
-                font-size: 0.85rem;
-            }
-            .cart-table .item-controls button {
-                width: 28px;
-                height: 28px;
-                font-size: 0.9rem;
-            }
-            .cart-actions { flex-direction: column; align-items: stretch; }
-            .floating-buttons .btn-float {
-                width: 44px;
-                height: 44px;
-                font-size: 1.1rem;
-            }
-            .floating-buttons .cart-float .badge {
-                width: 18px;
-                height: 18px;
-                font-size: 0.6rem;
-                top: -4px;
-                right: -4px;
-            }
-            .comments-section { padding: 1rem; }
-            .comment-card { padding: 1rem; }
-        }
+        @media (max-width:768px) { .menu-toggle { display:block; } nav { display:none; flex-direction:column; width:100%; gap:.5rem; padding:1rem 0; border-top:2px solid #FCD116; margin-top:.5rem; } nav.open { display:flex; } nav a { padding:.3rem 0; border-bottom:1px solid #f0e6d0; } .hero { padding:1.5rem; } .hero-text h1 { font-size:2.4rem; } .products-grid { grid-template-columns:1fr 1fr; gap:.8rem; } .admin-gout-item .gout-fields { grid-template-columns:1fr; } .admin-add-section .add-fields { grid-template-columns:1fr; } .admin-add-section .add-fields .full-width { grid-column:1; } .admin-stats { grid-template-columns:1fr 1fr; } .admin-settings-section .settings-fields { grid-template-columns:1fr; } .admin-header .admin-title h2 { font-size:1.4rem; } .floating-buttons .btn-float { width:50px; height:50px; font-size:1.3rem; } .floating-buttons .cart-float .badge { width:22px; height:22px; font-size:.7rem; } .comments-section { padding:1.5rem; } .comment-form-modern { max-width:100%; } }
+        @media (max-width:480px) { .admin-modal .modal-content { padding:1.2rem; } .admin-stats { grid-template-columns:1fr; } .admin-header { flex-direction:column; align-items:stretch; text-align:center; } .admin-header .admin-actions { justify-content:center; } .products-grid { grid-template-columns:1fr 1fr; gap:.5rem; } .product-card { padding:.5rem .3rem .7rem; } .product-card h3 { font-size:.95rem; } .product-card .description { font-size:.75rem; } .product-card .price { font-size:.85rem; } .product-card .btn-add-cart { font-size:.75rem; padding:.2rem 1rem; } .logo { font-size:1.2rem; } .logo span { font-size:.65rem; } .hero-text h1 { font-size:2rem; } .cart-table th, .cart-table td { padding:.5rem; font-size:.85rem; } .cart-table .item-controls button { width:28px; height:28px; font-size:.9rem; } .cart-actions { flex-direction:column; align-items:stretch; } .floating-buttons .btn-float { width:44px; height:44px; font-size:1.1rem; } .floating-buttons .cart-float .badge { width:18px; height:18px; font-size:.6rem; top:-4px; right:-4px; } .comments-section { padding:1rem; } .comment-card { padding:1rem; } }
     </style>
 </head>
 <body>
@@ -1839,12 +449,11 @@
                 <a href="#boutique" class="btn-success">Je commande</a>
             </div>
 
-            <!-- ===== SECTION COMMENTAIRES MODERNE ===== -->
+            <!-- ===== SECTION COMMENTAIRES ===== -->
             <section class="comments-section" id="avis">
                 <h2>⭐ Ils nous font confiance</h2>
                 <p class="section-subtitle">Partagez votre expérience et lisez les avis de nos clients</p>
 
-                <!-- Formulaire -->
                 <form id="commentForm" class="comment-form-modern">
                     <div class="form-group">
                         <label for="commentNom">Votre nom</label>
@@ -1861,7 +470,6 @@
                     <button type="submit" class="btn-submit" id="commentSubmitBtn">Envoyer mon avis <i class="fas fa-paper-plane"></i></button>
                 </form>
 
-                <!-- Liste des avis -->
                 <div id="publicCommentList" class="comments-list-modern"></div>
             </section>
 
@@ -1956,20 +564,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ================================================================
-            // 1. CONFIGURATION SUPABASE
-            // ================================================================
+            // ===== 1. SUPABASE CONFIG =====
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
             var SUPABASE_ANON_KEY = 'sb_publishable_ALEP5mzHFd4K4iFpopfbjA_J2Q5B5_b';
             var SUPABASE_TABLE = 'gouts';
-            var SUPABASE_COMMENT_TABLE = 'commentaries';  // ← nom corrigé
+            var SUPABASE_COMMENT_TABLE = 'commentaries';
 
-            var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            var supabaseClient = supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY,
+                { schema: 'public' }
+            );
             var isSupabaseReady = true;
 
-            // ================================================================
-            // 2. DONNÉES PAR DÉFAUT (goûts)
-            // ================================================================
+            // ===== 2. GOÛTS (avec peuplement automatique) =====
             var defaultGouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
                 { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '', prix: '1 200 CFA', prixNum: 1200, description: 'La touche parfaite pour les apéritifs' },
@@ -2005,19 +613,14 @@
 
             function saveGouts() {
                 localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                if (isSupabaseReady) {
-                    syncToSupabase();
-                }
+                if (isSupabaseReady) syncToSupabase();
                 updateAdminStats();
             }
 
             function syncToSupabase() {
                 if (!isSupabaseReady) return;
                 supabaseClient.from(SUPABASE_TABLE).delete().neq('id', 0).then(function(res) {
-                    if (res.error) {
-                        console.warn('Supabase delete error:', res.error);
-                        return;
-                    }
+                    if (res.error) { console.warn('Supabase delete error:', res.error); return; }
                     var data = gouts.map(function(g) {
                         return {
                             nom: g.nom,
@@ -2039,10 +642,7 @@
             function loadFromSupabase() {
                 if (!isSupabaseReady) return Promise.resolve();
                 return supabaseClient.from(SUPABASE_TABLE).select('*').then(function(res) {
-                    if (res.error) {
-                        console.warn('Supabase select error:', res.error);
-                        return;
-                    }
+                    if (res.error) { console.warn('Supabase select error:', res.error); return; }
                     if (res.data && res.data.length > 0) {
                         var loaded = res.data.map(function(p) {
                             return {
@@ -2058,16 +658,38 @@
                         });
                         gouts = loaded;
                         localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                        renderAll();
-                        buildAdminList();
-                        updateAdminStats();
+                    } else {
+                        // Table vide → insérer les produits par défaut
+                        console.log('🔄 Table gouts vide, insertion des produits par défaut...');
+                        var defaultData = defaultGouts.map(function(g) {
+                            return {
+                                nom: g.nom,
+                                image: g.image,
+                                image_data: g.imageData || null,
+                                emoji: g.emoji,
+                                badge: g.badge || '',
+                                prix: g.prix,
+                                prix_num: g.prixNum || 0,
+                                description: g.description || ''
+                            };
+                        });
+                        supabaseClient.from(SUPABASE_TABLE).insert(defaultData).then(function(ins) {
+                            if (ins.error) {
+                                console.warn('Erreur insertion produits par défaut:', ins.error);
+                            } else {
+                                console.log('✅ Produits par défaut insérés avec succès.');
+                                loadFromSupabase(); // recharger après insertion
+                            }
+                        });
+                        return;
                     }
+                    renderAll();
+                    buildAdminList();
+                    updateAdminStats();
                 });
             }
 
-            // ================================================================
-            // 3. COMMENTAIRES (avec la table 'commentaries')
-            // ================================================================
+            // ===== 3. COMMENTAIRES =====
             var commentaires = [];
 
             function normaliserCommentaire(c) {
@@ -2078,7 +700,7 @@
                     texte: c.texte || '',
                     date: c.date || null,
                     masque: c.masque === true,
-                    reponse: c.reponse || null
+                    reponse: c.reponse || ''
                 };
             }
 
@@ -2086,84 +708,55 @@
                 if (!value) return '';
                 var d = new Date(value);
                 if (isNaN(d.getTime())) return '';
-                return d.toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric'
-                });
+                return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
             }
 
             function renderCommentairesPublics() {
                 var container = document.getElementById('publicCommentList');
                 if (!container) return;
-
-                var publics = commentaires.filter(function(c) {
-                    return !c.masque && c.texte.trim() !== '';
-                });
-
+                var publics = commentaires.filter(function(c) { return !c.masque && c.texte.trim() !== ''; });
                 container.innerHTML = '';
-
                 if (publics.length === 0) {
                     container.innerHTML = '<div class="no-comments">⭐ Aucun avis publié pour le moment. Soyez le premier à partager votre expérience !</div>';
                     return;
                 }
-
                 publics.slice(0, 20).forEach(function(c) {
                     var card = document.createElement('div');
                     card.className = 'comment-card';
-
-                    var header = document.createElement('div');
-                    header.className = 'comment-header';
-                    var author = document.createElement('strong');
-                    author.textContent = c.nom;
-                    var date = document.createElement('span');
-                    date.className = 'comment-date';
-                    date.textContent = formatCommentDate(c.date);
-                    header.appendChild(author);
-                    header.appendChild(date);
-
-                    var text = document.createElement('div');
-                    text.className = 'comment-text';
-                    text.textContent = c.texte;
-
-                    card.appendChild(header);
-                    card.appendChild(text);
-
-                    if (c.reponse && c.reponse.trim() !== '') {
-                        var reply = document.createElement('div');
-                        reply.className = 'admin-reply';
-                        var strong = document.createElement('strong');
-                        strong.textContent = 'Réponse de l\'équipe C\'BON POP';
-                        var p = document.createElement('p');
-                        p.textContent = c.reponse;
-                        reply.appendChild(strong);
-                        reply.appendChild(p);
-                        card.appendChild(reply);
-                    }
-
+                    card.innerHTML = `
+                        <div class="comment-header">
+                            <strong>${c.nom}</strong>
+                            <span class="comment-date">${formatCommentDate(c.date)}</span>
+                        </div>
+                        <div class="comment-text">${c.texte}</div>
+                        ${c.reponse && c.reponse.trim() !== '' ? `
+                            <div class="admin-reply">
+                                <strong>Réponse de l'équipe C'BON POP</strong>
+                                <p>${c.reponse}</p>
+                            </div>
+                        ` : ''}
+                    `;
                     container.appendChild(card);
                 });
             }
 
             async function loadCommentaires() {
                 if (!isSupabaseReady) return;
-
                 var res = await supabaseClient
                     .from(SUPABASE_COMMENT_TABLE)
                     .select('id, nom, email, texte, date, masque, reponse')
                     .order('date', { ascending: false });
-
                 if (res.error) {
                     console.warn('Supabase commentaires select error:', res.error);
                     return;
                 }
-
                 commentaires = (res.data || []).map(normaliserCommentaire);
                 renderCommentairesPublics();
                 buildAdminCommentaires();
                 updateAdminStats();
             }
 
+            // ===== FONCTION AJOUTER COMMENTAIRE (CORRIGÉE : reponse = '') =====
             async function ajouterCommentaire(nom, email, texte) {
                 var payload = {
                     nom: nom,
@@ -2171,34 +764,30 @@
                     texte: texte,
                     date: new Date().toISOString(),
                     masque: true,
-                    reponse: null
+                    reponse: ''  // ← CHAÎNE VIDE au lieu de null
                 };
-
                 var res = await supabaseClient
                     .from(SUPABASE_COMMENT_TABLE)
-                    .insert(payload)
-                    .select('id, nom, email, texte, date, masque, reponse')
-                    .single();
-
-                if (res.error) throw res.error;
-
-                commentaires.unshift(normaliserCommentaire(res.data));
-                renderCommentairesPublics();
-                buildAdminCommentaires();
-                updateAdminStats();
+                    .insert(payload);
+                if (res.error) {
+                    console.error('❌ Erreur Supabase (insert) :', {
+                        message: res.error.message,
+                        code: res.error.code,
+                        details: res.error.details,
+                        hint: res.error.hint
+                    });
+                    throw res.error;
+                }
+                await loadCommentaires();
                 return res.data;
             }
 
-            // ================================================================
-            // 4. PANIER (inchangé)
-            // ================================================================
+            // ===== 4. PANIER =====
             var cart = [];
 
             function loadCart() {
                 var stored = localStorage.getItem('cbonpop_cart');
-                if (stored) {
-                    try { cart = JSON.parse(stored); } catch (e) { cart = []; }
-                }
+                if (stored) { try { cart = JSON.parse(stored); } catch (e) { cart = []; } }
                 updateCartUI();
             }
 
@@ -2258,11 +847,8 @@
                 tbody.querySelectorAll('.cart-decr').forEach(function(btn) {
                     btn.addEventListener('click', function() {
                         var idx = parseInt(this.dataset.index);
-                        if (cart[idx].qty > 1) {
-                            cart[idx].qty--;
-                        } else {
-                            cart.splice(idx, 1);
-                        }
+                        if (cart[idx].qty > 1) cart[idx].qty--;
+                        else cart.splice(idx, 1);
                         saveCart();
                         renderAll();
                         showPage('panier');
@@ -2290,11 +876,8 @@
 
             function addToCart(nom, image, prix, prixNum) {
                 var existing = cart.find(function(item) { return item.nom === nom; });
-                if (existing) {
-                    existing.qty++;
-                } else {
-                    cart.push({ nom: nom, image: image, prix: prix, prixNum: prixNum, qty: 1 });
-                }
+                if (existing) existing.qty++;
+                else cart.push({ nom: nom, image: image, prix: prix, prixNum: prixNum, qty: 1 });
                 saveCart();
                 renderAll();
                 var btns = document.querySelectorAll('.btn-add-cart');
@@ -2311,9 +894,7 @@
                 updateCartUI();
             }
 
-            // ================================================================
-            // 5. LIGHTBOX (inchangée)
-            // ================================================================
+            // ===== 5. LIGHTBOX =====
             var lightbox = document.getElementById('lightbox');
             var lightboxImg = document.getElementById('lightboxImg');
             var closeLightbox = document.getElementById('closeLightbox');
@@ -2328,17 +909,11 @@
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) closeLightboxFn();
-            });
+            lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightboxFn(); });
             closeLightbox.addEventListener('click', closeLightboxFn);
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxFn();
-            });
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxFn(); });
 
-            // ================================================================
-            // 6. GÉNÉRATEUR DE CARTE (inchangé)
-            // ================================================================
+            // ===== 6. GÉNÉRATEUR DE CARTE =====
             function genererCarte(gout, avecBouton) {
                 var card = document.createElement('div');
                 card.className = 'product-card';
@@ -2355,23 +930,18 @@
                 }
 
                 var img = document.createElement('img');
-                if (gout.imageData) {
-                    img.src = gout.imageData;
-                } else {
+                if (gout.imageData) img.src = gout.imageData;
+                else {
                     var imgSrc = gout.image;
                     if (!imgSrc.includes('.')) imgSrc += '.jpg';
                     img.src = imgSrc;
                 }
                 img.alt = gout.nom;
                 img.loading = 'lazy';
-
                 img.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    if (this.src && !this.classList.contains('error')) {
-                        openLightbox(this.src);
-                    }
+                    if (this.src && !this.classList.contains('error')) openLightbox(this.src);
                 });
-
                 img.addEventListener('error', function() {
                     this.classList.add('error');
                     this.style.display = 'none';
@@ -2432,14 +1002,9 @@
                 updateCartUI();
             }
 
-            // ================================================================
-            // 7. CHECKOUT (inchangé)
-            // ================================================================
+            // ===== 7. CHECKOUT =====
             document.getElementById('checkoutBtnPanier').addEventListener('click', function() {
-                if (cart.length === 0) {
-                    alert('Votre panier est vide.');
-                    return;
-                }
+                if (cart.length === 0) { alert('Votre panier est vide.'); return; }
                 var total = cart.reduce(function(sum, item) { return sum + (item.prixNum * item.qty); }, 0);
                 var message = '🛒 *Commande C\'BON POP* 🛒\n\n';
                 cart.forEach(function(item) {
@@ -2447,9 +1012,7 @@
                 });
                 message += '\n💰 *Total : ' + total + ' CFA*';
                 message += '\n\n📦 *Livraison :* à confirmer par téléphone.';
-
-                var url = 'https://wa.me/22966561780?text=' + encodeURIComponent(message);
-                window.open(url, '_blank');
+                window.open('https://wa.me/22966561780?text=' + encodeURIComponent(message), '_blank');
                 cart = [];
                 saveCart();
                 renderAll();
@@ -2458,17 +1021,10 @@
 
             document.getElementById('emptyCartBtn').addEventListener('click', function() {
                 if (cart.length === 0) return;
-                if (confirm('Vider le panier ?')) {
-                    cart = [];
-                    saveCart();
-                    renderAll();
-                    showPage('panier');
-                }
+                if (confirm('Vider le panier ?')) { cart = []; saveCart(); renderAll(); showPage('panier'); }
             });
 
-            // ================================================================
-            // 8. ADMIN (avec gestion des réponses)
-            // ================================================================
+            // ===== 8. ADMIN =====
             var adminModal = document.getElementById('adminModal');
             var adminLogin = document.getElementById('adminLogin');
             var adminPanel = document.getElementById('adminPanel');
@@ -2498,9 +1054,7 @@
                     try {
                         var parsed = JSON.parse(stored);
                         return { user: parsed.user || 'challa', pass: parsed.pass || '66561780' };
-                    } catch (e) {
-                        return { user: 'challa', pass: '66561780' };
-                    }
+                    } catch (e) { return { user: 'challa', pass: '66561780' }; }
                 }
                 return { user: 'challa', pass: '66561780' };
             }
@@ -2514,16 +1068,10 @@
                 localStorage.setItem('cbonpop_admin_creds', JSON.stringify(adminCreds));
             }
 
-            function isAdminLoggedIn() {
-                return localStorage.getItem('cbonpop_admin_session') === 'true';
-            }
-            function setAdminSession(active) {
-                localStorage.setItem('cbonpop_admin_session', active ? 'true' : 'false');
-            }
+            function isAdminLoggedIn() { return localStorage.getItem('cbonpop_admin_session') === 'true'; }
+            function setAdminSession(active) { localStorage.setItem('cbonpop_admin_session', active ? 'true' : 'false'); }
 
-            document.getElementById('backBtn').addEventListener('click', function() {
-                adminModal.classList.remove('active');
-            });
+            document.getElementById('backBtn').addEventListener('click', function() { adminModal.classList.remove('active'); });
 
             function openAdminModal() {
                 adminModal.classList.add('active');
@@ -2548,9 +1096,7 @@
                 }
             }
 
-            function closeAdminModal() {
-                adminModal.classList.remove('active');
-            }
+            function closeAdminModal() { adminModal.classList.remove('active'); }
 
             var logoAccueil = document.getElementById('logoAccueil');
             var logoBoutique = document.getElementById('logoBoutique');
@@ -2562,15 +1108,8 @@
                 e.stopPropagation();
                 clickCount++;
                 clearTimeout(clickTimer);
-                if (clickCount >= 6) {
-                    clickCount = 0;
-                    openAdminModal();
-                    return;
-                }
-                clickTimer = setTimeout(function() {
-                    clickCount = 0;
-                    location.reload();
-                }, 3000);
+                if (clickCount >= 6) { clickCount = 0; openAdminModal(); return; }
+                clickTimer = setTimeout(function() { clickCount = 0; location.reload(); }, 3000);
             }
 
             logoAccueil.addEventListener('click', handleLogoClick);
@@ -2617,9 +1156,7 @@
                 adminModal.classList.remove('active');
             });
 
-            adminModal.addEventListener('click', function(e) {
-                if (e.target === adminModal) closeAdminModal();
-            });
+            adminModal.addEventListener('click', function(e) { if (e.target === adminModal) closeAdminModal(); });
 
             function updateAdminStats() {
                 var total = gouts.length;
@@ -2635,7 +1172,6 @@
             function buildAdminCommentaires() {
                 if (!adminCommentList) return;
                 adminCommentList.innerHTML = '';
-
                 if (commentaires.length === 0) {
                     adminCommentList.innerHTML = '<p style="text-align:center;color:#999;padding:1rem 0;">Aucun commentaire pour le moment.</p>';
                     return;
@@ -2645,70 +1181,55 @@
                     var item = document.createElement('div');
                     item.className = 'admin-comment-item' + (c.masque ? ' is-hidden' : '');
 
-                    var header = document.createElement('div');
-                    header.className = 'comment-header';
+                    item.innerHTML = `
+                        <div class="comment-header">
+                            <div>
+                                <div class="comment-author">${c.nom}</div>
+                                <div class="comment-meta">${c.email ? c.email + ' · ' : ''}${formatCommentDate(c.date) || 'Date inconnue'}</div>
+                            </div>
+                            <span class="comment-meta">${c.masque ? '🔒 Masqué' : '🌐 Publié'}</span>
+                        </div>
+                        <div class="comment-text">${c.texte}</div>
+                        ${c.reponse && c.reponse.trim() !== '' ? `
+                            <div class="existing-reply">
+                                <strong>Réponse admin :</strong>
+                                <p>${c.reponse}</p>
+                            </div>
+                        ` : ''}
+                        <div class="comment-reply-box" style="display:none;">
+                            <textarea placeholder="Écrivez votre réponse..."></textarea>
+                        </div>
+                        <div class="comment-actions">
+                            <button class="btn-comment-toggle">${c.masque ? '🌐 Publier' : '🔒 Masquer'}</button>
+                            <button class="btn-comment-delete">🗑️ Supprimer</button>
+                            <button class="btn-comment-reply">${c.reponse ? '✏️ Modifier la réponse' : '💬 Répondre'}</button>
+                            <button class="btn-comment-save-reply">💾 Enregistrer la réponse</button>
+                        </div>
+                    `;
 
-                    var author = document.createElement('div');
-                    var authorName = document.createElement('div');
-                    authorName.className = 'comment-author';
-                    authorName.textContent = c.nom;
+                    adminCommentList.appendChild(item);
 
-                    var meta = document.createElement('div');
-                    meta.className = 'comment-meta';
-                    meta.textContent = (c.email ? c.email + ' · ' : '') + (formatCommentDate(c.date) || 'Date inconnue');
+                    // === Gestion des événements ===
+                    var toggleBtn = item.querySelector('.btn-comment-toggle');
+                    var deleteBtn = item.querySelector('.btn-comment-delete');
+                    var replyBtn = item.querySelector('.btn-comment-reply');
+                    var saveReplyBtn = item.querySelector('.btn-comment-save-reply');
+                    var replyBox = item.querySelector('.comment-reply-box');
+                    var replyTextarea = replyBox.querySelector('textarea');
 
-                    author.appendChild(authorName);
-                    author.appendChild(meta);
-
-                    var status = document.createElement('span');
-                    status.className = 'comment-meta';
-                    status.textContent = c.masque ? '🔒 Masqué' : '🌐 Publié';
-
-                    header.appendChild(author);
-                    header.appendChild(status);
-
-                    var body = document.createElement('div');
-                    body.className = 'comment-text';
-                    body.textContent = c.texte;
-
-                    var existingReply = null;
-                    if (c.reponse && c.reponse.trim() !== '') {
-                        existingReply = document.createElement('div');
-                        existingReply.className = 'existing-reply';
-                        existingReply.innerHTML = `<strong>Réponse admin :</strong><p>${escapeHTML(c.reponse)}</p>`;
-                    }
-
-                    var replyBox = document.createElement('div');
-                    replyBox.className = 'comment-reply-box';
-                    replyBox.style.display = 'none';
-                    var replyTextarea = document.createElement('textarea');
-                    replyTextarea.placeholder = 'Écrivez votre réponse...';
-                    replyTextarea.rows = 2;
-                    replyBox.appendChild(replyTextarea);
-
-                    var actions = document.createElement('div');
-                    actions.className = 'comment-actions';
-
-                    var toggleBtn = document.createElement('button');
-                    toggleBtn.className = 'btn-comment-toggle';
-                    toggleBtn.textContent = c.masque ? '🌐 Publier' : '🔒 Masquer';
                     toggleBtn.addEventListener('click', async function() {
                         var nextValue = !c.masque;
                         toggleBtn.disabled = true;
-
                         var res = await supabaseClient
                             .from(SUPABASE_COMMENT_TABLE)
                             .update({ masque: nextValue })
                             .eq('id', c.id);
-
                         toggleBtn.disabled = false;
-
                         if (res.error) {
                             showAdminMessage('❌ Impossible de modifier ce commentaire.', true);
                             console.error(res.error);
                             return;
                         }
-
                         c.masque = nextValue;
                         renderCommentairesPublics();
                         buildAdminCommentaires();
@@ -2716,23 +1237,17 @@
                         showAdminMessage(nextValue ? '🔒 Commentaire masqué.' : '🌐 Commentaire publié.', false);
                     });
 
-                    var deleteBtn = document.createElement('button');
-                    deleteBtn.className = 'btn-comment-delete';
-                    deleteBtn.textContent = '🗑️ Supprimer';
                     deleteBtn.addEventListener('click', async function() {
                         if (!confirm('Supprimer définitivement le commentaire de "' + c.nom + '" ?')) return;
-
                         var res = await supabaseClient
                             .from(SUPABASE_COMMENT_TABLE)
                             .delete()
                             .eq('id', c.id);
-
                         if (res.error) {
                             showAdminMessage('❌ Impossible de supprimer ce commentaire.', true);
                             console.error(res.error);
                             return;
                         }
-
                         commentaires = commentaires.filter(function(item) { return item.id !== c.id; });
                         renderCommentairesPublics();
                         buildAdminCommentaires();
@@ -2740,55 +1255,31 @@
                         showAdminMessage('🗑️ Commentaire supprimé.', false);
                     });
 
-                    var replyBtn = document.createElement('button');
-                    replyBtn.className = 'btn-comment-reply';
-                    replyBtn.textContent = c.reponse ? '✏️ Modifier la réponse' : '💬 Répondre';
                     replyBtn.addEventListener('click', function() {
                         var isHidden = replyBox.style.display === 'none';
                         replyBox.style.display = isHidden ? 'block' : 'none';
-                        if (isHidden && c.reponse) {
-                            replyTextarea.value = c.reponse;
-                        } else if (isHidden) {
-                            replyTextarea.value = '';
-                        }
+                        if (isHidden && c.reponse) replyTextarea.value = c.reponse;
+                        else if (isHidden) replyTextarea.value = '';
                     });
 
-                    var saveReplyBtn = document.createElement('button');
-                    saveReplyBtn.className = 'btn-comment-save-reply';
-                    saveReplyBtn.textContent = '💾 Enregistrer la réponse';
                     saveReplyBtn.addEventListener('click', async function() {
                         var newReply = replyTextarea.value.trim();
                         if (newReply === '' && !confirm('Laisser la réponse vide ?')) return;
-
                         var res = await supabaseClient
                             .from(SUPABASE_COMMENT_TABLE)
-                            .update({ reponse: newReply || null })
+                            .update({ reponse: newReply || '' })
                             .eq('id', c.id);
-
                         if (res.error) {
                             showAdminMessage('❌ Impossible d\'enregistrer la réponse.', true);
                             console.error(res.error);
                             return;
                         }
-
-                        c.reponse = newReply || null;
+                        c.reponse = newReply || '';
                         renderCommentairesPublics();
                         buildAdminCommentaires();
                         updateAdminStats();
                         showAdminMessage('✅ Réponse enregistrée.', false);
                     });
-
-                    actions.appendChild(toggleBtn);
-                    actions.appendChild(deleteBtn);
-                    actions.appendChild(replyBtn);
-                    actions.appendChild(saveReplyBtn);
-
-                    item.appendChild(header);
-                    item.appendChild(body);
-                    if (existingReply) item.appendChild(existingReply);
-                    item.appendChild(replyBox);
-                    item.appendChild(actions);
-                    adminCommentList.appendChild(item);
                 });
             }
 
@@ -2801,24 +1292,33 @@
                 gouts.forEach(function(g, index) {
                     var item = document.createElement('div');
                     item.className = 'admin-gout-item';
+                    item.innerHTML = `
+                        <div class="gout-header">
+                            <span class="gout-name">${g.nom}</span>
+                            <div class="gout-actions">
+                                <button class="btn-delete" ${gouts.length <= 1 ? 'disabled style="opacity:0.5;" title="Vous devez garder au moins un goût"' : ''}><i class="fas fa-trash"></i> Supprimer</button>
+                            </div>
+                        </div>
+                        <div class="gout-fields">
+                            <div>
+                                <label>Prix</label>
+                                <input type="text" class="admin-field" data-index="${index}" data-field="prix" value="${g.prix || ''}" />
+                            </div>
+                            <div>
+                                <label>Description (facultatif)</label>
+                                <textarea class="admin-field" data-index="${index}" data-field="description">${g.description || ''}</textarea>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                                <label>Image</label>
+                                <img class="image-preview" src="${g.imageData || (g.image && !g.image.includes('.') ? g.image + '.jpg' : g.image || 'default.jpg')}" alt="${g.nom}" />
+                                <input type="file" class="admin-file" data-index="${index}" accept="image/*" />
+                            </div>
+                        </div>
+                    `;
+                    adminGoutList.appendChild(item);
 
-                    var header = document.createElement('div');
-                    header.className = 'gout-header';
-                    var nameSpan = document.createElement('span');
-                    nameSpan.className = 'gout-name';
-                    nameSpan.textContent = g.nom;
-                    header.appendChild(nameSpan);
-
-                    var actions = document.createElement('div');
-                    actions.className = 'gout-actions';
-                    var delBtn = document.createElement('button');
-                    delBtn.className = 'btn-delete';
-                    delBtn.innerHTML = '<i class="fas fa-trash"></i> Supprimer';
-                    if (gouts.length <= 1) {
-                        delBtn.disabled = true;
-                        delBtn.style.opacity = '0.5';
-                        delBtn.title = 'Vous devez garder au moins un goût';
-                    }
+                    // Suppression
+                    var delBtn = item.querySelector('.btn-delete');
                     delBtn.addEventListener('click', function() {
                         if (gouts.length <= 1) return;
                         if (confirm('Supprimer le goût "' + g.nom + '" ?')) {
@@ -2830,62 +1330,9 @@
                             showAdminMessage('🗑️ Goût supprimé', false);
                         }
                     });
-                    actions.appendChild(delBtn);
-                    header.appendChild(actions);
-                    item.appendChild(header);
 
-                    var fields = document.createElement('div');
-                    fields.className = 'gout-fields';
-
-                    var prixDiv = document.createElement('div');
-                    var prixLabel = document.createElement('label');
-                    prixLabel.textContent = 'Prix';
-                    prixDiv.appendChild(prixLabel);
-                    var prixInput = document.createElement('input');
-                    prixInput.type = 'text';
-                    prixInput.value = g.prix || '';
-                    prixInput.dataset.index = index;
-                    prixInput.dataset.field = 'prix';
-                    prixInput.className = 'admin-field';
-                    prixDiv.appendChild(prixInput);
-                    fields.appendChild(prixDiv);
-
-                    var descDiv = document.createElement('div');
-                    var descLabel = document.createElement('label');
-                    descLabel.textContent = 'Description (facultatif)';
-                    descDiv.appendChild(descLabel);
-                    var descInput = document.createElement('textarea');
-                    descInput.value = g.description || '';
-                    descInput.dataset.index = index;
-                    descInput.dataset.field = 'description';
-                    descInput.className = 'admin-field';
-                    descDiv.appendChild(descInput);
-                    fields.appendChild(descDiv);
-
-                    var imgDiv = document.createElement('div');
-                    imgDiv.style.display = 'flex';
-                    imgDiv.style.flexDirection = 'column';
-                    imgDiv.style.gap = '0.3rem';
-                    var imgLabel = document.createElement('label');
-                    imgLabel.textContent = 'Image';
-                    imgDiv.appendChild(imgLabel);
-                    var imgPreview = document.createElement('img');
-                    imgPreview.className = 'image-preview';
-                    if (g.imageData) {
-                        imgPreview.src = g.imageData;
-                    } else {
-                        var imgSrc = g.image;
-                        if (!imgSrc.includes('.')) imgSrc += '.jpg';
-                        imgPreview.src = imgSrc;
-                    }
-                    imgPreview.alt = g.nom;
-                    imgDiv.appendChild(imgPreview);
-
-                    var fileInput = document.createElement('input');
-                    fileInput.type = 'file';
-                    fileInput.accept = 'image/*';
-                    fileInput.dataset.index = index;
-                    fileInput.className = 'admin-file';
+                    // File input
+                    var fileInput = item.querySelector('.admin-file');
                     fileInput.addEventListener('change', function(e) {
                         var file = e.target.files[0];
                         if (file) {
@@ -2900,15 +1347,27 @@
                             reader.readAsDataURL(file);
                         }
                     });
-                    imgDiv.appendChild(fileInput);
-                    fields.appendChild(imgDiv);
 
-                    item.appendChild(fields);
-                    adminGoutList.appendChild(item);
+                    // Input fields for price/description (on change only)
+                    var fields = item.querySelectorAll('.admin-field');
+                    fields.forEach(function(field) {
+                        field.addEventListener('change', function() {
+                            var idx = parseInt(this.dataset.index);
+                            var fname = this.dataset.field;
+                            if (gouts[idx]) {
+                                gouts[idx][fname] = this.value.trim();
+                                if (fname === 'prix') {
+                                    var prixNum = parseInt(this.value.trim().replace(/\D/g, ''));
+                                    gouts[idx].prixNum = prixNum || 0;
+                                }
+                            }
+                        });
+                    });
                 });
             }
 
             saveAllBtn.addEventListener('click', function() {
+                // Sauvegarder tous les champs modifiés
                 var fields = adminGoutList.querySelectorAll('.admin-field');
                 var files = adminGoutList.querySelectorAll('.admin-file');
 
@@ -2929,9 +1388,7 @@
                     if (fileInput.dataset.tempImage) {
                         gouts[index].imageData = fileInput.dataset.tempImage;
                         var file = fileInput.files[0];
-                        if (file) {
-                            gouts[index].image = file.name;
-                        }
+                        if (file) gouts[index].image = file.name;
                         fileInput.dataset.tempImage = '';
                     }
                 });
@@ -3031,21 +1488,15 @@
             });
 
             function switchTab(tabId) {
-                document.querySelectorAll('.admin-tab-content').forEach(function(el) {
-                    el.classList.remove('active');
-                });
+                document.querySelectorAll('.admin-tab-content').forEach(function(el) { el.classList.remove('active'); });
                 document.getElementById(tabId).classList.add('active');
                 document.querySelectorAll('.tab-btn').forEach(function(el) {
                     el.classList.remove('active');
-                    if (el.dataset.tab === tabId) {
-                        el.classList.add('active');
-                    }
+                    if (el.dataset.tab === tabId) el.classList.add('active');
                 });
             }
             document.querySelectorAll('.tab-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    switchTab(this.dataset.tab);
-                });
+                btn.addEventListener('click', function() { switchTab(this.dataset.tab); });
             });
 
             function showAdminMessage(msg, isError) {
@@ -3058,17 +1509,10 @@
 
             function escapeHTML(value) {
                 if (!value) return '';
-                return String(value)
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/'/g, '&#039;');
+                return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
             }
 
-            // ================================================================
-            // 9. FORMULAIRE COMMENTAIRE
-            // ================================================================
+            // ===== 9. FORMULAIRE COMMENTAIRE =====
             var commentForm = document.getElementById('commentForm');
             var commentSubmitBtn = document.getElementById('commentSubmitBtn');
 
@@ -3093,21 +1537,24 @@
                     await ajouterCommentaire(nom, email, texte);
 
                     alert('Merci ! Votre avis a bien été enregistré. Il sera visible sur le site après validation par notre équipe.');
-
                     commentForm.reset();
-                    await loadCommentaires();
                 } catch (error) {
-                    console.error('Erreur enregistrement commentaire:', error);
-                    alert('Votre avis n\'a pas pu être enregistré. Vérifiez votre connexion et réessayez.');
+                    console.error('❌ Erreur enregistrement commentaire:', {
+                        message: error.message || 'Message inconnu',
+                        code: error.code || 'N/A',
+                        details: error.details || 'N/A',
+                        hint: error.hint || 'N/A'
+                    });
+                    alert('Votre avis n\'a pas pu être enregistré.\n' +
+                          'Message : ' + (error.message || 'Erreur inconnue') + '\n' +
+                          'Code : ' + (error.code || '-'));
                 } finally {
                     commentSubmitBtn.disabled = false;
                     commentSubmitBtn.innerHTML = 'Envoyer mon avis <i class="fas fa-paper-plane"></i>';
                 }
             });
 
-            // ================================================================
-            // 10. NAVIGATION
-            // ================================================================
+            // ===== 10. NAVIGATION =====
             var pages = {
                 accueil: document.getElementById('pageAccueil'),
                 boutique: document.getElementById('pageBoutique'),
@@ -3115,52 +1562,22 @@
             };
 
             function showPage(page) {
-                Object.keys(pages).forEach(function(key) {
-                    pages[key].classList.toggle('hidden', key !== page);
-                });
+                Object.keys(pages).forEach(function(key) { pages[key].classList.toggle('hidden', key !== page); });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 if (page === 'panier') renderCartPage();
             }
 
-            document.getElementById('navCommander').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('boutique');
-            });
-            document.getElementById('navPanier').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('panier');
-            });
-            document.getElementById('navPanierBoutique').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('panier');
-            });
-            document.getElementById('btnRetourAccueil').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('accueil');
-            });
-            document.getElementById('btnRetourAccueilPanier').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('accueil');
-            });
-            document.getElementById('btnContinuerAchat').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('boutique');
-            });
-            document.querySelector('.hero .btn-success').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('boutique');
-            });
-            document.querySelector('.cta-banner .btn-success').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('boutique');
-            });
-            document.getElementById('floatCartBtn').addEventListener('click', function() {
-                showPage('panier');
-            });
+            document.getElementById('navCommander').addEventListener('click', function(e) { e.preventDefault(); showPage('boutique'); });
+            document.getElementById('navPanier').addEventListener('click', function(e) { e.preventDefault(); showPage('panier'); });
+            document.getElementById('navPanierBoutique').addEventListener('click', function(e) { e.preventDefault(); showPage('panier'); });
+            document.getElementById('btnRetourAccueil').addEventListener('click', function(e) { e.preventDefault(); showPage('accueil'); });
+            document.getElementById('btnRetourAccueilPanier').addEventListener('click', function(e) { e.preventDefault(); showPage('accueil'); });
+            document.getElementById('btnContinuerAchat').addEventListener('click', function(e) { e.preventDefault(); showPage('boutique'); });
+            document.querySelector('.hero .btn-success').addEventListener('click', function(e) { e.preventDefault(); showPage('boutique'); });
+            document.querySelector('.cta-banner .btn-success').addEventListener('click', function(e) { e.preventDefault(); showPage('boutique'); });
+            document.getElementById('floatCartBtn').addEventListener('click', function() { showPage('panier'); });
 
-            // ================================================================
-            // 11. HAMBURGER MENU
-            // ================================================================
+            // ===== 11. HAMBURGER MENU =====
             var menuToggle = document.getElementById('menuToggle');
             var mainNav = document.getElementById('mainNav');
             var menuToggleBoutique = document.getElementById('menuToggleBoutique');
@@ -3186,9 +1603,7 @@
                 });
             }
 
-            // ================================================================
-            // 12. INITIALISATION
-            // ================================================================
+            // ===== 12. INITIALISATION =====
             Promise.all([
                 loadFromSupabase(),
                 loadCommentaires()
@@ -3199,7 +1614,6 @@
                 showPage('accueil');
             });
 
-            // Effet de clic sur les cartes
             document.addEventListener('click', function(e) {
                 var card = e.target.closest('.product-card');
                 if (card && !e.target.closest('.btn-add-cart') && e.target.tagName !== 'IMG') {
