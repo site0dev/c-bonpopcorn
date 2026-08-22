@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C'BON POP – Popcorn artisanal du Bénin</title>
-    <meta name="description" content="Découvrez les popcorns authentiques du Bénin : Sucré, Salé, Lacté, Caramel." />
-    <meta name="keywords" content="popcorn béninois, pop corn artisanal, C'BON POP, Cotonou, Bénin" />
+
+    <!-- ===== RÉFÉRENCEMENT ===== -->
+    <title>C'BON POP – Popcorn béninois</title>
+    <meta name="description" content="C'BON POP : popcorn artisanal 100% béninois. Sucré, salé, lacté, caramel – livraison à Cotonou, Porto-Novo, Abomey-Calavi. Découvrez nos saveurs authentiques." />
+    <meta name="keywords" content="popcorn béninois, popcorn artisanale, Cotonou, Bénin, Afrique de l'Ouest, snacks, goûts, caramel, salé, sucré, lacté" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://cbonpop.bj" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cbonpop.bj" />
-    <meta property="og:title" content="C'BON POP – Popcorn artisanal du Bénin" />
-    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Balises géographiques -->
     <meta name="geo.region" content="BJ" />
     <meta name="geo.placename" content="Cotonou" />
+    <meta name="geo.position" content="6.367;2.423" />
+    <meta name="ICBM" content="6.367, 2.423" />
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="C'BON POP – Popcorn béninois" />
+    <meta property="og:description" content="Popcorn artisanal 100% béninois – saveurs authentiques pour tous les gourmands." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cbonpop.bj" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="C'BON POP" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="C'BON POP – Popcorn béninois" />
+    <meta name="twitter:description" content="Popcorn artisanal 100% béninois – commandez en ligne." />
+
+    <!-- Hreflang pour le Bénin, la France et la Belgique -->
+    <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BJ" />
+    <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-FR" />
+    <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BE" />
+    <link rel="alternate" href="https://cbonpop.bj" hreflang="fr" />
+    <link rel="canonical" href="https://cbonpop.bj" />
+
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <!-- Google Translate -->
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'fr',
-                includedLanguages: 'en,fr,es,pt,it,de,ar,zh-CN,ja,ko,ru',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
 
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -55,6 +64,8 @@
             margin: 0 auto;
             padding: 1.5rem 1rem 3rem;
         }
+
+        /* ===== HEADER ===== */
         header {
             display: flex;
             flex-wrap: wrap;
@@ -183,6 +194,7 @@
             background: linear-gradient(135deg, #25D366, #1da851);
         }
 
+        /* ===== PAGES ===== */
         .page { display: block; }
         .page.hidden { display: none; }
 
@@ -558,113 +570,6 @@
             color: #ddd;
         }
 
-        /* ===== COMMENTAIRES ===== */
-        .commentaires-section {
-            margin: 2.5rem 0;
-            background: white;
-            border-radius: 30px;
-            padding: 2rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-        }
-        .commentaires-section .section-title {
-            margin-top: 0;
-        }
-        .commentaire-item {
-            background: #faf6f0;
-            border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid #FCD116;
-            position: relative;
-        }
-        .commentaire-item .commentaire-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.3rem;
-        }
-        .commentaire-item .commentaire-header .commentaire-auteur {
-            font-weight: 700;
-            color: #E8112D;
-        }
-        .commentaire-item .commentaire-header .commentaire-date {
-            font-size: 0.8rem;
-            color: #999;
-        }
-        .commentaire-item .commentaire-texte {
-            color: #444;
-            margin-top: 0.2rem;
-        }
-        .commentaire-item.masque {
-            opacity: 0.5;
-            background: #f0f0f0;
-        }
-        .commentaire-item.masque .commentaire-texte {
-            font-style: italic;
-            color: #999;
-        }
-
-        .commentaire-form {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .commentaire-form .form-row {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .commentaire-form .form-row input {
-            flex: 1;
-            padding: 0.7rem 1rem;
-            border: 2px solid #eee;
-            border-radius: 16px;
-            font-family: 'Quicksand', sans-serif;
-            transition: 0.3s;
-            background: #fafafa;
-        }
-        .commentaire-form .form-row input:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(232,17,45,0.1);
-        }
-        .commentaire-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #eee;
-            border-radius: 16px;
-            font-family: 'Quicksand', sans-serif;
-            transition: 0.3s;
-            background: #fafafa;
-            min-height: 80px;
-            resize: vertical;
-        }
-        .commentaire-form textarea:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(232,17,45,0.1);
-        }
-        .commentaire-form .btn-submit-comment {
-            padding: 0.7rem 2rem;
-            background: linear-gradient(135deg, #00853E, #006b32);
-            color: white;
-            border: none;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
-            align-self: flex-start;
-        }
-        .commentaire-form .btn-submit-comment:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
-        }
-
         /* ===== AUTRES SECTIONS ===== */
         .cta-banner {
             background: linear-gradient(135deg, #E8112D, #a00d1f);
@@ -698,6 +603,112 @@
         .cta-banner .btn-secondary:hover {
             background: #e6b800;
             transform: translateY(-3px);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            border-left: 5px solid #FCD116;
+            transition: transform 0.3s;
+        }
+        .testimonial-card:hover { transform: translateY(-3px); }
+        .testimonial-card .stars {
+            color: #FCD116;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin: 0.5rem 0;
+            color: #444;
+        }
+        .testimonial-card cite {
+            font-weight: 600;
+            color: #E8112D;
+            font-style: normal;
+        }
+        .testimonial-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 1.5rem;
+            color: #777;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+        .testimonial-date {
+            display: block;
+            margin-top: 0.4rem;
+            font-size: 0.75rem;
+            color: #999;
+            font-style: normal;
+        }
+
+        /* ===== ADMIN - COMMENTAIRES ===== */
+        .admin-comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .admin-comment-item {
+            background: #faf6f0;
+            border: 1px solid #f0e6d0;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+        }
+        .admin-comment-item .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .admin-comment-item .comment-author {
+            font-weight: 700;
+            color: #E8112D;
+        }
+        .admin-comment-item .comment-meta {
+            font-size: 0.78rem;
+            color: #777;
+        }
+        .admin-comment-item .comment-text {
+            margin: 0.7rem 0;
+            background: white;
+            border: 1px solid #f0e6d0;
+            border-radius: 14px;
+            padding: 0.8rem 1rem;
+            white-space: pre-wrap;
+        }
+        .admin-comment-item .comment-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .admin-comment-item .comment-actions button {
+            border: none;
+            border-radius: 40px;
+            padding: 0.35rem 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .admin-comment-item .btn-comment-toggle {
+            background: #e8f5ee;
+            color: #006b32;
+        }
+        .admin-comment-item .btn-comment-delete {
+            background: #fde8e8;
+            color: #E8112D;
+        }
+        .admin-comment-item.is-hidden {
+            opacity: 0.75;
         }
 
         .faq-item {
@@ -926,13 +937,6 @@
             color: #E8112D;
             transform: scale(1.15);
         }
-        .translate-wrapper {
-            margin: 1.5rem 0 0;
-            padding: 0.5rem;
-            background: #faf6f0;
-            border-radius: 60px;
-            display: inline-block;
-        }
 
         /* ===== LIGHTBOX ===== */
         .lightbox {
@@ -984,7 +988,7 @@
         }
 
         /* ============================================================ */
-        /* ===== ADMIN ===== */
+        /* ===== ADMIN - TABLEAU DE BORD ===== */
         /* ============================================================ */
         .admin-modal {
             display: none;
@@ -1078,9 +1082,10 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(232,17,45,0.35);
         }
+        /* Nouveau bouton Retour (ferme la modale sans déconnexion) */
         .admin-header .admin-actions .btn-back {
-            background: #FCD116;
-            color: #2D1B0E;
+            background: #6c757d;
+            color: white;
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 60px;
@@ -1091,11 +1096,11 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
-            box-shadow: 0 4px 12px rgba(252,209,22,0.25);
+            box-shadow: 0 4px 12px rgba(108,117,125,0.25);
         }
         .admin-header .admin-actions .btn-back:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(252,209,22,0.35);
+            box-shadow: 0 8px 20px rgba(108,117,125,0.35);
         }
 
         .admin-tabs {
@@ -1536,6 +1541,7 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
             }
+            .testimonial-grid { grid-template-columns: 1fr; }
             .trust-badges { gap: 1rem; }
             .logo { font-size: 1.4rem; }
             .logo span { font-size: 0.75rem; }
@@ -1554,9 +1560,6 @@
                 width: 22px;
                 height: 22px;
                 font-size: 0.7rem;
-            }
-            .commentaire-form .form-row {
-                flex-direction: column;
             }
         }
         @media (max-width: 480px) {
@@ -1635,15 +1638,15 @@
                         <h2>Tableau de bord</h2>
                     </div>
                     <div class="admin-actions">
-                        <button class="btn-back" id="backAdminBtn"><i class="fas fa-arrow-left"></i> Retour</button>
+                        <button class="btn-back" id="backBtn"><i class="fas fa-arrow-left"></i> Retour</button>
                         <button class="btn-logout" id="logoutAdminBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
                     </div>
                 </div>
                 <div class="admin-tabs">
                     <button class="tab-btn active" data-tab="tabListe">📋 Liste</button>
                     <button class="tab-btn" data-tab="tabAjouter">➕ Ajouter</button>
-                    <button class="tab-btn" data-tab="tabParametres">⚙️ Paramètres</button>
                     <button class="tab-btn" data-tab="tabCommentaires">💬 Commentaires</button>
+                    <button class="tab-btn" data-tab="tabParametres">⚙️ Paramètres</button>
                 </div>
                 <div style="flex:1; overflow-y:auto;">
                     <div class="admin-tab-content active" id="tabListe">
@@ -1651,6 +1654,7 @@
                             <div class="stat-card"><div class="stat-number" id="statTotal">0</div><div class="stat-label">Goûts</div></div>
                             <div class="stat-card"><div class="stat-number" id="statWithDesc">0</div><div class="stat-label">Avec description</div></div>
                             <div class="stat-card"><div class="stat-number" id="statWithImage">0</div><div class="stat-label">Avec image</div></div>
+                            <div class="stat-card"><div class="stat-number" id="statComments">0</div><div class="stat-label">Commentaires</div></div>
                         </div>
                         <div class="admin-section-title"><i class="fas fa-list"></i> Liste des goûts</div>
                         <div class="admin-gout-list" id="adminGoutList"></div>
@@ -1668,6 +1672,11 @@
                             <div id="addMessage" class="admin-message" style="display:none;"></div>
                         </div>
                     </div>
+                    <div class="admin-tab-content" id="tabCommentaires">
+                        <div class="admin-section-title"><i class="fas fa-comments"></i> Avis et messages reçus</div>
+                        <p style="color:#666;margin-bottom:1rem;">Les nouveaux messages sont masqués par défaut. Publiez uniquement les avis que vous souhaitez afficher sur le site.</p>
+                        <div class="admin-comment-list" id="adminCommentList"></div>
+                    </div>
                     <div class="admin-tab-content" id="tabParametres">
                         <div class="admin-settings-section">
                             <h3><i class="fas fa-user-cog"></i> Identifiants de connexion</h3>
@@ -1678,13 +1687,6 @@
                             </div>
                             <button class="btn-save-settings" id="saveSettingsBtn"><i class="fas fa-save"></i> Enregistrer les identifiants</button>
                             <div id="settingsMessage" class="admin-message" style="display:none;"></div>
-                        </div>
-                    </div>
-                    <div class="admin-tab-content" id="tabCommentaires">
-                        <div class="admin-settings-section">
-                            <h3><i class="fas fa-comments"></i> Gestion des commentaires</h3>
-                            <p style="color:#666;margin-bottom:1rem;">Supprimez, masquez ou modifiez les commentaires des visiteurs.</p>
-                            <div id="adminCommentList" style="margin-top:1rem;"></div>
                         </div>
                     </div>
                 </div>
@@ -1717,8 +1719,8 @@
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
                 <nav id="mainNav">
                     <a href="#catalogue">Catalogue</a>
+                    <a href="#avis">Avis</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#commentaires">Avis clients</a>
                     <a href="#contact">Contact</a>
                     <a href="#panier" id="navPanier">Panier <span class="cart-count" id="cartCountNav">0</span></a>
                     <a href="#boutique" id="navCommander">Commander</a>
@@ -1755,23 +1757,10 @@
                 <a href="#boutique" class="btn-success">Je commande</a>
             </div>
 
-            <!-- ===== SECTION COMMENTAIRES ===== -->
-            <section class="commentaires-section" id="commentaires">
-                <h2 class="section-title">💬 Ce que nos clients disent</h2>
-                <p class="section-subtitle">Partagez votre expérience avec C'BON POP</p>
-                <div id="commentairesList">
-                    <!-- Rempli par JS -->
-                </div>
-
-                <div class="commentaire-form" id="commentForm">
-                    <div class="form-row">
-                        <input type="text" id="commentNom" placeholder="Votre nom" required />
-                        <input type="email" id="commentEmail" placeholder="Votre email (facultatif)" />
-                    </div>
-                    <textarea id="commentTexte" placeholder="Votre avis sur nos popcorns..." required></textarea>
-                    <button class="btn-submit-comment" id="submitCommentBtn"><i class="fas fa-paper-plane"></i> Publier mon avis</button>
-                    <div id="commentMessage" style="margin-top:0.5rem;font-weight:600;color:#00853E;"></div>
-                </div>
+            <section class="testimonials" id="avis">
+                <h2 class="section-title">⭐ Ils nous font confiance</h2>
+                <p class="section-subtitle">Ce que nos clients disent de C'BON POP</p>
+                <div class="testimonial-grid" id="publicCommentaires"></div>
             </section>
 
             <section class="faq" id="faq">
@@ -1795,8 +1784,8 @@
             </section>
 
             <section class="contact-form-section" id="contact">
-                <h2>📩 Écrivez-nous</h2>
-                <p style="text-align:center;color:#666;margin-bottom:1rem;">Une question, une suggestion ? On vous répond dans les plus brefs délais.</p>
+                <h2>💬 Écrivez-nous</h2>
+                <p style="text-align:center;color:#666;margin-bottom:1rem;">Une question, une suggestion ou un avis ? Votre message sera enregistré et validé avant publication.</p>
                 <form class="contact-form" id="contactForm">
                     <input type="text" name="nom" placeholder="Votre nom" required />
                     <input type="email" name="email" placeholder="Votre email" required />
@@ -1831,11 +1820,6 @@
                     <a href="https://wa.me/22966561780" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     <a href="mailto:olachalla@gmail.com"><i class="fas fa-envelope"></i></a>
                     <a href="tel:0165694388"><i class="fas fa-phone"></i></a>
-                </div>
-                <div style="display:flex;justify-content:center;width:100%;margin-top:1rem;">
-                    <div class="translate-wrapper">
-                        <div id="google_translate_element"></div>
-                    </div>
                 </div>
             </footer>
         </div>
@@ -1882,17 +1866,19 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             // ================================================================
-            // 0. CONFIGURATION SUPABASE
+            // 1. CONFIGURATION SUPABASE (intégrée)
             // ================================================================
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
             var SUPABASE_ANON_KEY = 'sb_publishable_ALEP5mzHFd4K4iFpopfbjA_J2Q5B5_b';
-            var TABLE_NAME = 'gouts';
-            var COMMENTS_TABLE = 'commentaries'; // Nom exact de la table (capture)
+            var SUPABASE_TABLE = 'gouts';
+            var SUPABASE_COMMENT_TABLE = 'commentaires';
 
-            var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            // Initialisation de Supabase
+            var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            var isSupabaseReady = true;
 
             // ================================================================
-            // 1. DONNÉES PAR DÉFAUT (goûts)
+            // 2. DONNÉES PAR DÉFAUT
             // ================================================================
             var defaultGouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
@@ -1902,7 +1888,7 @@
             ];
 
             // ================================================================
-            // 2. GESTION DES GOÛTS
+            // 3. GESTION DES GOÛTS (localStorage + Supabase)
             // ================================================================
             function loadGouts() {
                 var stored = localStorage.getItem('cbonpop_gouts');
@@ -1932,16 +1918,24 @@
 
             function saveGouts() {
                 localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                syncGoutsToSupabase();
+                // Synchronisation vers Supabase
+                if (isSupabaseReady) {
+                    syncToSupabase();
+                }
                 updateAdminStats();
             }
 
             // ================================================================
-            // 3. SYNC GOÛTS
+            // 4. SYNCHRONISATION SUPABASE
             // ================================================================
-            function syncGoutsToSupabase() {
-                supabase.from(TABLE_NAME).delete().neq('id', 0).then(function(res) {
-                    if (res.error) { console.warn('Supabase delete error:', res.error); return; }
+            function syncToSupabase() {
+                if (!isSupabaseReady) return;
+                // On supprime toutes les lignes puis on insère les nouvelles
+                supabaseClient.from(SUPABASE_TABLE).delete().neq('id', 0).then(function(res) {
+                    if (res.error) {
+                        console.warn('Supabase delete error:', res.error);
+                        return;
+                    }
                     var data = gouts.map(function(g) {
                         return {
                             nom: g.nom,
@@ -1954,16 +1948,21 @@
                             description: g.description || ''
                         };
                     });
-                    if (data.length === 0) return;
-                    supabase.from(TABLE_NAME).insert(data).then(function(ins) {
-                        if (ins.error) console.warn('Supabase insert error:', ins.error);
+                    supabaseClient.from(SUPABASE_TABLE).insert(data).then(function(ins) {
+                        if (ins.error) {
+                            console.warn('Supabase insert error:', ins.error);
+                        }
                     });
                 });
             }
 
-            function loadGoutsFromSupabase() {
-                return supabase.from(TABLE_NAME).select('*').then(function(res) {
-                    if (res.error) { console.warn('Supabase select error:', res.error); return; }
+            function loadFromSupabase() {
+                if (!isSupabaseReady) return Promise.resolve();
+                return supabaseClient.from(SUPABASE_TABLE).select('*').then(function(res) {
+                    if (res.error) {
+                        console.warn('Supabase select error:', res.error);
+                        return;
+                    }
                     if (res.data && res.data.length > 0) {
                         var loaded = res.data.map(function(p) {
                             return {
@@ -1982,103 +1981,126 @@
                         renderAll();
                         buildAdminList();
                         updateAdminStats();
-                    } else {
-                        if (gouts.length > 0) syncGoutsToSupabase();
                     }
                 });
             }
 
             // ================================================================
-            // 4. GESTION DES COMMENTAIRES (adapté à la table commentaries)
+            // 5. COMMENTAIRES / AVIS (Supabase)
+            // Table: commentaires(id, nom, email, texte, date, masque)
             // ================================================================
             var commentaires = [];
 
-            function loadCommentaires() {
-                var stored = localStorage.getItem('cbonpop_commentaires');
-                if (stored) {
-                    try { commentaires = JSON.parse(stored); } catch (e) { commentaires = []; }
-                }
-                renderCommentaires();
+            function normaliserCommentaire(c) {
+                return {
+                    id: c.id,
+                    nom: c.nom || 'Client',
+                    email: c.email || '',
+                    texte: c.texte || '',
+                    date: c.date || null,
+                    masque: c.masque === true
+                };
             }
 
-            function saveCommentaires() {
-                localStorage.setItem('cbonpop_commentaires', JSON.stringify(commentaires));
-                syncCommentairesToSupabase();
-                renderCommentaires();
-                if (document.getElementById('adminCommentList')) {
-                    buildAdminCommentList();
-                }
-            }
-
-            function syncCommentairesToSupabase() {
-                supabase.from(COMMENTS_TABLE).delete().neq('id', 0).then(function(res) {
-                    if (res.error) { console.warn('Supabase comments delete error:', res.error); return; }
-                    if (commentaires.length === 0) return;
-                    var data = commentaires.map(function(c) {
-                        return {
-                            rows: c.nom || 'Anonyme',
-                            email: c.email || '',
-                            text: c.texte,
-                            date: c.date || new Date().toISOString(),
-                            magazine: c.masque || false
-                        };
-                    });
-                    supabase.from(COMMENTS_TABLE).insert(data).then(function(ins) {
-                        if (ins.error) console.warn('Supabase comments insert error:', ins.error);
-                    });
+            function formatCommentDate(value) {
+                if (!value) return '';
+                var d = new Date(value);
+                if (isNaN(d.getTime())) return '';
+                return d.toLocaleDateString('fr-FR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
                 });
             }
 
-            function loadCommentairesFromSupabase() {
-                return supabase.from(COMMENTS_TABLE).select('*').order('id', { ascending: false }).then(function(res) {
-                    if (res.error) { console.warn('Supabase comments select error:', res.error); return; }
-                    if (res.data && res.data.length > 0) {
-                        commentaires = res.data.map(function(c) {
-                            return {
-                                nom: c.rows || 'Anonyme',
-                                email: c.email || '',
-                                texte: c.text || '',
-                                date: c.date || new Date().toISOString(),
-                                masque: c.magazine || false,
-                                id: c.id
-                            };
-                        });
-                        localStorage.setItem('cbonpop_commentaires', JSON.stringify(commentaires));
-                    }
-                    renderCommentaires();
-                    if (document.getElementById('adminCommentList')) {
-                        buildAdminCommentList();
-                    }
-                });
-            }
-
-            function renderCommentaires() {
-                var container = document.getElementById('commentairesList');
+            function renderCommentairesPublics() {
+                var container = document.getElementById('publicCommentaires');
                 if (!container) return;
-                var visibles = commentaires.filter(function(c) { return !c.masque; });
-                if (visibles.length === 0) {
-                    container.innerHTML = '<p style="text-align:center;color:#999;padding:1rem 0;">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>';
+
+                var publics = commentaires.filter(function(c) {
+                    return !c.masque && c.texte.trim() !== '';
+                });
+
+                container.innerHTML = '';
+
+                if (publics.length === 0) {
+                    container.innerHTML = '<div class="testimonial-empty">⭐ Aucun avis publié pour le moment. Soyez le premier à partager votre expérience !</div>';
                     return;
                 }
-                container.innerHTML = '';
-                visibles.forEach(function(c) {
-                    var div = document.createElement('div');
-                    div.className = 'commentaire-item';
-                    var dateObj = new Date(c.date);
-                    var dateStr = dateObj.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
-                    div.innerHTML = `
-                        <div class="commentaire-header">
-                            <span class="commentaire-auteur"><i class="fas fa-user"></i> ${c.nom || 'Anonyme'}</span>
-                            <span class="commentaire-date">${dateStr}</span>
-                        </div>
-                        <div class="commentaire-texte">${c.texte}</div>
-                    `;
-                    container.appendChild(div);
+
+                publics.slice(0, 8).forEach(function(c) {
+                    var card = document.createElement('div');
+                    card.className = 'testimonial-card';
+
+                    var stars = document.createElement('div');
+                    stars.className = 'stars';
+                    stars.textContent = '⭐⭐⭐⭐⭐';
+
+                    var p = document.createElement('p');
+                    p.textContent = '“' + c.texte + '”';
+
+                    var cite = document.createElement('cite');
+                    cite.textContent = '– ' + c.nom;
+
+                    if (c.date) {
+                        var date = document.createElement('span');
+                        date.className = 'testimonial-date';
+                        date.textContent = formatCommentDate(c.date);
+                        cite.appendChild(date);
+                    }
+
+                    card.appendChild(stars);
+                    card.appendChild(p);
+                    card.appendChild(cite);
+                    container.appendChild(card);
                 });
+            }
+
+            async function loadCommentaires() {
+                if (!isSupabaseReady) return;
+
+                var res = await supabaseClient
+                    .from(SUPABASE_COMMENT_TABLE)
+                    .select('id, nom, email, texte, date, masque')
+                    .order('date', { ascending: false });
+
+                if (res.error) {
+                    console.warn('Supabase commentaires select error:', res.error);
+                    return;
+                }
+
+                commentaires = (res.data || []).map(normaliserCommentaire);
+                renderCommentairesPublics();
+                buildAdminCommentaires();
+                updateAdminStats();
+            }
+
+            async function ajouterCommentaire(nom, email, texte) {
+                var payload = {
+                    nom: nom,
+                    email: email,
+                    texte: texte,
+                    date: new Date().toISOString(),
+                    masque: true
+                };
+
+                var res = await supabaseClient
+                    .from(SUPABASE_COMMENT_TABLE)
+                    .insert(payload)
+                    .select('id, nom, email, texte, date, masque')
+                    .single();
+
+                if (res.error) throw res.error;
+
+                commentaires.unshift(normaliserCommentaire(res.data));
+                renderCommentairesPublics();
+                buildAdminCommentaires();
+                updateAdminStats();
+                return res.data;
             }
 
             // ================================================================
-            // 5. PANIER
+            // 6. PANIER
             // ================================================================
             var cart = [];
 
@@ -2365,6 +2387,7 @@
             var loginBtn = document.getElementById('loginBtn');
             var passwordError = document.getElementById('passwordError');
             var adminGoutList = document.getElementById('adminGoutList');
+            var adminCommentList = document.getElementById('adminCommentList');
             var addGoutBtn = document.getElementById('addGoutBtn');
             var newGoutName = document.getElementById('newGoutName');
             var newGoutPrice = document.getElementById('newGoutPrice');
@@ -2378,8 +2401,6 @@
             var settingsPassword = document.getElementById('settingsPassword');
             var saveSettingsBtn = document.getElementById('saveSettingsBtn');
             var settingsMessage = document.getElementById('settingsMessage');
-            var backAdminBtn = document.getElementById('backAdminBtn');
-            var adminCommentList = document.getElementById('adminCommentList');
 
             // Identifiants admin
             function loadAdminCredentials() {
@@ -2411,6 +2432,11 @@
                 localStorage.setItem('cbonpop_admin_session', active ? 'true' : 'false');
             }
 
+            // Bouton Retour (ferme la modale sans déconnexion)
+            document.getElementById('backBtn').addEventListener('click', function() {
+                adminModal.classList.remove('active');
+            });
+
             function openAdminModal() {
                 adminModal.classList.add('active');
                 if (isAdminLoggedIn()) {
@@ -2420,10 +2446,10 @@
                     adminPassword.value = '';
                     passwordError.style.display = 'none';
                     buildAdminList();
+                    buildAdminCommentaires();
                     updateAdminStats();
                     settingsUsername.value = adminCreds.user;
                     settingsPassword.value = '';
-                    buildAdminCommentList();
                     switchTab('tabListe');
                 } else {
                     adminLogin.style.display = 'block';
@@ -2437,10 +2463,6 @@
             function closeAdminModal() {
                 adminModal.classList.remove('active');
             }
-
-            backAdminBtn.addEventListener('click', function() {
-                closeAdminModal();
-            });
 
             // Logo clicks
             var logoAccueil = document.getElementById('logoAccueil');
@@ -2482,7 +2504,6 @@
                     settingsPassword.value = '';
                     buildAdminList();
                     updateAdminStats();
-                    buildAdminCommentList();
                     switchTab('tabListe');
                 } else {
                     loginAttempts++;
@@ -2500,6 +2521,7 @@
             adminPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') loginBtn.click(); });
             adminUsername.addEventListener('keydown', function(e) { if (e.key === 'Enter') loginBtn.click(); });
 
+            // Déconnexion
             logoutAdminBtn.addEventListener('click', function() {
                 setAdminSession(false);
                 adminLogin.style.display = 'block';
@@ -2514,6 +2536,7 @@
                 if (e.target === adminModal) closeAdminModal();
             });
 
+            // Statistiques
             function updateAdminStats() {
                 var total = gouts.length;
                 var withDesc = gouts.filter(function(g) { return g.description && g.description.trim() !== ''; }).length;
@@ -2521,9 +2544,114 @@
                 document.getElementById('statTotal').textContent = total;
                 document.getElementById('statWithDesc').textContent = withDesc;
                 document.getElementById('statWithImage').textContent = withImage;
+                var statComments = document.getElementById('statComments');
+                if (statComments) statComments.textContent = commentaires.length;
             }
 
-            // Admin - Liste des goûts
+            function buildAdminCommentaires() {
+                if (!adminCommentList) return;
+                adminCommentList.innerHTML = '';
+
+                if (commentaires.length === 0) {
+                    adminCommentList.innerHTML = '<p style="text-align:center;color:#999;padding:1rem 0;">Aucun commentaire pour le moment.</p>';
+                    return;
+                }
+
+                commentaires.forEach(function(c) {
+                    var item = document.createElement('div');
+                    item.className = 'admin-comment-item' + (c.masque ? ' is-hidden' : '');
+
+                    var header = document.createElement('div');
+                    header.className = 'comment-header';
+
+                    var author = document.createElement('div');
+                    var authorName = document.createElement('div');
+                    authorName.className = 'comment-author';
+                    authorName.textContent = c.nom;
+
+                    var meta = document.createElement('div');
+                    meta.className = 'comment-meta';
+                    meta.textContent = (c.email ? c.email + ' · ' : '') + (formatCommentDate(c.date) || 'Date inconnue');
+
+                    author.appendChild(authorName);
+                    author.appendChild(meta);
+
+                    var status = document.createElement('span');
+                    status.className = 'comment-meta';
+                    status.textContent = c.masque ? '🔒 Masqué' : '🌐 Publié';
+
+                    header.appendChild(author);
+                    header.appendChild(status);
+
+                    var body = document.createElement('div');
+                    body.className = 'comment-text';
+                    body.textContent = c.texte;
+
+                    var actions = document.createElement('div');
+                    actions.className = 'comment-actions';
+
+                    var toggleBtn = document.createElement('button');
+                    toggleBtn.className = 'btn-comment-toggle';
+                    toggleBtn.textContent = c.masque ? '🌐 Publier' : '🔒 Masquer';
+                    toggleBtn.addEventListener('click', async function() {
+                        var nextValue = !c.masque;
+                        toggleBtn.disabled = true;
+
+                        var res = await supabaseClient
+                            .from(SUPABASE_COMMENT_TABLE)
+                            .update({ masque: nextValue })
+                            .eq('id', c.id);
+
+                        toggleBtn.disabled = false;
+
+                        if (res.error) {
+                            showAdminMessage('❌ Impossible de modifier ce commentaire.', true);
+                            console.error(res.error);
+                            return;
+                        }
+
+                        c.masque = nextValue;
+                        renderCommentairesPublics();
+                        buildAdminCommentaires();
+                        updateAdminStats();
+                        showAdminMessage(nextValue ? '🔒 Commentaire masqué.' : '🌐 Commentaire publié.', false);
+                    });
+
+                    var deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-comment-delete';
+                    deleteBtn.textContent = '🗑️ Supprimer';
+                    deleteBtn.addEventListener('click', async function() {
+                        if (!confirm('Supprimer définitivement le commentaire de "' + c.nom + '" ?')) return;
+
+                        var res = await supabaseClient
+                            .from(SUPABASE_COMMENT_TABLE)
+                            .delete()
+                            .eq('id', c.id);
+
+                        if (res.error) {
+                            showAdminMessage('❌ Impossible de supprimer ce commentaire.', true);
+                            console.error(res.error);
+                            return;
+                        }
+
+                        commentaires = commentaires.filter(function(item) { return item.id !== c.id; });
+                        renderCommentairesPublics();
+                        buildAdminCommentaires();
+                        updateAdminStats();
+                        showAdminMessage('🗑️ Commentaire supprimé.', false);
+                    });
+
+                    actions.appendChild(toggleBtn);
+                    actions.appendChild(deleteBtn);
+
+                    item.appendChild(header);
+                    item.appendChild(body);
+                    item.appendChild(actions);
+                    adminCommentList.appendChild(item);
+                });
+            }
+
+            // Liste admin
             function buildAdminList() {
                 adminGoutList.innerHTML = '';
                 if (gouts.length === 0) {
@@ -2533,12 +2661,14 @@
                 gouts.forEach(function(g, index) {
                     var item = document.createElement('div');
                     item.className = 'admin-gout-item';
+
                     var header = document.createElement('div');
                     header.className = 'gout-header';
                     var nameSpan = document.createElement('span');
                     nameSpan.className = 'gout-name';
                     nameSpan.textContent = g.nom;
                     header.appendChild(nameSpan);
+
                     var actions = document.createElement('div');
                     actions.className = 'gout-actions';
                     var delBtn = document.createElement('button');
@@ -2563,8 +2693,10 @@
                     actions.appendChild(delBtn);
                     header.appendChild(actions);
                     item.appendChild(header);
+
                     var fields = document.createElement('div');
                     fields.className = 'gout-fields';
+
                     var prixDiv = document.createElement('div');
                     var prixLabel = document.createElement('label');
                     prixLabel.textContent = 'Prix';
@@ -2577,6 +2709,7 @@
                     prixInput.className = 'admin-field';
                     prixDiv.appendChild(prixInput);
                     fields.appendChild(prixDiv);
+
                     var descDiv = document.createElement('div');
                     var descLabel = document.createElement('label');
                     descLabel.textContent = 'Description (facultatif)';
@@ -2588,6 +2721,7 @@
                     descInput.className = 'admin-field';
                     descDiv.appendChild(descInput);
                     fields.appendChild(descDiv);
+
                     var imgDiv = document.createElement('div');
                     imgDiv.style.display = 'flex';
                     imgDiv.style.flexDirection = 'column';
@@ -2606,6 +2740,7 @@
                     }
                     imgPreview.alt = g.nom;
                     imgDiv.appendChild(imgPreview);
+
                     var fileInput = document.createElement('input');
                     fileInput.type = 'file';
                     fileInput.accept = 'image/*';
@@ -2627,86 +2762,9 @@
                     });
                     imgDiv.appendChild(fileInput);
                     fields.appendChild(imgDiv);
+
                     item.appendChild(fields);
                     adminGoutList.appendChild(item);
-                });
-            }
-
-            // Admin - Liste des commentaires
-            function buildAdminCommentList() {
-                if (!adminCommentList) return;
-                adminCommentList.innerHTML = '';
-                if (commentaires.length === 0) {
-                    adminCommentList.innerHTML = '<p style="text-align:center;color:#999;padding:1rem 0;">Aucun commentaire pour le moment.</p>';
-                    return;
-                }
-                commentaires.forEach(function(c, index) {
-                    var div = document.createElement('div');
-                    div.className = 'admin-gout-item';
-                    var dateObj = new Date(c.date);
-                    var dateStr = dateObj.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
-                    div.innerHTML = `
-                        <div class="gout-header">
-                            <span style="font-weight:700;color:#E8112D;">${c.nom || 'Anonyme'}</span>
-                            <span style="font-size:0.8rem;color:#999;">${dateStr}</span>
-                        </div>
-                        <div style="padding:0.5rem 0;color:#444;">${c.texte}</div>
-                        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.3rem;">
-                            <button class="btn-edit-comment" data-index="${index}" style="background:#e8f5ee;border:none;padding:0.2rem 0.8rem;border-radius:40px;cursor:pointer;font-weight:600;color:#00853E;">✏️ Modifier</button>
-                            <button class="btn-hide-comment" data-index="${index}" style="background:#fde8e8;border:none;padding:0.2rem 0.8rem;border-radius:40px;cursor:pointer;font-weight:600;color:#E8112D;">${c.masque ? '👁️ Afficher' : '🙈 Masquer'}</button>
-                            <button class="btn-delete-comment" data-index="${index}" style="background:#fde8e8;border:none;padding:0.2rem 0.8rem;border-radius:40px;cursor:pointer;font-weight:600;color:#dc3545;">🗑️ Supprimer</button>
-                        </div>
-                        <div id="commentEditArea_${index}" style="display:none;margin-top:0.5rem;">
-                            <textarea id="commentEditText_${index}" style="width:100%;padding:0.5rem;border:2px solid #eee;border-radius:12px;font-family:'Quicksand',sans-serif;">${c.texte}</textarea>
-                            <button class="btn-save-comment-edit" data-index="${index}" style="margin-top:0.3rem;background:#00853E;color:white;border:none;padding:0.3rem 1.5rem;border-radius:60px;cursor:pointer;font-weight:600;">💾 Enregistrer</button>
-                            <button class="btn-cancel-comment-edit" data-index="${index}" style="margin-top:0.3rem;background:#ddd;color:#555;border:none;padding:0.3rem 1.5rem;border-radius:60px;cursor:pointer;font-weight:600;">Annuler</button>
-                        </div>
-                    `;
-                    adminCommentList.appendChild(div);
-
-                    // Événements
-                    div.querySelector('.btn-edit-comment').addEventListener('click', function() {
-                        var idx = parseInt(this.dataset.index);
-                        var editArea = document.getElementById('commentEditArea_' + idx);
-                        if (editArea) editArea.style.display = 'block';
-                    });
-                    div.querySelector('.btn-cancel-comment-edit').addEventListener('click', function() {
-                        var idx = parseInt(this.dataset.index);
-                        var editArea = document.getElementById('commentEditArea_' + idx);
-                        if (editArea) editArea.style.display = 'none';
-                    });
-                    div.querySelector('.btn-save-comment-edit').addEventListener('click', function() {
-                        var idx = parseInt(this.dataset.index);
-                        var textarea = document.getElementById('commentEditText_' + idx);
-                        if (textarea && commentaires[idx]) {
-                            commentaires[idx].texte = textarea.value.trim();
-                            if (!commentaires[idx].texte) {
-                                alert('Le texte ne peut pas être vide.');
-                                return;
-                            }
-                            saveCommentaires();
-                            buildAdminCommentList();
-                            showAdminMessage('✅ Commentaire modifié avec succès !', false);
-                        }
-                    });
-                    div.querySelector('.btn-hide-comment').addEventListener('click', function() {
-                        var idx = parseInt(this.dataset.index);
-                        if (commentaires[idx]) {
-                            commentaires[idx].masque = !commentaires[idx].masque;
-                            saveCommentaires();
-                            buildAdminCommentList();
-                            showAdminMessage(commentaires[idx].masque ? '🙈 Commentaire masqué' : '👁️ Commentaire affiché', false);
-                        }
-                    });
-                    div.querySelector('.btn-delete-comment').addEventListener('click', function() {
-                        var idx = parseInt(this.dataset.index);
-                        if (confirm('Supprimer définitivement ce commentaire ?')) {
-                            commentaires.splice(idx, 1);
-                            saveCommentaires();
-                            buildAdminCommentList();
-                            showAdminMessage('🗑️ Commentaire supprimé', false);
-                        }
-                    });
                 });
             }
 
@@ -2746,7 +2804,7 @@
                 showAdminMessage('✅ Toutes les modifications ont été enregistrées avec succès !', false);
             });
 
-            // Ajout de goût
+            // Ajout
             addGoutBtn.addEventListener('click', function() {
                 var nom = newGoutName.value.trim();
                 var prix = newGoutPrice.value.trim();
@@ -2835,6 +2893,7 @@
                 setTimeout(function() { settingsMessage.style.display = 'none'; }, 3000);
             });
 
+            // Onglets
             function switchTab(tabId) {
                 document.querySelectorAll('.admin-tab-content').forEach(function(el) {
                     el.classList.remove('active');
@@ -2846,9 +2905,6 @@
                         el.classList.add('active');
                     }
                 });
-                if (tabId === 'tabCommentaires') {
-                    buildAdminCommentList();
-                }
             }
             document.querySelectorAll('.tab-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
@@ -2867,58 +2923,42 @@
             // ================================================================
             // 10. CONTACT FORM
             // ================================================================
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
-                var nom = this.querySelector('[name="nom"]').value;
-                var email = this.querySelector('[name="email"]').value;
-                var message = this.querySelector('[name="message"]').value;
-                var msg = '📩 Nouveau message de ' + nom + ' (' + email + ')\n\n' + message;
-                window.open('https://wa.me/22966561780?text=' + encodeURIComponent(msg), '_blank');
-            });
 
-            // ================================================================
-            // 11. FORMULAIRE DE COMMENTAIRE (visiteur)
-            // ================================================================
-            document.getElementById('submitCommentBtn').addEventListener('click', function() {
-                var nom = document.getElementById('commentNom').value.trim();
-                var email = document.getElementById('commentEmail').value.trim();
-                var texte = document.getElementById('commentTexte').value.trim();
-                var msgEl = document.getElementById('commentMessage');
+                var form = this;
+                var nom = form.querySelector('[name="nom"]').value.trim();
+                var email = form.querySelector('[name="email"]').value.trim();
+                var message = form.querySelector('[name="message"]').value.trim();
 
-                if (!nom) {
-                    msgEl.textContent = '⚠️ Veuillez entrer votre nom.';
-                    msgEl.style.color = '#E8112D';
-                    return;
-                }
-                if (!texte || texte.length < 5) {
-                    msgEl.textContent = '⚠️ Votre avis doit contenir au moins 5 caractères.';
-                    msgEl.style.color = '#E8112D';
-                    return;
-                }
+                if (!nom || !email || !message) return;
 
-                var newComment = {
-                    nom: nom,
-                    email: email,
-                    texte: texte,
-                    date: new Date().toISOString(),
-                    masque: false
-                };
-                commentaires.unshift(newComment);
-                saveCommentaires();
-                document.getElementById('commentNom').value = '';
-                document.getElementById('commentEmail').value = '';
-                document.getElementById('commentTexte').value = '';
-                msgEl.textContent = '✅ Merci pour votre avis ! Il sera visible après validation.';
-                msgEl.style.color = '#00853E';
-                setTimeout(function() { msgEl.textContent = ''; }, 4000);
-                renderCommentaires();
-                if (document.getElementById('adminCommentList')) {
-                    buildAdminCommentList();
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Enregistrement...';
+
+                try {
+                    if (!isSupabaseReady) throw new Error('Supabase indisponible');
+
+                    await ajouterCommentaire(nom, email, message);
+
+                    var msg = '📩 Nouveau message de ' + nom + ' (' + email + ')\n\n' + message;
+                    window.open('https://wa.me/22966561780?text=' + encodeURIComponent(msg), '_blank');
+
+                    form.reset();
+                    alert('Merci ! Votre message a bien été enregistré. Il sera visible sur le site après validation.');
+                } catch (error) {
+                    console.error('Erreur enregistrement commentaire:', error);
+                    alert('Votre message n\'a pas pu être enregistré. Vérifiez la connexion à Supabase.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
                 }
             });
 
             // ================================================================
-            // 12. NAVIGATION
+            // 11. NAVIGATION
             // ================================================================
             var pages = {
                 accueil: document.getElementById('pageAccueil'),
@@ -2971,7 +3011,7 @@
             });
 
             // ================================================================
-            // 13. HAMBURGER MENU
+            // 12. HAMBURGER MENU
             // ================================================================
             var menuToggle = document.getElementById('menuToggle');
             var mainNav = document.getElementById('mainNav');
@@ -2999,17 +3039,20 @@
             }
 
             // ================================================================
-            // 14. INITIALISATION
+            // 13. INITIALISATION
             // ================================================================
-            loadCommentaires();
-            loadGoutsFromSupabase().finally(function() {
-                loadCommentairesFromSupabase().finally(function() {
-                    loadCart();
-                    renderAll();
-                    showPage('accueil');
-                });
+            // Charger depuis Supabase
+            Promise.all([
+                loadFromSupabase(),
+                loadCommentaires()
+            ]).finally(function() {
+                loadCart();
+                renderAll();
+                renderCommentairesPublics();
+                showPage('accueil');
             });
 
+            // Effet de clic sur les cartes
             document.addEventListener('click', function(e) {
                 var card = e.target.closest('.product-card');
                 if (card && !e.target.closest('.btn-add-cart') && e.target.tagName !== 'IMG') {
