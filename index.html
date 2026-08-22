@@ -605,110 +605,151 @@
             transform: translateY(-3px);
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .testimonial-card {
+        /* ===== NOUVEAU SYSTÈME DE COMMENTAIRES (MODERNE) ===== */
+        .comments-section {
             background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-            border-left: 5px solid #FCD116;
-            transition: transform 0.3s;
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(252,209,22,0.15);
         }
-        .testimonial-card:hover { transform: translateY(-3px); }
-        .testimonial-card .stars {
-            color: #FCD116;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-        }
-        .testimonial-card p {
-            font-style: italic;
-            margin: 0.5rem 0;
-            color: #444;
-        }
-        .testimonial-card cite {
-            font-weight: 600;
+        .comments-section h2 {
+            font-family: 'Fredoka One', cursive;
             color: #E8112D;
-            font-style: normal;
-        }
-        .testimonial-empty {
-            grid-column: 1 / -1;
+            font-size: 2rem;
             text-align: center;
-            padding: 1.5rem;
-            color: #777;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            margin-bottom: 0.3rem;
         }
-        .testimonial-date {
-            display: block;
-            margin-top: 0.4rem;
-            font-size: 0.75rem;
-            color: #999;
-            font-style: normal;
+        .comments-section .section-subtitle {
+            margin-bottom: 1.8rem;
         }
 
-        /* ===== ADMIN - COMMENTAIRES ===== */
-        .admin-comment-list {
+        .comment-form-modern {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
         }
-        .admin-comment-item {
-            background: #faf6f0;
+        .comment-form-modern .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .comment-form-modern .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #444;
+        }
+        .comment-form-modern .form-group input,
+        .comment-form-modern .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 16px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+            background: #fafafa;
+        }
+        .comment-form-modern .form-group input:focus,
+        .comment-form-modern .form-group textarea:focus {
+            border-color: #E8112D;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(232,17,45,0.08);
+            background: white;
+        }
+        .comment-form-modern .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .comment-form-modern .btn-submit {
+            background: linear-gradient(135deg, #00853E, #006b32);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,133,62,0.2);
+            align-self: flex-start;
+        }
+        .comment-form-modern .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,133,62,0.3);
+        }
+        .comment-form-modern .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .comments-list-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .comment-card {
+            background: #fafaf8;
+            border-radius: 20px;
+            padding: 1.5rem;
             border: 1px solid #f0e6d0;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
+            transition: 0.3s;
         }
-        .admin-comment-item .comment-header {
+        .comment-card:hover {
+            border-color: #FCD116;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .comment-card .comment-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
             flex-wrap: wrap;
-        }
-        .admin-comment-item .comment-author {
-            font-weight: 700;
-            color: #E8112D;
-        }
-        .admin-comment-item .comment-meta {
-            font-size: 0.78rem;
-            color: #777;
-        }
-        .admin-comment-item .comment-text {
-            margin: 0.7rem 0;
-            background: white;
-            border: 1px solid #f0e6d0;
-            border-radius: 14px;
-            padding: 0.8rem 1rem;
-            white-space: pre-wrap;
-        }
-        .admin-comment-item .comment-actions {
-            display: flex;
             gap: 0.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 0.4rem;
         }
-        .admin-comment-item .comment-actions button {
-            border: none;
-            border-radius: 40px;
-            padding: 0.35rem 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .admin-comment-item .btn-comment-toggle {
-            background: #e8f5ee;
-            color: #006b32;
-        }
-        .admin-comment-item .btn-comment-delete {
-            background: #fde8e8;
+        .comment-card .comment-header strong {
+            font-size: 1.1rem;
             color: #E8112D;
         }
-        .admin-comment-item.is-hidden {
-            opacity: 0.75;
+        .comment-card .comment-header .comment-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        .comment-card .comment-text {
+            color: #444;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin-bottom: 0.4rem;
+        }
+        .comment-card .admin-reply {
+            margin-top: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: #f0f7ed;
+            border-left: 4px solid #00853E;
+            border-radius: 12px;
+        }
+        .comment-card .admin-reply strong {
+            display: block;
+            font-size: 0.8rem;
+            color: #00853E;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.2rem;
+        }
+        .comment-card .admin-reply p {
+            color: #2D1B0E;
+            margin: 0;
+        }
+        .no-comments {
+            text-align: center;
+            color: #999;
+            padding: 2rem 0;
+            font-size: 1.1rem;
         }
 
         .faq-item {
@@ -748,113 +789,6 @@
             color: #555;
         }
         .faq-item.active .faq-answer { display: block; }
-
-        .contact-form-section {
-            background: white;
-            border-radius: 30px;
-            padding: 2.5rem;
-            margin: 2.5rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-        .contact-form-section h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 2rem;
-            text-align: center;
-        }
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 2px solid #eee;
-            border-radius: 16px;
-            font-family: 'Quicksand', sans-serif;
-            transition: 0.3s;
-            background: #fafafa;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #E8112D;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(232,17,45,0.1);
-            background: white;
-        }
-        .contact-form textarea {
-            min-height: 130px;
-            resize: vertical;
-        }
-        .contact-form button {
-            width: 100%;
-            padding: 0.9rem;
-            background: linear-gradient(135deg, #E8112D, #c00e24);
-            color: white;
-            border: none;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(232,17,45,0.2);
-        }
-        .contact-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(232,17,45,0.3);
-        }
-
-        .trust-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-        }
-        .trust-badges .badge {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-weight: 600;
-            color: #2D1B0E;
-        }
-        .trust-badges .badge i {
-            font-size: 2rem;
-            color: #00853E;
-            background: #e8f5ee;
-            padding: 0.5rem;
-            border-radius: 50%;
-        }
-
-        .about {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-            border-left: 6px solid #00853E;
-        }
-        .about h2 {
-            font-family: 'Fredoka One', cursive;
-            color: #E8112D;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .quote {
-            font-style: italic;
-            font-weight: 600;
-            color: #00853E;
-            background: #FFF8F0;
-            padding: 0.8rem 1.8rem;
-            border-radius: 40px 8px 40px 8px;
-            display: inline-block;
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-        }
 
         .contact-info {
             background: linear-gradient(135deg, #FCD116, #e6b800);
@@ -906,6 +840,32 @@
             display: inline-block;
             margin-top: 0.3rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .about {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid #00853E;
+        }
+        .about h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #E8112D;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .quote {
+            font-style: italic;
+            font-weight: 600;
+            color: #00853E;
+            background: #FFF8F0;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px 8px 40px 8px;
+            display: inline-block;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
         }
 
         footer {
@@ -988,7 +948,7 @@
         }
 
         /* ============================================================ */
-        /* ===== ADMIN - TABLEAU DE BORD ===== */
+        /* ===== ADMIN - TABLEAU DE BORD (modifié) ===== */
         /* ============================================================ */
         .admin-modal {
             display: none;
@@ -1082,7 +1042,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(232,17,45,0.35);
         }
-        /* Nouveau bouton Retour (ferme la modale sans déconnexion) */
         .admin-header .admin-actions .btn-back {
             background: #6c757d;
             color: white;
@@ -1356,6 +1315,129 @@
             box-shadow: 0 8px 25px rgba(0,133,62,0.3);
         }
 
+        /* Nouvelle section dans l'admin : Répondre aux commentaires */
+        .admin-comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .admin-comment-item {
+            background: #faf6f0;
+            border: 1px solid #f0e6d0;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+        }
+        .admin-comment-item.is-hidden {
+            opacity: 0.7;
+        }
+        .admin-comment-item .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .admin-comment-item .comment-author {
+            font-weight: 700;
+            color: #E8112D;
+        }
+        .admin-comment-item .comment-meta {
+            font-size: 0.78rem;
+            color: #777;
+        }
+        .admin-comment-item .comment-text {
+            margin: 0.6rem 0;
+            background: white;
+            border: 1px solid #f0e6d0;
+            border-radius: 14px;
+            padding: 0.8rem 1rem;
+            white-space: pre-wrap;
+        }
+        .admin-comment-item .comment-reply-box {
+            margin: 0.6rem 0 0.4rem;
+        }
+        .admin-comment-item .comment-reply-box textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 60px;
+            transition: 0.2s;
+        }
+        .admin-comment-item .comment-reply-box textarea:focus {
+            border-color: #00853E;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,133,62,0.1);
+        }
+        .admin-comment-item .comment-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .admin-comment-item .comment-actions button {
+            border: none;
+            border-radius: 40px;
+            padding: 0.35rem 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .admin-comment-item .comment-actions .btn-comment-toggle {
+            background: #e8f5ee;
+            color: #006b32;
+        }
+        .admin-comment-item .comment-actions .btn-comment-toggle:hover {
+            background: #00853E;
+            color: white;
+        }
+        .admin-comment-item .comment-actions .btn-comment-delete {
+            background: #fde8e8;
+            color: #E8112D;
+        }
+        .admin-comment-item .comment-actions .btn-comment-delete:hover {
+            background: #E8112D;
+            color: white;
+        }
+        .admin-comment-item .comment-actions .btn-comment-reply {
+            background: #f0e6d0;
+            color: #2D1B0E;
+        }
+        .admin-comment-item .comment-actions .btn-comment-reply:hover {
+            background: #FCD116;
+            color: #2D1B0E;
+        }
+        .admin-comment-item .comment-actions .btn-comment-save-reply {
+            background: #00853E;
+            color: white;
+        }
+        .admin-comment-item .comment-actions .btn-comment-save-reply:hover {
+            background: #006b32;
+        }
+        .admin-comment-item .existing-reply {
+            margin-top: 0.6rem;
+            padding: 0.6rem 0.8rem;
+            background: #e8f5ee;
+            border-left: 4px solid #00853E;
+            border-radius: 12px;
+        }
+        .admin-comment-item .existing-reply strong {
+            color: #00853E;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .admin-comment-item .existing-reply p {
+            margin: 0.2rem 0 0;
+            color: #2D1B0E;
+        }
+
         .admin-settings-section {
             background: #faf6f0;
             border-radius: 20px;
@@ -1541,10 +1623,6 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
             }
-            .testimonial-grid { grid-template-columns: 1fr; }
-            .trust-badges { gap: 1rem; }
-            .logo { font-size: 1.4rem; }
-            .logo span { font-size: 0.75rem; }
             .admin-gout-item .gout-fields { grid-template-columns: 1fr; }
             .admin-add-section .add-fields { grid-template-columns: 1fr; }
             .admin-add-section .add-fields .full-width { grid-column: 1; }
@@ -1561,6 +1639,8 @@
                 height: 22px;
                 font-size: 0.7rem;
             }
+            .comments-section { padding: 1.5rem; }
+            .comment-form-modern { max-width: 100%; }
         }
         @media (max-width: 480px) {
             .admin-modal .modal-content { padding: 1.2rem; }
@@ -1608,6 +1688,8 @@
                 top: -4px;
                 right: -4px;
             }
+            .comments-section { padding: 1rem; }
+            .comment-card { padding: 1rem; }
         }
     </style>
 </head>
@@ -1673,8 +1755,8 @@
                         </div>
                     </div>
                     <div class="admin-tab-content" id="tabCommentaires">
-                        <div class="admin-section-title"><i class="fas fa-comments"></i> Avis et messages reçus</div>
-                        <p style="color:#666;margin-bottom:1rem;">Les nouveaux messages sont masqués par défaut. Publiez uniquement les avis que vous souhaitez afficher sur le site.</p>
+                        <div class="admin-section-title"><i class="fas fa-comments"></i> Gestion des avis</div>
+                        <p style="color:#666;margin-bottom:1rem;">Les nouveaux messages sont masqués par défaut. Publiez-les pour les afficher sur le site.</p>
                         <div class="admin-comment-list" id="adminCommentList"></div>
                     </div>
                     <div class="admin-tab-content" id="tabParametres">
@@ -1757,10 +1839,30 @@
                 <a href="#boutique" class="btn-success">Je commande</a>
             </div>
 
-            <section class="testimonials" id="avis">
-                <h2 class="section-title">⭐ Ils nous font confiance</h2>
-                <p class="section-subtitle">Ce que nos clients disent de C'BON POP</p>
-                <div class="testimonial-grid" id="publicCommentaires"></div>
+            <!-- ===== NOUVELLE SECTION COMMENTAIRES MODERNE ===== -->
+            <section class="comments-section" id="avis">
+                <h2>⭐ Ils nous font confiance</h2>
+                <p class="section-subtitle">Partagez votre expérience et lisez les avis de nos clients</p>
+
+                <!-- Formulaire -->
+                <form id="commentForm" class="comment-form-modern">
+                    <div class="form-group">
+                        <label for="commentNom">Votre nom</label>
+                        <input type="text" id="commentNom" placeholder="Ex: Jean" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail">Votre email (ne sera pas publié)</label>
+                        <input type="email" id="commentEmail" placeholder="jean@exemple.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="commentTexte">Votre avis</label>
+                        <textarea id="commentTexte" rows="4" placeholder="Qu'avez-vous pensé de nos popcorns ?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="commentSubmitBtn">Envoyer mon avis <i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <!-- Liste des avis -->
+                <div id="publicCommentList" class="comments-list-modern"></div>
             </section>
 
             <section class="faq" id="faq">
@@ -1783,18 +1885,7 @@
                 </div>
             </section>
 
-            <section class="contact-form-section" id="contact">
-                <h2>💬 Écrivez-nous</h2>
-                <p style="text-align:center;color:#666;margin-bottom:1rem;">Une question, une suggestion ou un avis ? Votre message sera enregistré et validé avant publication.</p>
-                <form class="contact-form" id="contactForm">
-                    <input type="text" name="nom" placeholder="Votre nom" required />
-                    <input type="email" name="email" placeholder="Votre email" required />
-                    <textarea name="message" placeholder="Votre message" required></textarea>
-                    <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
-                </form>
-            </section>
-
-            <section class="contact-info" id="infos">
+            <section class="contact-info" id="contact">
                 <h2>📬 Contactez-nous</h2>
                 <div class="contact-details">
                     <a href="tel:0165694388"><i class="fas fa-phone"></i> 01 65 69 43 88</a>
@@ -1866,19 +1957,18 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             // ================================================================
-            // 1. CONFIGURATION SUPABASE (intégrée)
+            // 1. CONFIGURATION SUPABASE
             // ================================================================
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
             var SUPABASE_ANON_KEY = 'sb_publishable_ALEP5mzHFd4K4iFpopfbjA_J2Q5B5_b';
             var SUPABASE_TABLE = 'gouts';
             var SUPABASE_COMMENT_TABLE = 'commentaires';
 
-            // Initialisation de Supabase
             var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             var isSupabaseReady = true;
 
             // ================================================================
-            // 2. DONNÉES PAR DÉFAUT
+            // 2. DONNÉES PAR DÉFAUT (goûts)
             // ================================================================
             var defaultGouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
@@ -1887,9 +1977,6 @@
                 { nom: 'Caramel', image: 'caramel', emoji: '🍯', badge: '', prix: '2 000 CFA', prixNum: 2000, description: 'Un délice sucré et fondant' }
             ];
 
-            // ================================================================
-            // 3. GESTION DES GOÛTS (localStorage + Supabase)
-            // ================================================================
             function loadGouts() {
                 var stored = localStorage.getItem('cbonpop_gouts');
                 if (stored) {
@@ -1918,19 +2005,14 @@
 
             function saveGouts() {
                 localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
-                // Synchronisation vers Supabase
                 if (isSupabaseReady) {
                     syncToSupabase();
                 }
                 updateAdminStats();
             }
 
-            // ================================================================
-            // 4. SYNCHRONISATION SUPABASE
-            // ================================================================
             function syncToSupabase() {
                 if (!isSupabaseReady) return;
-                // On supprime toutes les lignes puis on insère les nouvelles
                 supabaseClient.from(SUPABASE_TABLE).delete().neq('id', 0).then(function(res) {
                     if (res.error) {
                         console.warn('Supabase delete error:', res.error);
@@ -1949,9 +2031,7 @@
                         };
                     });
                     supabaseClient.from(SUPABASE_TABLE).insert(data).then(function(ins) {
-                        if (ins.error) {
-                            console.warn('Supabase insert error:', ins.error);
-                        }
+                        if (ins.error) console.warn('Supabase insert error:', ins.error);
                     });
                 });
             }
@@ -1986,8 +2066,7 @@
             }
 
             // ================================================================
-            // 5. COMMENTAIRES / AVIS (Supabase)
-            // Table: commentaires(id, nom, email, texte, date, masque)
+            // 3. COMMENTAIRES (nouvelle version moderne)
             // ================================================================
             var commentaires = [];
 
@@ -1998,7 +2077,8 @@
                     email: c.email || '',
                     texte: c.texte || '',
                     date: c.date || null,
-                    masque: c.masque === true
+                    masque: c.masque === true,
+                    reponse: c.reponse || null
                 };
             }
 
@@ -2008,13 +2088,13 @@
                 if (isNaN(d.getTime())) return '';
                 return d.toLocaleDateString('fr-FR', {
                     day: '2-digit',
-                    month: '2-digit',
+                    month: 'long',
                     year: 'numeric'
                 });
             }
 
             function renderCommentairesPublics() {
-                var container = document.getElementById('publicCommentaires');
+                var container = document.getElementById('publicCommentList');
                 if (!container) return;
 
                 var publics = commentaires.filter(function(c) {
@@ -2024,34 +2104,44 @@
                 container.innerHTML = '';
 
                 if (publics.length === 0) {
-                    container.innerHTML = '<div class="testimonial-empty">⭐ Aucun avis publié pour le moment. Soyez le premier à partager votre expérience !</div>';
+                    container.innerHTML = '<div class="no-comments">⭐ Aucun avis publié pour le moment. Soyez le premier à partager votre expérience !</div>';
                     return;
                 }
 
-                publics.slice(0, 8).forEach(function(c) {
+                publics.slice(0, 20).forEach(function(c) {
                     var card = document.createElement('div');
-                    card.className = 'testimonial-card';
+                    card.className = 'comment-card';
 
-                    var stars = document.createElement('div');
-                    stars.className = 'stars';
-                    stars.textContent = '⭐⭐⭐⭐⭐';
+                    var header = document.createElement('div');
+                    header.className = 'comment-header';
+                    var author = document.createElement('strong');
+                    author.textContent = c.nom;
+                    var date = document.createElement('span');
+                    date.className = 'comment-date';
+                    date.textContent = formatCommentDate(c.date);
+                    header.appendChild(author);
+                    header.appendChild(date);
 
-                    var p = document.createElement('p');
-                    p.textContent = '“' + c.texte + '”';
+                    var text = document.createElement('div');
+                    text.className = 'comment-text';
+                    text.textContent = c.texte;
 
-                    var cite = document.createElement('cite');
-                    cite.textContent = '– ' + c.nom;
+                    card.appendChild(header);
+                    card.appendChild(text);
 
-                    if (c.date) {
-                        var date = document.createElement('span');
-                        date.className = 'testimonial-date';
-                        date.textContent = formatCommentDate(c.date);
-                        cite.appendChild(date);
+                    // Afficher la réponse admin si elle existe
+                    if (c.reponse && c.reponse.trim() !== '') {
+                        var reply = document.createElement('div');
+                        reply.className = 'admin-reply';
+                        var strong = document.createElement('strong');
+                        strong.textContent = 'Réponse de l\'équipe C\'BON POP';
+                        var p = document.createElement('p');
+                        p.textContent = c.reponse;
+                        reply.appendChild(strong);
+                        reply.appendChild(p);
+                        card.appendChild(reply);
                     }
 
-                    card.appendChild(stars);
-                    card.appendChild(p);
-                    card.appendChild(cite);
                     container.appendChild(card);
                 });
             }
@@ -2061,7 +2151,7 @@
 
                 var res = await supabaseClient
                     .from(SUPABASE_COMMENT_TABLE)
-                    .select('id, nom, email, texte, date, masque')
+                    .select('id, nom, email, texte, date, masque, reponse')
                     .order('date', { ascending: false });
 
                 if (res.error) {
@@ -2081,13 +2171,14 @@
                     email: email,
                     texte: texte,
                     date: new Date().toISOString(),
-                    masque: true
+                    masque: true,
+                    reponse: null
                 };
 
                 var res = await supabaseClient
                     .from(SUPABASE_COMMENT_TABLE)
                     .insert(payload)
-                    .select('id, nom, email, texte, date, masque')
+                    .select('id, nom, email, texte, date, masque, reponse')
                     .single();
 
                 if (res.error) throw res.error;
@@ -2100,7 +2191,7 @@
             }
 
             // ================================================================
-            // 6. PANIER
+            // 4. PANIER (inchangé)
             // ================================================================
             var cart = [];
 
@@ -2222,7 +2313,7 @@
             }
 
             // ================================================================
-            // 6. LIGHTBOX
+            // 5. LIGHTBOX (inchangée)
             // ================================================================
             var lightbox = document.getElementById('lightbox');
             var lightboxImg = document.getElementById('lightboxImg');
@@ -2247,7 +2338,7 @@
             });
 
             // ================================================================
-            // 7. GÉNÉRATEUR DE CARTE
+            // 6. GÉNÉRATEUR DE CARTE (inchangé)
             // ================================================================
             function genererCarte(gout, avecBouton) {
                 var card = document.createElement('div');
@@ -2343,7 +2434,7 @@
             }
 
             // ================================================================
-            // 8. CHECKOUT
+            // 7. CHECKOUT (inchangé)
             // ================================================================
             document.getElementById('checkoutBtnPanier').addEventListener('click', function() {
                 if (cart.length === 0) {
@@ -2377,7 +2468,7 @@
             });
 
             // ================================================================
-            // 9. ADMIN
+            // 8. ADMIN (avec gestion des réponses)
             // ================================================================
             var adminModal = document.getElementById('adminModal');
             var adminLogin = document.getElementById('adminLogin');
@@ -2402,7 +2493,6 @@
             var saveSettingsBtn = document.getElementById('saveSettingsBtn');
             var settingsMessage = document.getElementById('settingsMessage');
 
-            // Identifiants admin
             function loadAdminCredentials() {
                 var stored = localStorage.getItem('cbonpop_admin_creds');
                 if (stored) {
@@ -2432,7 +2522,6 @@
                 localStorage.setItem('cbonpop_admin_session', active ? 'true' : 'false');
             }
 
-            // Bouton Retour (ferme la modale sans déconnexion)
             document.getElementById('backBtn').addEventListener('click', function() {
                 adminModal.classList.remove('active');
             });
@@ -2464,7 +2553,6 @@
                 adminModal.classList.remove('active');
             }
 
-            // Logo clicks
             var logoAccueil = document.getElementById('logoAccueil');
             var logoBoutique = document.getElementById('logoBoutique');
             var logoPanier = document.getElementById('logoPanier');
@@ -2490,7 +2578,6 @@
             logoBoutique.addEventListener('click', handleLogoClick);
             if (logoPanier) logoPanier.addEventListener('click', handleLogoClick);
 
-            // Connexion
             loginBtn.addEventListener('click', function() {
                 var user = adminUsername.value.trim();
                 var pass = adminPassword.value.trim();
@@ -2521,7 +2608,6 @@
             adminPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') loginBtn.click(); });
             adminUsername.addEventListener('keydown', function(e) { if (e.key === 'Enter') loginBtn.click(); });
 
-            // Déconnexion
             logoutAdminBtn.addEventListener('click', function() {
                 setAdminSession(false);
                 adminLogin.style.display = 'block';
@@ -2536,7 +2622,6 @@
                 if (e.target === adminModal) closeAdminModal();
             });
 
-            // Statistiques
             function updateAdminStats() {
                 var total = gouts.length;
                 var withDesc = gouts.filter(function(g) { return g.description && g.description.trim() !== ''; }).length;
@@ -2586,6 +2671,23 @@
                     var body = document.createElement('div');
                     body.className = 'comment-text';
                     body.textContent = c.texte;
+
+                    // Zone de réponse existante
+                    var existingReply = null;
+                    if (c.reponse && c.reponse.trim() !== '') {
+                        existingReply = document.createElement('div');
+                        existingReply.className = 'existing-reply';
+                        existingReply.innerHTML = `<strong>Réponse admin :</strong><p>${escapeHTML(c.reponse)}</p>`;
+                    }
+
+                    // Boîte de réponse (masquée par défaut)
+                    var replyBox = document.createElement('div');
+                    replyBox.className = 'comment-reply-box';
+                    replyBox.style.display = 'none';
+                    var replyTextarea = document.createElement('textarea');
+                    replyTextarea.placeholder = 'Écrivez votre réponse...';
+                    replyTextarea.rows = 2;
+                    replyBox.appendChild(replyTextarea);
 
                     var actions = document.createElement('div');
                     actions.className = 'comment-actions';
@@ -2641,17 +2743,58 @@
                         showAdminMessage('🗑️ Commentaire supprimé.', false);
                     });
 
+                    var replyBtn = document.createElement('button');
+                    replyBtn.className = 'btn-comment-reply';
+                    replyBtn.textContent = c.reponse ? '✏️ Modifier la réponse' : '💬 Répondre';
+                    replyBtn.addEventListener('click', function() {
+                        var isHidden = replyBox.style.display === 'none';
+                        replyBox.style.display = isHidden ? 'block' : 'none';
+                        if (isHidden && c.reponse) {
+                            replyTextarea.value = c.reponse;
+                        } else if (isHidden) {
+                            replyTextarea.value = '';
+                        }
+                    });
+
+                    var saveReplyBtn = document.createElement('button');
+                    saveReplyBtn.className = 'btn-comment-save-reply';
+                    saveReplyBtn.textContent = '💾 Enregistrer la réponse';
+                    saveReplyBtn.addEventListener('click', async function() {
+                        var newReply = replyTextarea.value.trim();
+                        if (newReply === '' && !confirm('Laisser la réponse vide ?')) return;
+
+                        var res = await supabaseClient
+                            .from(SUPABASE_COMMENT_TABLE)
+                            .update({ reponse: newReply || null })
+                            .eq('id', c.id);
+
+                        if (res.error) {
+                            showAdminMessage('❌ Impossible d\'enregistrer la réponse.', true);
+                            console.error(res.error);
+                            return;
+                        }
+
+                        c.reponse = newReply || null;
+                        renderCommentairesPublics();
+                        buildAdminCommentaires();
+                        updateAdminStats();
+                        showAdminMessage('✅ Réponse enregistrée.', false);
+                    });
+
                     actions.appendChild(toggleBtn);
                     actions.appendChild(deleteBtn);
+                    actions.appendChild(replyBtn);
+                    actions.appendChild(saveReplyBtn);
 
                     item.appendChild(header);
                     item.appendChild(body);
+                    if (existingReply) item.appendChild(existingReply);
+                    item.appendChild(replyBox);
                     item.appendChild(actions);
                     adminCommentList.appendChild(item);
                 });
             }
 
-            // Liste admin
             function buildAdminList() {
                 adminGoutList.innerHTML = '';
                 if (gouts.length === 0) {
@@ -2768,7 +2911,6 @@
                 });
             }
 
-            // Sauvegarde
             saveAllBtn.addEventListener('click', function() {
                 var fields = adminGoutList.querySelectorAll('.admin-field');
                 var files = adminGoutList.querySelectorAll('.admin-file');
@@ -2804,7 +2946,6 @@
                 showAdminMessage('✅ Toutes les modifications ont été enregistrées avec succès !', false);
             });
 
-            // Ajout
             addGoutBtn.addEventListener('click', function() {
                 var nom = newGoutName.value.trim();
                 var prix = newGoutPrice.value.trim();
@@ -2873,7 +3014,6 @@
                 }
             });
 
-            // Identifiants admin
             saveSettingsBtn.addEventListener('click', function() {
                 var newUser = settingsUsername.value.trim();
                 var newPass = settingsPassword.value.trim();
@@ -2893,7 +3033,6 @@
                 setTimeout(function() { settingsMessage.style.display = 'none'; }, 3000);
             });
 
-            // Onglets
             function switchTab(tabId) {
                 document.querySelectorAll('.admin-tab-content').forEach(function(el) {
                     el.classList.remove('active');
@@ -2920,45 +3059,59 @@
                 setTimeout(function() { adminMessage.style.display = 'none'; }, 3000);
             }
 
+            function escapeHTML(value) {
+                if (!value) return '';
+                return String(value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
             // ================================================================
-            // 10. CONTACT FORM
+            // 9. FORMULAIRE COMMENTAIRE (moderne)
             // ================================================================
-            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            var commentForm = document.getElementById('commentForm');
+            var commentSubmitBtn = document.getElementById('commentSubmitBtn');
+
+            commentForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                var form = this;
-                var nom = form.querySelector('[name="nom"]').value.trim();
-                var email = form.querySelector('[name="email"]').value.trim();
-                var message = form.querySelector('[name="message"]').value.trim();
+                var nom = document.getElementById('commentNom').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var texte = document.getElementById('commentTexte').value.trim();
 
-                if (!nom || !email || !message) return;
+                if (!nom || !email || !texte) {
+                    alert('Veuillez remplir tous les champs.');
+                    return;
+                }
 
-                var submitBtn = form.querySelector('button[type="submit"]');
-                var originalText = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Enregistrement...';
+                commentSubmitBtn.disabled = true;
+                commentSubmitBtn.innerHTML = 'Envoi en cours...';
 
                 try {
                     if (!isSupabaseReady) throw new Error('Supabase indisponible');
 
-                    await ajouterCommentaire(nom, email, message);
+                    await ajouterCommentaire(nom, email, texte);
 
-                    var msg = '📩 Nouveau message de ' + nom + ' (' + email + ')\n\n' + message;
-                    window.open('https://wa.me/22966561780?text=' + encodeURIComponent(msg), '_blank');
+                    // Message de confirmation
+                    alert('Merci ! Votre avis a bien été enregistré. Il sera visible sur le site après validation par notre équipe.');
 
-                    form.reset();
-                    alert('Merci ! Votre message a bien été enregistré. Il sera visible sur le site après validation.');
+                    commentForm.reset();
+                    // Recharger la liste pour voir le nouveau commentaire (masqué)
+                    await loadCommentaires();
                 } catch (error) {
                     console.error('Erreur enregistrement commentaire:', error);
-                    alert('Votre message n\'a pas pu être enregistré. Vérifiez la connexion à Supabase.');
+                    alert('Votre avis n\'a pas pu être enregistré. Vérifiez votre connexion et réessayez.');
                 } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
+                    commentSubmitBtn.disabled = false;
+                    commentSubmitBtn.innerHTML = 'Envoyer mon avis <i class="fas fa-paper-plane"></i>';
                 }
             });
 
             // ================================================================
-            // 11. NAVIGATION
+            // 10. NAVIGATION
             // ================================================================
             var pages = {
                 accueil: document.getElementById('pageAccueil'),
@@ -3011,7 +3164,7 @@
             });
 
             // ================================================================
-            // 12. HAMBURGER MENU
+            // 11. HAMBURGER MENU
             // ================================================================
             var menuToggle = document.getElementById('menuToggle');
             var mainNav = document.getElementById('mainNav');
@@ -3039,9 +3192,8 @@
             }
 
             // ================================================================
-            // 13. INITIALISATION
+            // 12. INITIALISATION
             // ================================================================
-            // Charger depuis Supabase
             Promise.all([
                 loadFromSupabase(),
                 loadCommentaires()
