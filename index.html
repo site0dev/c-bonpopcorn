@@ -4,19 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C'BON POP – Popcorn artisanal du Bénin</title>
-    <meta name="description" content="Découvrez les popcorns authentiques du Bénin : Sucré, Salé, Lacté, Caramel. Fabriqués avec des ingrédients locaux." />
-    <meta name="keywords" content="popcorn béninois, pop corn artisanal, C'BON POP, Cotonou, Bénin, Afrique de l'Ouest, snack" />
+    <meta name="description" content="Découvrez les popcorns authentiques du Bénin : Sucré, Salé, Lacté, Caramel." />
+    <meta name="keywords" content="popcorn béninois, pop corn artisanal, C'BON POP, Cotonou, Bénin" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cbonpop.bj" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cbonpop.bj" />
     <meta property="og:title" content="C'BON POP – Popcorn artisanal du Bénin" />
-    <meta property="og:description" content="Popcorns authentiques du Bénin : 4 goûts uniques. Livraison en Afrique de l'Ouest, France et Belgique." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="geo.region" content="BJ" />
     <meta name="geo.placename" content="Cotonou" />
-    <meta name="geo.position" content="6.365;2.418" />
-    <meta name="ICBM" content="6.365, 2.418" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,8 +55,6 @@
             margin: 0 auto;
             padding: 1.5rem 1rem 3rem;
         }
-
-        /* ===== HEADER ===== */
         header {
             display: flex;
             flex-wrap: wrap;
@@ -188,7 +183,6 @@
             background: linear-gradient(135deg, #25D366, #1da851);
         }
 
-        /* ===== PAGES ===== */
         .page { display: block; }
         .page.hidden { display: none; }
 
@@ -706,36 +700,6 @@
             transform: translateY(-3px);
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-            border-left: 5px solid #FCD116;
-            transition: transform 0.3s;
-        }
-        .testimonial-card:hover { transform: translateY(-3px); }
-        .testimonial-card .stars {
-            color: #FCD116;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-        }
-        .testimonial-card p {
-            font-style: italic;
-            margin: 0.5rem 0;
-            color: #444;
-        }
-        .testimonial-card cite {
-            font-weight: 600;
-            color: #E8112D;
-            font-style: normal;
-        }
-
         .faq-item {
             background: white;
             border-radius: 16px;
@@ -1020,7 +984,7 @@
         }
 
         /* ============================================================ */
-        /* ===== ADMIN - TABLEAU DE BORD ===== */
+        /* ===== ADMIN ===== */
         /* ============================================================ */
         .admin-modal {
             display: none;
@@ -1572,7 +1536,6 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
             }
-            .testimonial-grid { grid-template-columns: 1fr; }
             .trust-badges { gap: 1rem; }
             .logo { font-size: 1.4rem; }
             .logo span { font-size: 0.75rem; }
@@ -1754,7 +1717,6 @@
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
                 <nav id="mainNav">
                     <a href="#catalogue">Catalogue</a>
-                    <a href="#avis">Avis</a>
                     <a href="#faq">FAQ</a>
                     <a href="#commentaires">Avis clients</a>
                     <a href="#contact">Contact</a>
@@ -1809,17 +1771,6 @@
                     <textarea id="commentTexte" placeholder="Votre avis sur nos popcorns..." required></textarea>
                     <button class="btn-submit-comment" id="submitCommentBtn"><i class="fas fa-paper-plane"></i> Publier mon avis</button>
                     <div id="commentMessage" style="margin-top:0.5rem;font-weight:600;color:#00853E;"></div>
-                </div>
-            </section>
-
-            <section class="testimonials" id="avis">
-                <h2 class="section-title">⭐ Ils nous font confiance</h2>
-                <p class="section-subtitle">Ce que nos clients disent de C'BON POP</p>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Les meilleurs popcorns du Bénin !"</p><cite>– Marie, Cotonou</cite></div>
-                    <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Un vrai régal ! J'adore le goût caramel."</p><cite>– Jean, Porto-Novo</cite></div>
-                    <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Excellente qualité, des saveurs authentiques."</p><cite>– Amélie, Abomey-Calavi</cite></div>
-                    <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Popcorns délicieux, parfaits pour les apéritifs !"</p><cite>– David, Parakou</cite></div>
                 </div>
             </section>
 
@@ -1951,7 +1902,7 @@
             ];
 
             // ================================================================
-            // 2. GESTION DES GOÛTS (identique)
+            // 2. GESTION DES GOÛTS
             // ================================================================
             function loadGouts() {
                 var stored = localStorage.getItem('cbonpop_gouts');
@@ -2065,11 +2016,11 @@
                     if (commentaires.length === 0) return;
                     var data = commentaires.map(function(c) {
                         return {
-                            rows: c.nom || 'Anonyme',   // colonne "rows"
+                            rows: c.nom || 'Anonyme',
                             email: c.email || '',
-                            text: c.texte,              // colonne "text"
+                            text: c.texte,
                             date: c.date || new Date().toISOString(),
-                            magazine: c.masque || false // colonne "magazine"
+                            magazine: c.masque || false
                         };
                     });
                     supabase.from(COMMENTS_TABLE).insert(data).then(function(ins) {
@@ -2084,11 +2035,11 @@
                     if (res.data && res.data.length > 0) {
                         commentaires = res.data.map(function(c) {
                             return {
-                                nom: c.rows || 'Anonyme',     // rows → nom
+                                nom: c.rows || 'Anonyme',
                                 email: c.email || '',
-                                texte: c.text || '',          // text → texte
+                                texte: c.text || '',
                                 date: c.date || new Date().toISOString(),
-                                masque: c.magazine || false,  // magazine → masque
+                                masque: c.magazine || false,
                                 id: c.id
                             };
                         });
@@ -2098,6 +2049,31 @@
                     if (document.getElementById('adminCommentList')) {
                         buildAdminCommentList();
                     }
+                });
+            }
+
+            function renderCommentaires() {
+                var container = document.getElementById('commentairesList');
+                if (!container) return;
+                var visibles = commentaires.filter(function(c) { return !c.masque; });
+                if (visibles.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;color:#999;padding:1rem 0;">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>';
+                    return;
+                }
+                container.innerHTML = '';
+                visibles.forEach(function(c) {
+                    var div = document.createElement('div');
+                    div.className = 'commentaire-item';
+                    var dateObj = new Date(c.date);
+                    var dateStr = dateObj.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+                    div.innerHTML = `
+                        <div class="commentaire-header">
+                            <span class="commentaire-auteur"><i class="fas fa-user"></i> ${c.nom || 'Anonyme'}</span>
+                            <span class="commentaire-date">${dateStr}</span>
+                        </div>
+                        <div class="commentaire-texte">${c.texte}</div>
+                    `;
+                    container.appendChild(div);
                 });
             }
 
