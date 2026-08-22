@@ -366,7 +366,7 @@
                     </div>
                     <div class="admin-tab-content" id="tabCommentaires">
                         <div class="admin-section-title"><i class="fas fa-comments"></i> Gestion des avis</div>
-                        <p style="color:#666;margin-bottom:1rem;">Les nouveaux messages sont masqués par défaut. Publiez-les pour les afficher sur le site.</p>
+                        <p style="color:#666;margin-bottom:1rem;">Les nouveaux commentaires sont publiés automatiquement. Vous pouvez les masquer si besoin.</p>
                         <div class="admin-comment-list" id="adminCommentList"></div>
                     </div>
                     <div class="admin-tab-content" id="tabParametres">
@@ -577,7 +577,7 @@
             );
             var isSupabaseReady = true;
 
-            // ===== 2. GOÛTS (avec peuplement automatique) =====
+            // ===== 2. GOÛTS =====
             var defaultGouts = [
                 { nom: 'Sucré', image: 'sucre', emoji: '🍬', badge: '⭐ Douceur', prix: '1 500 CFA', prixNum: 1500, description: 'Un classique irrésistible' },
                 { nom: 'Salé', image: 'sale', emoji: '🧂', badge: '', prix: '1 200 CFA', prixNum: 1200, description: 'La touche parfaite pour les apéritifs' },
@@ -659,7 +659,6 @@
                         gouts = loaded;
                         localStorage.setItem('cbonpop_gouts', JSON.stringify(gouts));
                     } else {
-                        // Table vide → insérer les produits par défaut
                         console.log('🔄 Table gouts vide, insertion des produits par défaut...');
                         var defaultData = defaultGouts.map(function(g) {
                             return {
@@ -678,7 +677,7 @@
                                 console.warn('Erreur insertion produits par défaut:', ins.error);
                             } else {
                                 console.log('✅ Produits par défaut insérés avec succès.');
-                                loadFromSupabase(); // recharger après insertion
+                                loadFromSupabase();
                             }
                         });
                         return;
@@ -717,7 +716,7 @@
                 var publics = commentaires.filter(function(c) { return !c.masque && c.texte.trim() !== ''; });
                 container.innerHTML = '';
                 if (publics.length === 0) {
-                    container.innerHTML = '<div class="no-comments">⭐ Aucun avis publié pour le moment. Soyez le premier à partager votre expérience !</div>';
+                    container.innerHTML = '<div class="no-comments">⭐ Aucun avis pour le moment. Soyez le premier à partager votre expérience !</div>';
                     return;
                 }
                 publics.slice(0, 20).forEach(function(c) {
@@ -756,15 +755,15 @@
                 updateAdminStats();
             }
 
-            // ===== FONCTION AJOUTER COMMENTAIRE (CORRIGÉE : reponse = '') =====
+            // ===== FONCTION AJOUTER COMMENTAIRE : masque = false (visible immédiatement) =====
             async function ajouterCommentaire(nom, email, texte) {
                 var payload = {
                     nom: nom,
                     email: email,
                     texte: texte,
                     date: new Date().toISOString(),
-                    masque: true,
-                    reponse: ''  // ← CHAÎNE VIDE au lieu de null
+                    masque: false,  // ← visible immédiatement
+                    reponse: ''
                 };
                 var res = await supabaseClient
                     .from(SUPABASE_COMMENT_TABLE)
@@ -967,10 +966,12 @@
                     card.appendChild(desc);
                 }
 
-                var priceSpan = document.createElement('div');
-                priceSpan.className = 'price';
-                priceSpan.textContent = gout.prix || '';
-                card.appendChild(priceSpan);
+                if (avecBouton) {
+                    var priceSpan = document.createElement('div');
+                    priceSpan.className = 'price';
+                    priceSpan.textContent = gout.prix || '';
+                    card.appendChild(priceSpan);
+                }
 
                 if (avecBouton) {
                     var btn = document.createElement('button');
@@ -1209,7 +1210,6 @@
 
                     adminCommentList.appendChild(item);
 
-                    // === Gestion des événements ===
                     var toggleBtn = item.querySelector('.btn-comment-toggle');
                     var deleteBtn = item.querySelector('.btn-comment-delete');
                     var replyBtn = item.querySelector('.btn-comment-reply');
@@ -1317,7 +1317,6 @@
                     `;
                     adminGoutList.appendChild(item);
 
-                    // Suppression
                     var delBtn = item.querySelector('.btn-delete');
                     delBtn.addEventListener('click', function() {
                         if (gouts.length <= 1) return;
@@ -1331,7 +1330,6 @@
                         }
                     });
 
-                    // File input
                     var fileInput = item.querySelector('.admin-file');
                     fileInput.addEventListener('change', function(e) {
                         var file = e.target.files[0];
@@ -1348,7 +1346,6 @@
                         }
                     });
 
-                    // Input fields for price/description (on change only)
                     var fields = item.querySelectorAll('.admin-field');
                     fields.forEach(function(field) {
                         field.addEventListener('change', function() {
@@ -1367,7 +1364,6 @@
             }
 
             saveAllBtn.addEventListener('click', function() {
-                // Sauvegarder tous les champs modifiés
                 var fields = adminGoutList.querySelectorAll('.admin-field');
                 var files = adminGoutList.querySelectorAll('.admin-file');
 
@@ -1536,7 +1532,7 @@
 
                     await ajouterCommentaire(nom, email, texte);
 
-                    alert('Merci ! Votre avis a bien été enregistré. Il sera visible sur le site après validation par notre équipe.');
+                    alert('Merci ! Votre avis a bien été enregistré et est maintenant visible sur le site.');
                     commentForm.reset();
                 } catch (error) {
                     console.error('❌ Erreur enregistrement commentaire:', {
