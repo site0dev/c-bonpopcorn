@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="C'BON POP – Popcorn béninois" />
     <meta name="twitter:description" content="Popcorn artisanal 100% béninois – commandez en ligne." />
 
-    <!-- Hreflang pour le Bénin, la France et la Belgique -->
+    <!-- Hreflang -->
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BJ" />
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-FR" />
     <link rel="alternate" href="https://cbonpop.bj" hreflang="fr-BE" />
@@ -948,7 +948,7 @@
         }
 
         /* ============================================================ */
-        /* ===== ADMIN - TABLEAU DE BORD (modifié) ===== */
+        /* ===== ADMIN - TABLEAU DE BORD ===== */
         /* ============================================================ */
         .admin-modal {
             display: none;
@@ -1315,7 +1315,7 @@
             box-shadow: 0 8px 25px rgba(0,133,62,0.3);
         }
 
-        /* Nouvelle section dans l'admin : Répondre aux commentaires */
+        /* Administration des commentaires */
         .admin-comment-list {
             display: flex;
             flex-direction: column;
@@ -1839,7 +1839,7 @@
                 <a href="#boutique" class="btn-success">Je commande</a>
             </div>
 
-            <!-- ===== NOUVELLE SECTION COMMENTAIRES MODERNE ===== -->
+            <!-- ===== SECTION COMMENTAIRES MODERNE ===== -->
             <section class="comments-section" id="avis">
                 <h2>⭐ Ils nous font confiance</h2>
                 <p class="section-subtitle">Partagez votre expérience et lisez les avis de nos clients</p>
@@ -1962,7 +1962,7 @@
             var SUPABASE_URL = 'https://zkphdcastbguywnhiuvr.supabase.co';
             var SUPABASE_ANON_KEY = 'sb_publishable_ALEP5mzHFd4K4iFpopfbjA_J2Q5B5_b';
             var SUPABASE_TABLE = 'gouts';
-            var SUPABASE_COMMENT_TABLE = 'commentaires';
+            var SUPABASE_COMMENT_TABLE = 'commentaries';  // ← nom corrigé
 
             var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             var isSupabaseReady = true;
@@ -2066,7 +2066,7 @@
             }
 
             // ================================================================
-            // 3. COMMENTAIRES (nouvelle version moderne)
+            // 3. COMMENTAIRES (avec la table 'commentaries')
             // ================================================================
             var commentaires = [];
 
@@ -2129,7 +2129,6 @@
                     card.appendChild(header);
                     card.appendChild(text);
 
-                    // Afficher la réponse admin si elle existe
                     if (c.reponse && c.reponse.trim() !== '') {
                         var reply = document.createElement('div');
                         reply.className = 'admin-reply';
@@ -2672,7 +2671,6 @@
                     body.className = 'comment-text';
                     body.textContent = c.texte;
 
-                    // Zone de réponse existante
                     var existingReply = null;
                     if (c.reponse && c.reponse.trim() !== '') {
                         existingReply = document.createElement('div');
@@ -2680,7 +2678,6 @@
                         existingReply.innerHTML = `<strong>Réponse admin :</strong><p>${escapeHTML(c.reponse)}</p>`;
                     }
 
-                    // Boîte de réponse (masquée par défaut)
                     var replyBox = document.createElement('div');
                     replyBox.className = 'comment-reply-box';
                     replyBox.style.display = 'none';
@@ -3070,7 +3067,7 @@
             }
 
             // ================================================================
-            // 9. FORMULAIRE COMMENTAIRE (moderne)
+            // 9. FORMULAIRE COMMENTAIRE
             // ================================================================
             var commentForm = document.getElementById('commentForm');
             var commentSubmitBtn = document.getElementById('commentSubmitBtn');
@@ -3095,11 +3092,9 @@
 
                     await ajouterCommentaire(nom, email, texte);
 
-                    // Message de confirmation
                     alert('Merci ! Votre avis a bien été enregistré. Il sera visible sur le site après validation par notre équipe.');
 
                     commentForm.reset();
-                    // Recharger la liste pour voir le nouveau commentaire (masqué)
                     await loadCommentaires();
                 } catch (error) {
                     console.error('Erreur enregistrement commentaire:', error);
