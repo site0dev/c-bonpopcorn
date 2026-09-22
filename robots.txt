@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://c-bonpopcorn.vercel.app/sitemap.xml
+Sitemap: https://cbonpopcorn.boiseo.online/sitemap.xml
